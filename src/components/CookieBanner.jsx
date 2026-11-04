@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
@@ -42,7 +43,7 @@ export function CookieBanner() {
         fontSize: '14px'
       }}>
         <div style={{ flex: '1 1 300px' }}>
-          Questo sito utilizza i cookie per migliorare l'esperienza utente. Continuando la navigazione accetti l'uso dei cookie. Leggi la nostra <a href="/privacy-policy" style={{ color: '#38bdf8', textDecoration: 'underline' }}>Privacy Policy</a>.
+          Questo sito utilizza i cookie per migliorare l'esperienza utente. Continuando la navigazione accetti l'uso dei cookie. Leggi la nostra <Link to="/privacy-policy" style={{ color: '#38bdf8', textDecoration: 'underline' }}>Privacy Policy</Link>.
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button 

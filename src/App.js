@@ -33,6 +33,7 @@ const PageRoutes = () => {
           <Route path="/installazione-servizi" element={<Installazione />} />
           <Route path="/normative-certificazioni" element={<Normative />} />
           <Route path="/contatti" element={<Contatti />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </motion.main>
