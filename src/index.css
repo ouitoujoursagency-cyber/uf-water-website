@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Palette uf water technology ===== */
+:root {
+    --abyss: #06142b;
+    --navy: #0b2545;
+    --sky: #38bdf8;
+    --aqua: #14b8a6;
+    --mist: #f3f8fb;
+    --ink: #0b1b2e;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: var(--mist);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--sky); color: var(--abyss); }
+
+@layer base {
+    :root {
+        --background: 204 50% 97%;
+        --foreground: 213 61% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 213 61% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 213 61% 11%;
+        --primary: 199 92% 60%;
+        --primary-foreground: 216 76% 10%;
+        --secondary: 204 40% 94%;
+        --secondary-foreground: 213 61% 11%;
+        --muted: 204 40% 94%;
+        --muted-foreground: 215 19% 35%;
+        --accent: 173 80% 40%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 210 30% 88%;
+        --input: 210 30% 85%;
+        --ring: 199 92% 60%;
+        --radius: 1rem;
+    }
+    * { @apply border-border; }
+}
+
+/* Testo con gradiente acqua */
+.text-water {
+    background: linear-gradient(100deg, #38bdf8 0%, #7dd3fc 40%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Grana sottile per i fondi scuri */
+.grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Onde in movimento continuo (hero + intestazioni) */
+@keyframes wave-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.wave-a { animation: wave-drift 18s linear infinite; }
+.wave-b { animation: wave-drift 28s linear infinite reverse; }
+
+/* Marquee editoriale lento */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 60s linear infinite; }
+
+/* Cerchi concentrici sotto la goccia */
+@keyframes ripple {
+    0% { transform: scale(0.35); opacity: 0.7; }
+    100% { transform: scale(1.7); opacity: 0; }
+}
+.ripple { transform-box: fill-box; transform-origin: center; animation: ripple 3.6s cubic-bezier(.2,.6,.3,1) infinite; opacity: 0; }
+
+/* Testo contorno per titoli editoriali */
+.text-outline { color: transparent; -webkit-text-stroke: 1.2px rgba(11, 37, 69, 0.35); }
+
+@media (prefers-reduced-motion: reduce) {
+    .wave-a, .wave-b, .marquee-track, .ripple { animation: none; }
+}
