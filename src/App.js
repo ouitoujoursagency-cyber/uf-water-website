@@ -12,6 +12,7 @@ import Extra from "@/pages/Extra";
 import Installazione from "@/pages/Installazione";
 import Normative from "@/pages/Normative";
 import Contatti from "@/pages/Contatti";
+import Privacy from "@/pages/Privacy";
 import { CookieBanner } from "./components/CookieBanner";
 
 // Transizione morbida tra le pagine (le pagine si sovrappongono, niente schermo vuoto)
