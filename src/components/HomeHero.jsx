@@ -49,7 +49,7 @@ export const HomeHero = () => {
             className="mt-9 flex flex-col sm:flex-row gap-3">
             <Link to="/contatti" data-testid="hero-cta-preventivo"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-sky-400 px-7 py-4 font-bold text-[#06142B] transition-[background-color,transform,box-shadow] duration-300 hover:bg-sky-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(56,189,248,.7)]">
-              Richiedi un Preventivo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              Prenota una consulenza gratuita <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link to="/prodotti" data-testid="hero-cta-prodotti"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 font-semibold text-white transition-colors duration-300 hover:bg-white hover:text-[#06142B]">
