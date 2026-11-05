@@ -59,11 +59,29 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "uf-colonna-pro", name: "UF Colonna Pro", category: "ufficio", sub: "Erogatore a colonna", badge: "Per l'ufficio",
-    img: img("p_colonna.jpg"),
+    id: "office-30", 
+    name: "Office 30", 
+    category: "ufficio", 
+    sub: "Erogatore a colonna", 
+    badge: "Per l'ufficio",
+    img: img("office30.jpg"),
     tagline: "Il punto acqua dell'ufficio: naturale, fredda e frizzante.",
-    description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team fino a 40 persone.",
-    specs: [["Tecnologia", "UF + lampada UV"], ["Erogazione", "Ambiente / Fredda / Frizzante"], ["Capacità frigo", "fino a 40 L/h"], ["Dimensioni", "L 32 × P 38 × H 110 cm"], ["Design", "Acciaio inox spazzolato e nero opaco"], ["Utenti consigliati", "15 – 40"]],
+    description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team e ambienti di lavoro professionali.",
+    specs: [
+      ["Riferimento", "6007.1T.AD"],
+      ["Pressione Ingresso Acqua", "min 1,5 bar - max 4 bar"],
+      ["Temperatura Esercizio", "2° C - 40° C"],
+      ["Filtrazione", "interna o esterna"],
+      ["Alimentazione Elettrica", "200V 50Hz - cavo presa IEC"],
+      ["Dimensioni (LXPXA-CM)", "52,2x27x122"],
+      ["Pompa Acqua", "150 lt/h a paletta o Pompa a membrana"],
+      ["Dimensione Saturatore", "9x18 cm -- 0,76 litri"],
+      ["Vasca Refrigerante", "5 litri"],
+      ["Controllo Banco Di Ghiaccio", "termoregolatore digitale da -2°C a +7°C"],
+      ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
+      ["Potenza Assorbita", "230 watt"],
+      ["Materiale Struttura", "Acciaio INOX AISI 304"]
+    ],
   },
 ];
 
