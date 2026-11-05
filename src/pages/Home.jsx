@@ -131,25 +131,7 @@ const REVIEWS = [
 ];
 
 const Reviews = () => (
-  <section data-testid="reviews-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-32">
-    <SectionTitle eyebrow="Dicono di noi" lines={["Chi l'ha provata,", "non torna indietro."]} />
-    <div className="mt-14 grid gap-5 md:grid-cols-3">
-      {REVIEWS.map((r, i) => (
-        <Reveal key={r.n} delay={i * 0.08} className={`flex flex-col rounded-[28px] p-8 ${i === 1 ? "bg-[#06142B] text-white md:-translate-y-6" : "bg-white border border-slate-200"}`} data-testid={`review-card-${i + 1}`}>
-          <Quote className={`h-8 w-8 ${i === 1 ? "text-sky-300" : "text-sky-500"}`} />
-          <p className={`mt-6 flex-1 text-lg leading-relaxed ${i === 1 ? "text-slate-100" : "text-slate-700"}`}>"{r.t}"</p>
-          <div className="mt-8 flex items-center justify-between">
-            <div>
-              <p className="font-display font-extrabold">{r.n}</p>
-              <p className={`text-xs ${i === 1 ? "text-slate-300" : "text-slate-500"}`}>{r.type} · {r.c}</p>
-            </div>
-            <div className="flex gap-0.5 text-amber-400">{[...Array(5)].map((_, k) => <Star key={k} className="h-4 w-4" fill="currentColor" />)}</div>
-          </div>
-        </Reveal>
-      ))}
-    </div>
-    <p className="mt-8 text-xs text-slate-500">[Recensioni di esempio — sostituire con recensioni reali dei clienti]</p>
-  </section>
+  
 );
 
 export default function Home() {
