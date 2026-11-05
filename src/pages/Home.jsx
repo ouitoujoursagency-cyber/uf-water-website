@@ -45,96 +45,27 @@ const Benefits = () => (
   </section>
 );
 
-// ---------- Vetrina prodotti di punta ----------
+// ---------- Vetrina prodotti di punta (Senza switch Business) ----------
 const Showcase = () => {
-  const [tab, setTab] = useState("casa");
   const [open, setOpen] = useState(null);
   
-  // Filtriamo i prodotti della categoria attiva
-  const categoryItems = PRODUCTS.filter((p) => p.category === tab);
+  // Filtriamo i prodotti domestici principali per la home
+  const homeProducts = PRODUCTS.filter((p) => p.category === "casa").slice(0, 3);
   
   return (
     <section data-testid="showcase-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-32">
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionTitle eyebrow="Prodotti di punta" lines={["Depuratori pensati", "per ogni spazio."]} />
-        <div className="inline-flex self-start rounded-full bg-white p-1.5 border border-slate-200" role="tablist">
-          {[["casa", "Uso Domestico"], ["ufficio", "Business / Miscelatori"]].map(([k, l]) => (
-            <button key={k} onClick={() => setTab(k)} data-testid={`showcase-tab-${k}`} role="tab" aria-selected={tab === k}
-              className={`relative rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${tab === k ? "text-white" : "text-slate-600 hover:text-[var(--ink)]"}`}>
-              {tab === k && <motion.span layoutId="showcase-pill" className="absolute inset-0 rounded-full bg-[#06142B]" transition={{ type: "spring", stiffness: 380, damping: 32 }} />}
-              <span className="relative">{l}</span>
-            </button>
-          ))}
-        </div>
       </div>
 
-      {/* SEZIONE DINAMICA: Layout a 2 colonne se c'è un solo prodotto (Business), altrimenti griglia standard (Casa) */}
-      {categoryItems.length === 1 ? (
-        (() => {
-          const p = categoryItems[0];
-          return (
-            <div className="mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-[28px] p-6 md:p-10 shadow-sm border border-slate-200">
-              {/* COLONNA SINISTRA: Immagine grande */}
-              <div 
-                onClick={() => setOpen(p)}
-                className="lg:col-span-6 relative group overflow-hidden rounded-2xl bg-slate-900 aspect-[4/3] cursor-pointer"
-              >
-                <img 
-                  src={p.image} 
-                  alt={p.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-                  {p.badge || "Business"}
-                </div>
-              </div>
-
-              {/* COLONNA DESTRA: Nome, Dettagli e Scheda Tecnica */}
-              <div className="lg:col-span-6 flex flex-col justify-center space-y-6">
-                <div>
-                  <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest">Business / Miscelatori</span>
-                  <h3 className="text-3xl md:text-4xl font-black text-gray-900 mt-1 tracking-tight">{p.name}</h3>
-                </div>
-
-                <p className="text-slate-600 text-lg leading-relaxed">
-                  {p.description}
-                </p>
-
-                {/* Specifiche rapide se presenti nel catalogo */}
-                {p.features && (
-                  <ul className="space-y-2 text-sm text-slate-600 border-t border-b border-slate-100 py-4">
-                    {p.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {/* Pulsante Scheda Tecnica / Apri Modale */}
-                <div className="pt-2 flex items-center gap-4">
-                  <button 
-                    onClick={() => setOpen(p)}
-                    className="inline-flex items-center gap-2 font-semibold text-[var(--navy)] hover:text-blue-600 transition-colors uppercase tracking-wider border-b-2 border-[var(--navy)] hover:border-blue-600 pb-1 text-sm"
-                  >
-                    Scheda Tecnica <ArrowRight className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })()
-      ) : (
-        /* GRIGLIA STANDARD (es. per Uso Domestico con più prodotti) */
-        <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {categoryItems.slice(0, 3).map((p, i) => (
-            <div key={p.id} className={i === 1 ? "lg:mt-16" : ""}>
-              <ProductCard item={p} index={i} onOpen={setOpen} tall />
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Griglia pulita dei 3 prodotti di punta */}
+      <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {homeProducts.map((p, i) => (
+          <div key={p.id} className={i === 1 ? "lg:mt-16" : ""}>
+            <ProductCard item={p} index={i} onOpen={setOpen} tall />
+          </div>
+        ))}
+      </div>
 
       <Reveal className="mt-14 flex justify-center">
         <Link to="/prodotti" data-testid="showcase-all-products" className="group inline-flex items-center gap-2 rounded-full border border-[var(--navy)] px-7 py-4 font-semibold text-[var(--navy)] transition-colors hover:bg-[var(--navy)] hover:text-white">
