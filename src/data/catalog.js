@@ -23,11 +23,22 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "uf-osmo-5", name: "UF Osmo 5", category: "casa", sub: "Osmosi inversa", badge: "Massima purezza",
-    img: img("p_osmosi.jpg"),
-    tagline: "Osmosi inversa a 5 stadi con remineralizzazione.",
-    description: "Prefiltrazione, carbone attivo, membrana osmotica e post-filtro remineralizzante: per chi vuole un residuo fisso molto basso e un gusto neutro.",
-    specs: [["Tecnologia", "Osmosi inversa 5 stadi"], ["Membrana", "75 GPD"], ["Produzione", "fino a 280 L/giorno"], ["Dimensioni", "L 40 × P 20 × H 45 cm"], ["Design", "Telaio compatto con serbatoio da 8 L"], ["Extra", "Regolatore di salinità"]],
+    id: "osmo-quark",
+    name: "Osmo Quark",
+    category: "casa",
+    sub: "Osmosi inversa",
+    badge: "Alta efficienza",
+    img: img("osmo-quark.jpg"),
+    tagline: "Impianto ad osmosi inversa compatto per acqua oligominerale pura, naturale e frizzante refrigerata.",
+    description: "OSMO QUARK è l'impianto per la casa più completo della sua categoria. Garantisce acqua oligominerale leggera e dal gusto gradevole, rimuovendo nitrati, metalli pesanti, batteri e pesticidi.",
+    specs: [
+      ["Tecnologia", "Osmosi inversa a produzione diretta"],
+      ["Acqua erogata", "Naturale e frizzante refrigerata"],
+      ["Dimensioni", "27 x 39 x 34 cm (LxPxA)"],
+      ["Produzione Osmosi", "110 lt/h"],
+      ["Vasca Refrigerante", "5 litri circa"],
+      ["Alimentazione", "220V 50Hz"]
+    ]
   },
   {
     id: "uf-nano", name: "UF Nano", category: "casa", sub: "Compatto", badge: "Zero ingombro",
