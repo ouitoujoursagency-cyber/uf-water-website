@@ -37,7 +37,7 @@ export const ProductDialog = ({ item, onClose }) => {
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <button onClick={ask} data-testid="product-dialog-quote-button"
                   className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#06142B] px-6 py-3.5 font-bold text-white transition-colors hover:bg-[var(--navy)]">
-                  Richiedi preventivo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Prenota un sopralluogo gratuito <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </button>
                 <a href={whatsappLink(`Ciao, vorrei informazioni su ${item.name}.`)} target="_blank" rel="noopener noreferrer" data-testid="product-dialog-whatsapp"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-6 py-3.5 font-semibold text-[var(--ink)] transition-colors hover:border-[#25D366] hover:text-[#128C7E]">

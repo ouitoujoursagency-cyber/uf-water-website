@@ -8,7 +8,7 @@ export const COMPANY = {
   phoneHref: "tel:+390000000000",
   email: "[info@tuodominio.it]",
   emailHref: "mailto:info@tuodominio.it",
-  whatsapp: "390000000000", // numero WhatsApp in formato internazionale, senza "+"
+  whatsapp: "3279088909", // numero WhatsApp in formato internazionale, senza "+"
   hours: ["[Lun – Ven: 9:00 – 18:00]", "[Sabato: 9:00 – 13:00]"],
   vat: "[P.IVA 00000000000]",
 };
