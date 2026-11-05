@@ -28,7 +28,7 @@ export const PRODUCTS = [
     category: "casa",
     sub: "Osmosi inversa",
     badge: "Alta efficienza",
-    img: img("osmo-quark.jpg"),
+    img: img("osmo quark.jpg"),
     tagline: "Impianto ad osmosi inversa compatto per acqua oligominerale pura, naturale e frizzante refrigerata.",
     description: "OSMO QUARK è l'impianto per la casa più completo della sua categoria. Garantisce acqua oligominerale leggera e dal gusto gradevole, rimuovendo nitrati, metalli pesanti, batteri e pesticidi.",
     specs: [
