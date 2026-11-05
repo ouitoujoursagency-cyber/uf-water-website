@@ -1,5 +1,5 @@
 // ============================================================
-// CATALOGO — schede prodotto (dati tecnici indicativi, da verificare)
+// CATALOGO — schede prodotto
 // ============================================================
 const img = (f) => `/img/${f}`;
 
@@ -92,4 +92,29 @@ const EXTRA_ITEMS = [
     specs: [["Capacità", "2 kg"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]],
   },
   {
-    id: "co2-ricarica
+    id: "co2-ricarica", name: "Servizio Ricarica CO2", category: "co2", img: img("x_co2.jpg"),
+    tagline: "Vuoto a rendere, ricarica pronta.",
+    description: "Ritiriamo la bombola vuota e consegniamo una bombola piena e controllata. Disponibile anche in abbonamento.",
+    specs: [["Formati", "600 g, 2 kg, altri su richiesta"], ["Modalità", "Sostituzione vuoto/pieno"], ["Abbonamento", "Disponibile"]],
+  },
+  {
+    id: "filtri-originali", name: "Filtri di ricambio originali", category: "ricambi", img: img("x_filters.jpg"),
+    tagline: "Sedimenti, carbone attivo, membrane UF e osmotiche.",
+    description: "Cartucce originali per mantenere prestazioni e certificazioni del sistema. Sostituzione rapida a innesto.",
+    specs: [["Tipologie", "Sedimenti, carbone, UF, RO, remineralizzante"], ["Durata media", "6 – 12 mesi"], ["Garanzia", "Ricambio originale"]],
+  },
+  {
+    id: "lampada-uv", name: "Lampada UV battericida", category: "ricambi", img: img("x_uv.jpg"),
+    tagline: "Barriera finale contro batteri e virus.",
+    description: "Camera in acciaio inox con lampada UV-C: sanifica l'acqua in uscita senza aggiunta di sostanze chimiche.",
+    specs: [["Lunghezza d'onda", "254 nm (UV-C)"], ["Camera", "Acciaio inox"], ["Sostituzione lampada", "circa ogni 12 mesi"]],
+  },
+  {
+    id: "kit-sanificazione", name: "Kit di manutenzione", category: "manutenzione", img: img("cartridges.jpg"),
+    tagline: "Tutto il necessario per la sanificazione periodica.",
+    description: "Kit con sanificante per uso alimentare, guarnizioni, raccordi e chiave per housing. Pensato per la manutenzione programmata.",
+    specs: [["Contenuto", "Sanificante, O-ring, raccordi, chiave"], ["Uso", "Ogni cambio filtri"], ["Compatibilità", "Tutti i sistemi"]],
+  },
+];
+
+export const EXTRAS = EXTRA_ITEMS.map((e) => ({ ...e, sub: EXTRA_CATEGORIES.find((c) => c.id === e.category)?.label }));
