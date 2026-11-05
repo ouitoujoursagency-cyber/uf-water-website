@@ -38,17 +38,11 @@ export default function Prodotti() {
           </p>
         </div>
 
-        {/* Griglia unica di tutti i prodotti senza filtri */}
+        {/* Griglia pulita senza etichette duplicate */}
         <motion.div layout className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {PRODUCTS.map((p, i) => (
-              <div key={p.id} className="relative">
-                {/* Etichetta dinamica (Ufficio / Abitazione o badge personalizzato) */}
-                <div className="absolute top-4 left-4 z-10 rounded-full bg-[#06142B]/80 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white tracking-wide shadow-sm">
-                  {p.category === "ufficio" || p.category === "business" ? "Ufficio" : "Abitazione"}
-                </div>
-                <ProductCard item={p} index={i} onOpen={setOpen} />
-              </div>
+              <ProductCard key={p.id} item={p} index={i} onOpen={setOpen} />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -72,7 +66,7 @@ export default function Prodotti() {
                 <tr key={k} className="border-b border-slate-100 last:border-0">
                   <td className="p-5 text-sm font-medium text-slate-700">{k}</td>
                   <td className="p-5"><Cell v={a} /></td>
-                  <td className="p-5"><Cell v={b} /></td>
+                  <td className="p-5"><Cell v={~b ? b : b} /></td>
                 </tr>
               ))}
             </tbody>
