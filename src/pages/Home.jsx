@@ -123,15 +123,6 @@ const Installation = () => {
   );
 };
 
-// ---------- Recensioni (testi di esempio da sostituire) ----------
-const REVIEWS = [
-  { n: "Giulia R.", c: "[Città]", type: "Casa", t: "Installazione pulita e veloce. Il miscelatore 3 vie è bellissimo e non compriamo più acqua in bottiglia." },
-  { n: "Marco B.", c: "[Città]", type: "Ufficio", t: "Abbiamo sostituito i boccioni con un erogatore a colonna: il team è contento e lo spazio in magazzino è libero." },
-  { n: "Elena S.", c: "[Città]", type: "Casa", t: "Ci ricordano loro il cambio filtri. Assistenza puntuale e gentile, consigliatissimi." },
-];
-
-
-
 export default function Home() {
   return (
     <div data-testid="home-page">
@@ -140,7 +131,6 @@ export default function Home() {
       <Marquee />
       <Showcase />
       <Installation />
-      <Reviews />
       <CtaBand />
     </div>
   );
