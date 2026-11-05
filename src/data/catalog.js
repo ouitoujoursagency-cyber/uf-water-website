@@ -64,7 +64,7 @@ export const PRODUCTS = [
     category: "ufficio", 
     sub: "Erogatore a colonna", 
     badge: "Per l'ufficio",
-    img: "/img/office30.jpg",
+    img: "./img/office30.jpg",
     tagline: "Il punto acqua dell'ufficio: naturale, fredda e frizzante.",
     description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team e ambienti di lavoro professionali.",
     specs: [
@@ -75,7 +75,6 @@ export const PRODUCTS = [
       ["Dimensioni (LXPXA-CM)", "52,2x27x122"],
       ["Pompa Acqua", "150 lt/h a paletta o Pompa a membrana"],
       ["Vasca Refrigerante", "5 litri"],
-      ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
       ["Potenza Assorbita", "230 watt"],
       ["Materiale Struttura", "Acciaio INOX AISI 304"]
     ],
