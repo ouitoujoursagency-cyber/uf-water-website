@@ -61,7 +61,7 @@ export const PRODUCTS = [
   {
     id: "office-30", 
     name: "Office 30", 
-    category: "ufficio", 
+    category: "Business/Miscelatori", 
     sub: "Erogatore a colonna", 
     badge: "Per l'ufficio",
     img: img("office30.jpg"),
