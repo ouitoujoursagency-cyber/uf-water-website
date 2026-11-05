@@ -5,11 +5,22 @@ const img = (f) => `/img/${f}`;
 
 export const PRODUCTS = [
   {
-    id: "uf-lumen", name: "UF Lumen", category: "casa", sub: "Sotto-lavello", badge: "Più richiesto",
-    img: img("p_undersink.jpg"),
-    tagline: "Ultrafiltrazione invisibile, montata sotto il lavello.",
-    description: "Sistema a doppio stadio con membrana UF a fibre cave: trattiene particelle, batteri e torbidità mantenendo i sali minerali naturali dell'acqua.",
-    specs: [["Tecnologia", "Ultrafiltrazione (UF) a membrana"], ["Grado di filtrazione", "0,01 µm"], ["Portata", "fino a 2,5 L/min"], ["Dimensioni", "L 28 × P 12 × H 38 cm"], ["Design", "Testata inox, cartucce a innesto rapido"], ["Cambio filtri", "circa ogni 12 mesi"]],
+    id: "top30-black-edition",
+    name: "TOP 30 – Black Edition",
+    category: "casa",
+    sub: "Da appoggio",
+    badge: "Più richiesto",
+    img: img("top30.jpg"),
+    tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
+    description: "TOP 30 è il depuratore ideale per la casa che unisce alte prestazioni e design elegante in skinplate nero e PMMA. Eroga acqua naturale fredda, liscia e frizzante.",
+    specs: [
+      ["Tecnologia", "Banco di ghiaccio con termoregolatore digitale"],
+      ["Acqua erogata", "Naturale fredda, liscia e frizzante"],
+      ["Dimensioni", "17 x 50,5 x 44 cm (LxPxH)"],
+      ["Vasca Refrigerante", "3,5 litri circa"],
+      ["Alimentazione", "220V 50 Hz"],
+      ["Materiali", "Skinplate nero, PMMA e acciaio inox"]
+    ]
   },
   {
     id: "uf-osmo-5", name: "UF Osmo 5", category: "casa", sub: "Osmosi inversa", badge: "Massima purezza",
