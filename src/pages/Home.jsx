@@ -46,7 +46,6 @@ const Benefits = () => (
 );
 
 // ---------- Vetrina prodotti di punta ----------
-// ---------- Vetrina prodotti di punta ----------
 const Showcase = () => {
   const [tab, setTab] = useState("casa");
   const [open, setOpen] = useState(null);
@@ -69,7 +68,7 @@ const Showcase = () => {
         </div>
       </div>
 
-      {/* SEZIONE DINAMICA: Se c'è un solo prodotto (es. Ufficio), usa il layout a 2 colonne. Altrimenti mostra la griglia standard. */}
+      {/* SEZIONE DINAMICA: Layout a 2 colonne se c'è un solo prodotto (Business), altrimenti griglia standard (Casa) */}
       {categoryItems.length === 1 ? (
         (() => {
           const p = categoryItems[0];
@@ -93,7 +92,7 @@ const Showcase = () => {
               {/* COLONNA DESTRA: Nome, Dettagli e Scheda Tecnica */}
               <div className="lg:col-span-6 flex flex-col justify-center space-y-6">
                 <div>
-                  <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest">Ufficio / Business</span>
+                  <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest">Business / Miscelatori</span>
                   <h3 className="text-3xl md:text-4xl font-black text-gray-900 mt-1 tracking-tight">{p.name}</h3>
                 </div>
 
