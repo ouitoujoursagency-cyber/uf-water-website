@@ -23,10 +23,12 @@ export const Navbar = () => {
   return (
     <header data-testid="site-navbar" className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5 pt-3">
       <div className={`mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 sm:px-6 py-2.5 transition-[background-color,box-shadow,border-color] duration-500 border ${scrolled || open ? "bg-[#06142B]/80 backdrop-blur-xl border-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,.5)]" : "bg-transparent border-transparent"}`}>
-        <Logo />
+        <Link to="/" data-testid="nav-logo-link" className="flex items-center">
+          <Logo />
+        </Link>
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV.slice(1).map((n) => (
-            <NavLink key={n.to} to={n.to} data-testid={`nav-link-${n.id}`}
+          {NAV.map((n) => (
+            <NavLink key={n.to} to={n.to} data-testid={`nav-link-${n.id || n.to}`} end={n.to === "/"}
               className={({ isActive }) => `relative px-4 py-2 text-sm font-medium transition-colors ${isActive ? "text-white" : "text-slate-300 hover:text-white"}`}>
               {({ isActive }) => (
                 <>
@@ -55,7 +57,7 @@ export const Navbar = () => {
             transition={{ duration: 0.35 }} className="lg:hidden mx-auto mt-2 max-w-7xl rounded-3xl border border-white/10 bg-[#06142B]/95 p-6 backdrop-blur-xl">
             {NAV.map((n, i) => (
               <motion.div key={n.to} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.04 * i }}>
-                <NavLink to={n.to} data-testid={`mobile-nav-link-${n.id}`} end
+                <NavLink to={n.to} data-testid={`mobile-nav-link-${n.id || n.to}`} end={n.to === "/"}
                   className={({ isActive }) => `flex items-center justify-between border-b border-white/10 py-4 font-display text-2xl font-bold ${isActive ? "text-sky-300" : "text-white"}`}>
                   {n.label} <ArrowUpRight className="h-5 w-5 opacity-60" />
                 </NavLink>
