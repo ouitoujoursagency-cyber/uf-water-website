@@ -41,11 +41,22 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "uf-nano", name: "UF Nano", category: "casa", sub: "Compatto", badge: "Zero ingombro",
-    img: img("p_compact.jpg"),
-    tagline: "Da appoggio, si collega in pochi minuti.",
-    description: "Depuratore da piano con acqua ambiente e fredda, display touch e filtro unico facile da sostituire. Ideale per appartamenti e piccoli spazi.",
-    specs: [["Tecnologia", "UF + carbone attivo"], ["Erogazione", "Ambiente / Fredda"], ["Portata", "fino a 1,8 L/min"], ["Dimensioni", "L 18 × P 36 × H 40 cm"], ["Design", "Bianco opaco, frontale in vetro"], ["Alimentazione", "230 V"]],
+    id: "osmo-slim",
+    name: "Osmo Slim",
+    category: "casa",
+    sub: "Sottolavello",
+    badge: "Design compatto",
+    img: img("osmo slim.jpg"),
+    tagline: "Impianto ad osmosi inversa a produzione diretta, ultrapiatto per sottolavello o sottozoccolo.",
+    description: "OSMO SLIM eroga acqua purificata in sicurezza ed evita la stagnazione del serbatoio d'accumulo. Garantisce acqua leggera e oligominerale, ideale per bere e cucinare.",
+    specs: [
+      ["Tecnologia", "Osmosi inversa a produzione diretta"],
+      ["Installazione", "Sottolavello / Sottozoccolo"],
+      ["Dimensioni", "40 x 40 x 10,4 cm (LxPxH)"],
+      ["Produzione Osmosi", "110 lt/h"],
+      ["Membrane", "2 da 180 GPD"],
+      ["Alimentazione", "220V 50 Hz"]
+    ]
   },
   {
     id: "uf-colonna-pro", name: "UF Colonna Pro", category: "ufficio", sub: "Erogatore a colonna", badge: "Per l'ufficio",
