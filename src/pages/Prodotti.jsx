@@ -12,7 +12,7 @@ import { PRODUCTS } from "@/data/catalog";
 const FILTERS = [
   { id: "tutti", label: "Tutti" },
   { id: "casa", label: "Uso Domestico" },
-  { id: "ufficio", label: "Ufficio / Business" },
+  { id: "ufficio", label: "Business / Miscelatori" },
 ];
 
 // Tabella comparativa tecnologie
