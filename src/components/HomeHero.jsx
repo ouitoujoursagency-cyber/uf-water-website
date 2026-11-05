@@ -43,7 +43,7 @@ export const HomeHero = () => {
           </h1>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.8 }}
             className="mt-7 max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed">
-            Depuratori, miscelatori 3 vie e installazione chiavi in mano per casa e ufficio. Acqua naturale, fredda e frizzante dal tuo rubinetto — senza più bottiglie di plastica.
+            Depuratori d'acqua di alta qualità direttamente dal produttore a casa o in ufficio. Senza intermediari, senza obblighi di manutenzione vincolante. Solo la libertà di un'acqua eccellente, ogni giorno.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}
             className="mt-9 flex flex-col sm:flex-row gap-3">
