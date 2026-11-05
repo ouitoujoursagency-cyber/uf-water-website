@@ -82,9 +82,9 @@ const Showcase = () => {
 // ---------- Installazione chiavi in mano ----------
 const STEPS = [
   { icon: ClipboardCheck, t: "Sopralluogo gratuito", d: "Analizziamo l'acqua e gli spazi per consigliarti il sistema giusto." },
-  { icon: Wrench, t: "Installazione rapida", d: "Tecnici specializzati montano tutto in poche ore, senza opere murarie." },
-  { icon: ShieldCheck, t: "Collaudo e sanificazione", d: "Verifichiamo tenuta e prestazioni e sanifichiamo l'impianto." },
-  { icon: Timer, t: "Manutenzione programmata", d: "Ti ricordiamo noi il cambio filtri e interveniamo quando serve." },
+  { icon: Wrench, t: "Installazione rapida", d: "Installazione su richiesta o con il tuo idraulico di fiducia, senza opere murarie." },
+  { icon: ShieldCheck, t: "Prodotti certificati", d: "Zero vincoli decennali: acquisti il depuratore e la proprietà è subito tua al 100%. Niente contratti a lungo termine." },
+  { icon: Timer, t: "Senza obbligo di manutenzione", d: "Depuratore chiavi in mano, la ricarica la compri in autonomia." },
 ];
 
 const Installation = () => {
