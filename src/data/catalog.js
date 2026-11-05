@@ -67,7 +67,7 @@ export const PRODUCTS = [
     category: "ufficio", // <-- Impostato su "ufficio" per mostrare l'etichetta corretta
     sub: "Erogatore a colonna", 
     badge: "Per l'ufficio",
-    img: img("office30.jpg"),
+    img: img("office 30.jpg"),
     tagline: "Il punto acqua dell'ufficio: naturale, fredda e frizzante.",
     description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team e ambienti di lavoro professionali.",
     specs: [
