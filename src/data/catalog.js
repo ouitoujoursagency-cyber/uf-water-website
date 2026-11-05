@@ -41,6 +41,27 @@ export const PRODUCTS = [
     ]
   },
   {
+    id: "gel-30-black-edition", 
+    name: "Gel 30 Sottolavello – Black Edition", 
+    category: "casa", 
+    sub: "Sottolavello", 
+    badge: "Nuovo modello",
+    img: img("gel30black.jpg"),
+    tagline: "Impianto acqua casa con termoregolatore digitale, installazione comoda sotto il lavello.",
+    description: "Eroga acqua naturale fredda, liscia e frizzante. Soluzione ideale per soddisfare tutte le esigenze della famiglia: bere, lavare, cucinare o preparare bevande. Interamente costruita con materiali atossici certificati, struttura in skinplate nero.",
+    specs: [
+      ["Pressione Ingresso Acqua", "min 1 bar – max 4 bar"],
+      ["Pompa", "200 lt/h a paletta"],
+      ["Dimensione Saturatore", "9x18 cm – 0,76 lt"],
+      ["Filtrazione", "esterna"],
+      ["Alimentazione Elettrica", "220V 50 Hz – cavo presa IEC"],
+      ["Dimensioni Cm (LxPxH)", "17x34x44"],
+      ["Controllo Banco Di Ghiaccio", "termoregolatore digitale da -1,5°C a +32°C"],
+      ["Modello Compressore", "4cm³ 1/8hp"],
+      ["Materiale struttura", "skinplate nero"]
+    ]
+  },
+  {
     id: "office-30", 
     name: "Office 30", 
     category: "casa", 
