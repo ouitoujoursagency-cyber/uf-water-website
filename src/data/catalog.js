@@ -62,6 +62,68 @@ export const PRODUCTS = [
     ]
   },
   {
+    id: "osmo-slim", 
+    name: "Osmo Slim", 
+    category: "casa", 
+    sub: "Sottolavello / Sottozoccolo", 
+    badge: "Produzione diretta",
+    img: img("osmo slim.jpg"),
+    tagline: "Impianto ad osmosi inversa per la casa a produzione diretta, semplice ed efficace.",
+    description: "Eroga acqua oligominerale pura direttamente e in sicurezza, senza acqua stagnante in serbatoi d'accumulo. Rimuove nitrati, metalli pesanti, batteri, virus e pesticidi, ideale per bere, cucinare e preparare bevande.",
+    specs: [
+      ["Pressione Ingresso Acqua", "min 1 bar – max 4 bar"],
+      ["Pompa", "200 lt/h a paletta"],
+      ["Motore Pompa", "150 watt"],
+      ["Temperatura Esercizio", "2° C – 40° C"],
+      ["Filtrazione", "Interna"],
+      ["Dimensione Saturatore", "9x18 cm – 0,76 litri"],
+      ["Alimentazione Elettrica", "220V 50 Hz"],
+      ["Dimensioni Cm (LxPxH)", "40x40x10,4"],
+      ["Produzione Osmosi", "110 lt/h"],
+      ["Membrane", "2 da 180 GPD"]
+    ]
+  },
+  {
+    id: "micro-inline-uv", 
+    name: "Micro in-line UV", 
+    category: "casa", 
+    sub: "Sterilizzatore UV", 
+    badge: "Raggi UV",
+    img: img("microline uv.jpg"),
+    tagline: "Sterilizzatore domestico per trasformare il rubinetto di casa in una sorgente d'acqua pura.",
+    description: "Sfrutta la microfiltrazione sinterizzata e un sistema di debatterizzazione a raggi UV per eliminare trascinamenti e sostanze chimiche, prevenendo la proliferazione batterica. Dotato di contalitri digitale e struttura in acciaio INOX AISI 304.",
+    specs: [
+      ["Pressione Ingresso Acqua", "min 1 bar – max 4 bar"],
+      ["Temperatura Esercizio", "2° C – 40° C"],
+      ["Filtrazione", "Interna"],
+      ["Dimensioni Cm (LxPxH)", "36x36x8"],
+      ["Potenza Lampada UV", "11 W – 4 lt/min"],
+      ["Materiale Struttura", "Acciaio INOX AISI 304"]
+    ]
+  },
+  {
+    id: "osmo-top", 
+    name: "Osmo Top", 
+    category: "casa", 
+    sub: "Osmosi inversa", 
+    badge: "Top di gamma",
+    img: img("osmo top.jpg"),
+    tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
+    description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
+    specs: [
+      ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
+      ["Alimentazione Elettrica", "220V 50Hz"],
+      ["Dimensioni (LXPA-CM)", "27x39x34"],
+      ["Pompa Acqua", "200 lt/h a paletta"],
+      ["Motore Per Pompa Acqua", "165 watt"],
+      ["Vasca Refrigerante", "5 litri"],
+      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
+      ["Modello Compressore", "B38G - 1/8hp - 3,80 cm3"],
+      ["Produzione Osmosi", "110 lt/h"],
+      ["Peso", "23 kg"]
+    ]
+  },
+  {
     id: "office-30", 
     name: "Office 30", 
     category: "ufficio", // <-- Impostato su "ufficio" per mostrare l'etichetta corretta
