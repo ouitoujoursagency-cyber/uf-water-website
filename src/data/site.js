@@ -3,14 +3,14 @@
 // ============================================================
 export const COMPANY = {
   name: "uf water technology",
-  address: "[Via Esempio 1, 00000 Città (XX)]",
-  phone: "[+39 000 000 0000]",
-  phoneHref: "tel:+390000000000",
-  email: "[info@tuodominio.it]",
-  emailHref: "mailto:info@tuodominio.it",
+  address: "Brescia, Bergamo, Milano e provincia",
+  phone: "+393279088909",
+  phoneHref: "tel:+393279088909",
+  email: "ufwater@hotmail.com",
+  emailHref: "mailto:ufwater@hotmail.com",
   whatsapp: "3279088909", // numero WhatsApp in formato internazionale, senza "+"
-  hours: ["[Lun – Ven: 9:00 – 18:00]", "[Sabato: 9:00 – 13:00]"],
-  vat: "[P.IVA 00000000000]",
+  hours: ["Rispondiamo entro 24 ore", "Sopralluoghi su appuntamento"],
+  vat: "P.IVA 04596520165",
 };
 
 export const whatsappLink = (text = "Ciao, vorrei informazioni sui vostri depuratori.") =>
