@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { Home, Building2, Send, CheckCircle2, Loader2 } from "lucide-react";
@@ -8,9 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
-
-// Modulo di contatto rapido: salva la richiesta e invia notifica email
+// Modulo di contatto rapido gestito nativamente da Netlify
 export const ContactForm = () => {
   const [params] = useSearchParams();
   const product = params.get("prodotto") || "";
@@ -23,16 +20,25 @@ export const ContactForm = () => {
   const [sent, setSent] = useState(false);
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`${API}/contact`, { ...form, product: product || null });
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "sopralluogo", ...form, product: product || "" }),
+      });
       setSent(true);
       toast.success("Richiesta inviata! Ti ricontatteremo a breve.");
     } catch (err) {
-      const detail = err?.response?.data?.detail;
-      toast.error(Array.isArray(detail) ? "Controlla i campi del modulo (email e telefono validi)." : "Invio non riuscito, riprova o scrivici su WhatsApp.");
+      toast.error("Invio non riuscito, riprova o scrivici su WhatsApp.");
     } finally {
       setLoading(false);
     }
@@ -52,7 +58,8 @@ export const ContactForm = () => {
               className="mt-8 rounded-full border border-slate-300 px-6 py-3 font-semibold text-[var(--ink)] hover:bg-slate-50">Invia un'altra richiesta</button>
           </motion.div>
         ) : (
-          <motion.form key="form" onSubmit={submit} className="space-y-5" data-testid="contact-form" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.form key="form" onSubmit={submit} name="sopralluogo" data-netlify="true" className="space-y-5" data-testid="contact-form" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <input type="hidden" name="form-name" value="sopralluogo" />
             <div>
               <Label className="font-mono text-xs uppercase tracking-wider text-slate-500">Richiesta per</Label>
               <div className="mt-2 grid grid-cols-2 gap-3">
@@ -65,11 +72,11 @@ export const ContactForm = () => {
               </div>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
-              <div><Label htmlFor="name" className="sr-only">Nome</Label><Input id="name" required minLength={2} placeholder="Nome e cognome" value={form.name} onChange={set("name")} className={field} data-testid="contact-name-input" /></div>
-              <div><Label htmlFor="phone" className="sr-only">Telefono</Label><Input id="phone" required minLength={5} type="tel" placeholder="Telefono" value={form.phone} onChange={set("phone")} className={field} data-testid="contact-phone-input" /></div>
+              <div><Label htmlFor="name" className="sr-only">Nome</Label><Input id="name" name="name" required minLength={2} placeholder="Nome e cognome" value={form.name} onChange={set("name")} className={field} data-testid="contact-name-input" /></div>
+              <div><Label htmlFor="phone" className="sr-only">Telefono</Label><Input id="phone" name="phone" required minLength={5} type="tel" placeholder="Telefono" value={form.phone} onChange={set("phone")} className={field} data-testid="contact-phone-input" /></div>
             </div>
-            <div><Label htmlFor="email" className="sr-only">Email</Label><Input id="email" required type="email" placeholder="Email" value={form.email} onChange={set("email")} className={field} data-testid="contact-email-input" /></div>
-            <div><Label htmlFor="message" className="sr-only">Messaggio</Label><Textarea id="message" required minLength={5} rows={5} placeholder="Raccontaci di cosa hai bisogno" value={form.message} onChange={set("message")} className="rounded-2xl border-slate-200 bg-slate-50 p-5 text-base focus-visible:ring-sky-400" data-testid="contact-message-input" /></div>
+            <div><Label htmlFor="email" className="sr-only">Email</Label><Input id="email" name="email" required type="email" placeholder="Email" value={form.email} onChange={set("email")} className={field} data-testid="contact-email-input" /></div>
+            <div><Label htmlFor="message" className="sr-only">Messaggio</Label><Textarea id="message" name="message" required minLength={5} rows={5} placeholder="Raccontaci di cosa hai bisogno" value={form.message} onChange={set("message")} className="rounded-2xl border-slate-200 bg-slate-50 p-5 text-base focus-visible:ring-sky-400" data-testid="contact-message-input" /></div>
             <button type="submit" disabled={loading} data-testid="contact-submit-button"
               className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#06142B] py-4 font-bold text-white transition-colors hover:bg-[var(--navy)] disabled:opacity-70">
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <>Invia richiesta <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>}
