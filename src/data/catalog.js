@@ -78,15 +78,15 @@ export const PRODUCTS = [
       ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
       ["Potenza Assorbita", "230 watt"],
       ["Materiale Struttura", "Acciaio INOX AISI 304"]
-    ],
-  },
+    ]
+  }
 ];
 
 export const EXTRA_CATEGORIES = [
   { id: "miscelatori", label: "Miscelatori 3 vie" },
   { id: "co2", label: "Bombole CO2" },
   { id: "ricambi", label: "Filtri & Lampade UV" },
-  { id: "manutenzione", label: "Manutenzione" },
+  { id: "manutenzione", label: "Manutenzione" }
 ];
 
 const EXTRA_ITEMS = [
@@ -94,50 +94,50 @@ const EXTRA_ITEMS = [
     id: "mix-arco", name: "Miscelatore Arco 3 vie", category: "miscelatori", img: img("x_mixer.jpg"),
     tagline: "Acqua di rete + acqua depurata da un unico rubinetto.",
     description: "Due leve indipendenti: una per l'acqua calda/fredda di rete, una per l'acqua depurata naturale, fredda o frizzante. Canali interni separati.",
-    specs: [["Vie", "3 (rete calda, rete fredda, depurata)"], ["Finitura", "Acciaio spazzolato / Nero opaco"], ["Bocca", "Girevole 360°"]],
+    specs: [["Vie", "3 (rete calda, rete fredda, depurata)"], ["Finitura", "Acciaio spazzolato / Nero opaco"], ["Bocca", "Girevole 360°"]]
   },
   {
     id: "mix-quadro", name: "Miscelatore Quadro 3 vie", category: "miscelatori", img: img("faucet.jpg"),
     tagline: "Linee squadrate per cucine contemporanee.",
     description: "Design minimale con canna alta e leva laterale dedicata all'acqua depurata. Compatibile con tutti i nostri sistemi sotto-lavello.",
-    specs: [["Vie", "3"], ["Finitura", "Cromo / Inox"], ["Compatibilità", "TOP 30, UF Osmo 5"]],
+    specs: [["Vie", "3"], ["Finitura", "Cromo / Inox"], ["Compatibilità", "TOP 30, UF Osmo 5"]]
   },
   {
     id: "co2-600", name: "Bombola CO2 600 g", category: "co2", img: img("x_co2.jpg"),
     tagline: "Formato compatto per uso domestico.",
     description: "Bombola in alluminio con anidride carbonica per uso alimentare (E290), per acqua frizzante direttamente dal rubinetto.",
-    specs: [["Capacità", "600 g"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]],
+    specs: [["Capacità", "600 g"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]]
   },
   {
     id: "co2-2kg", name: "Bombola CO2 2 kg", category: "co2", img: img("sparkling.jpg"),
     tagline: "Per famiglie numerose e uffici.",
     description: "Maggiore autonomia per erogatori a colonna e sistemi da ufficio. Valvola con riduttore di pressione dedicato.",
-    specs: [["Capacità", "2 kg"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]],
+    specs: [["Capacità", "2 kg"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]]
   },
   {
     id: "co2-ricarica", name: "Servizio Ricarica CO2", category: "co2", img: img("x_co2.jpg"),
     tagline: "Vuoto a rendere, ricarica pronta.",
     description: "Ritiriamo la bombola vuota e consegniamo una bombola piena e controllata. Abbonamento disponibile.",
-    specs: [["Formati", "600 g, 2 kg, altri su richiesta"], ["Modalità", "Sostituzione vuoto/pieno"], ["Abbonamento", "Disponibile"]],
+    specs: [["Formati", "600 g, 2 kg, altri su richiesta"], ["Modalità", "Sostituzione vuoto/pieno"], ["Abbonamento", "Disponibile"]]
   },
   {
     id: "filtri-originali", name: "Filtri di ricambio originali", category: "ricambi", img: img("x_filters.jpg"),
     tagline: "Sedimenti, carbone attivo, membrane UF e osmotiche.",
     description: "Cartucce originali per mantenere prestazioni e certificazioni del sistema. Sostituzione rapida a innesto.",
-    specs: [["Tipologie", "Sedimenti, carbone, UF, RO, remineralizzante"], ["Durata media", "6 – 12 mesi"], ["Garanzia", "Ricambio originale"]],
+    specs: [["Tipologie", "Sedimenti, carbone, UF, RO, remineralizzante"], ["Durata media", "6 – 12 mesi"], ["Garanzia", "Ricambio originale"]]
   },
   {
     id: "lampada-uv", name: "Lampada UV battericida", category: "ricambi", img: img("x_uv.jpg"),
     tagline: "Barriera finale contro batteri e virus.",
     description: "Camera in acciaio inox con lampada UV-C: sanifica l'acqua in uscita senza aggiunta di sostanze chimiche.",
-    specs: [["Lunghezza d'onda", "254 nm (UV-C)"], ["Camera", "Acciaio inox"], ["Sostituzione lampada", "circa ogni 12 mesi"]],
+    specs: [["Lunghezza d'onda", "254 nm (UV-C)"], ["Camera", "Acciaio inox"], ["Sostituzione lampada", "circa ogni 12 mesi"]]
   },
   {
     id: "kit-sanificazione", name: "Kit di manutenzione", category: "manutenzione", img: img("cartridges.jpg"),
     tagline: "Tutto il necessario per la sanificazione periodica.",
     description: "Kit con sanificante per uso alimentare, guarnizioni, raccordi e chiave per housing. Pensato per la manutenzione programmata.",
-    specs: [["Contenuto", "Sanificante, O-ring, raccordi, chiave"], ["Uso", "Ogni cambio filtri"], ["Compatibilità", "Tutti i sistemi"]],
-  },
+    specs: [["Contenuto", "Sanificante, O-ring, raccordi, chiave"], ["Uso", "Ogni cambio filtri"], ["Compatibilità", "Tutti i sistemi"]]
+  }
 ];
 
 export const EXTRAS = EXTRA_ITEMS.map((e) => ({ ...e, sub: EXTRA_CATEGORIES.find((c) => c.id === e.category)?.label }));
