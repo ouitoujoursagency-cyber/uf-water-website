@@ -64,7 +64,7 @@ export const PRODUCTS = [
     category: "ufficio", 
     sub: "Erogatore a colonna", 
     badge: "Per l'ufficio",
-    img: img("office 30.jpg"),
+    img: img("office30.jpg"),
     tagline: "Il punto acqua dell'ufficio: naturale, fredda e frizzante.",
     description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team e ambienti di lavoro professionali.",
     specs: [
@@ -117,7 +117,7 @@ const EXTRA_ITEMS = [
   {
     id: "co2-ricarica", name: "Servizio Ricarica CO2", category: "co2", img: img("x_co2.jpg"),
     tagline: "Vuoto a rendere, ricarica pronta.",
-    description: "Ritiriamo la bombola vuota e consegniamo una bombola piena e controllata. Disponibile anche in abbonamento.",
+    description: "Ritiriamo la bombola vuota e consegniamo una bombola piena e controllata. Abbonamento disponibile.",
     specs: [["Formati", "600 g, 2 kg, altri su richiesta"], ["Modalità", "Sostituzione vuoto/pieno"], ["Abbonamento", "Disponibile"]],
   },
   {
