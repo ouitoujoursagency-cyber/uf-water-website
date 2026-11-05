@@ -130,9 +130,7 @@ const REVIEWS = [
   { n: "Elena S.", c: "[Città]", type: "Casa", t: "Ci ricordano loro il cambio filtri. Assistenza puntuale e gentile, consigliatissimi." },
 ];
 
-const Reviews = () => (
-  
-);
+
 
 export default function Home() {
   return (
