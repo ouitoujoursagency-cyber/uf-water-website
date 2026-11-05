@@ -65,20 +65,6 @@ export const PRODUCTS = [
     description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team fino a 40 persone.",
     specs: [["Tecnologia", "UF + lampada UV"], ["Erogazione", "Ambiente / Fredda / Frizzante"], ["Capacità frigo", "fino a 40 L/h"], ["Dimensioni", "L 32 × P 38 × H 110 cm"], ["Design", "Acciaio inox spazzolato e nero opaco"], ["Utenti consigliati", "15 – 40"]],
   },
-  {
-    id: "uf-torrent-300", name: "UF Torrent 300", category: "ufficio", sub: "Alta capacità", badge: "Business",
-    img: img("p_highcap.jpg"),
-    tagline: "Impianto ad alta portata per aziende, mense e ristorazione.",
-    description: "Sistema modulare a più vessel in acciaio inox con monitoraggio di pressione e conducibilità. Progettato su misura in base ai consumi.",
-    specs: [["Tecnologia", "UF / Osmosi industriale"], ["Produzione", "fino a 300 L/h"], ["Monitoraggio", "Manometri + conducimetro"], ["Dimensioni", "su progetto"], ["Design", "Telaio in acciaio inox AISI 304"], ["Utenti consigliati", "oltre 50"]],
-  },
-  {
-    id: "uf-touch-office", name: "UF Touch Office", category: "ufficio", sub: "Dispenser touch", badge: "Touchless",
-    img: img("p_touch.jpg"),
-    tagline: "Erogazione senza contatto, a parete.",
-    description: "Dispenser a muro con sensore di prossimità, illuminazione LED e vano per borracce. Igienico, elegante e salvaspazio.",
-    specs: [["Tecnologia", "UF + sanificazione UV-C"], ["Erogazione", "Ambiente / Fredda / Frizzante"], ["Comando", "Sensore touchless"], ["Dimensioni", "L 40 × P 18 × H 55 cm"], ["Design", "Vetro nero lucido, LED azzurro"], ["Utenti consigliati", "10 – 30"]],
-  },
 ];
 
 export const EXTRA_CATEGORIES = [
