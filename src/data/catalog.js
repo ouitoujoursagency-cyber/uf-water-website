@@ -41,23 +41,27 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "osmo-slim",
-    name: "Osmo Slim",
-    category: "casa",
-    sub: "Sottolavello",
-    badge: "Design compatto",
-    img: img("osmo slim.jpg"),
-    tagline: "Impianto ad osmosi inversa a produzione diretta, ultrapiatto per sottolavello o sottozoccolo.",
-    description: "OSMO SLIM eroga acqua purificata in sicurezza ed evita la stagnazione del serbatoio d'accumulo. Garantisce acqua leggera e oligominerale, ideale per bere e cucinare.",
+    id: "office-30", 
+    name: "Office 30", 
+    category: "casa", 
+    sub: "Erogatore a colonna", 
+    badge: "Per l'ufficio",
+    img: img("office 30.jpg"),
+    tagline: "Il punto acqua dell'ufficio: naturale, fredda e frizzante.",
+    description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team e ambienti di lavoro professionali.",
     specs: [
-      ["Tecnologia", "Osmosi inversa a produzione diretta"],
-      ["Installazione", "Sottolavello / Sottozoccolo"],
-      ["Dimensioni", "40 x 40 x 10,4 cm (LxPxH)"],
-      ["Produzione Osmosi", "110 lt/h"],
-      ["Membrane", "2 da 180 GPD"],
-      ["Alimentazione", "220V 50 Hz"]
+      ["Pressione Ingresso Acqua", "min 1,5 bar - max 4 bar"],
+      ["Temperatura Esercizio", "2° C - 40° C"],
+      ["Filtrazione", "interna o esterna"],
+      ["Alimentazione Elettrica", "200V 50Hz - cavo presa IEC"],
+      ["Dimensioni (LXPXA-CM)", "52,2x27x122"],
+      ["Pompa Acqua", "150 lt/h a paletta o Pompa a membrana"],
+      ["Vasca Refrigerante", "5 litri"],
+      ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
+      ["Potenza Assorbita", "230 watt"],
+      ["Materiale Struttura", "Acciaio INOX AISI 304"]
     ]
-  },
+  }
 ];
 
 export const EXTRA_CATEGORIES = [
