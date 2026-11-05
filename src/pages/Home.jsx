@@ -98,7 +98,7 @@ const Installation = () => {
             Un unico referente per scelta, installazione, collaudo e assistenza. Per case, uffici e attività commerciali.
           </SectionTitle>
           <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[28px] [clip-path:inset(0_round_28px)]">
-            <motion.img style={{ y: imgY, scale: 1.2 }} src="/img/installer.jpg" alt="Tecnico al lavoro in cucina" className="h-full w-full object-cover" loading="lazy" />
+            <motion.img style={{ y: imgY, scale: 1.2 }} src="/img/venditore.jpg" alt="Tecnico al lavoro in cucina" className="h-full w-full object-cover" loading="lazy" />
           </div>
         </div>
         <ol className="lg:col-span-7 lg:pl-10">
