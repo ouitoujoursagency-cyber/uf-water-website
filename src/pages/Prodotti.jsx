@@ -9,12 +9,6 @@ import { Reveal } from "@/components/motion";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS } from "@/data/catalog";
 
-const FILTERS = [
-  { id: "tutti", label: "Tutti" },
-  { id: "casa", label: "Uso Domestico" },
-  { id: "ufficio", label: "Business / Miscelatori" },
-];
-
 // Tabella comparativa tecnologie
 const COMPARE = [
   ["Trattiene batteri e particelle", true, true],
@@ -28,22 +22,8 @@ const Cell = ({ v }) => typeof v === "boolean"
   ? (v ? <Check className="h-5 w-5 text-teal-600" /> : <Minus className="h-5 w-5 text-slate-400" />)
   : <span className="text-sm text-slate-700">{v}</span>;
 
-const FilterBar = ({ value, onChange }) => (
-  <div className="flex flex-wrap gap-2" role="tablist">
-    {FILTERS.map((f) => (
-      <button key={f.id} onClick={() => onChange(f.id)} data-testid={`products-filter-${f.id}`} role="tab" aria-selected={value === f.id}
-        className={`relative rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${value === f.id ? "text-white" : "bg-white border border-slate-200 text-slate-600 hover:text-[var(--ink)]"}`}>
-        {value === f.id && <motion.span layoutId="prod-filter" className="absolute inset-0 rounded-full bg-[#06142B]" transition={{ type: "spring", stiffness: 380, damping: 32 }} />}
-        <span className="relative">{f.label}</span>
-      </button>
-    ))}
-  </div>
-);
-
 export default function Prodotti() {
-  const [filter, setFilter] = useState("tutti");
   const [open, setOpen] = useState(null);
-  const list = PRODUCTS.filter((p) => filter === "tutti" || p.category === filter);
 
   return (
     <div data-testid="products-page">
@@ -53,12 +33,23 @@ export default function Prodotti() {
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8 py-16 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500" data-testid="products-count">{list.length} sistemi disponibili</p>
-          <FilterBar value={filter} onChange={setFilter} />
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500" data-testid="products-count">
+            {PRODUCTS.length} sistemi disponibili
+          </p>
         </div>
+
+        {/* Griglia unica di tutti i prodotti senza filtri */}
         <motion.div layout className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
-            {list.map((p, i) => <ProductCard key={p.id} item={p} index={i} onOpen={setOpen} />)}
+            {PRODUCTS.map((p, i) => (
+              <div key={p.id} className="relative">
+                {/* Etichetta dinamica (Ufficio / Abitazione o badge personalizzato) */}
+                <div className="absolute top-4 left-4 z-10 rounded-full bg-[#06142B]/80 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white tracking-wide shadow-sm">
+                  {p.category === "ufficio" || p.category === "business" ? "Ufficio" : "Abitazione"}
+                </div>
+                <ProductCard item={p} index={i} onOpen={setOpen} />
+              </div>
+            ))}
           </AnimatePresence>
         </motion.div>
       </section>
