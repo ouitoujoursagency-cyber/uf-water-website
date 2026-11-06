@@ -160,6 +160,7 @@ const EXTRA_ITEMS = [
     id: "miscelatore-1-via",
     name: "Miscelatore a una via",
     category: "miscelatori",
+    badge: "Rubinetteria 1 Via supplementare",
     img: img("rubinetto 1 via.jpg"),
     tagline: "Rubinetto di prelievo a 1 via 1/4\" per acqua depurata.",
     description: "Rubinetto erogatore dal design elegante e pulito, ideale per l'erogazione di acqua filtrata, naturale o frizzante direttamente dal tuo impianto di depurazione sotto-lavello.",
