@@ -20,7 +20,7 @@ export const whatsappLink = (text = "Ciao, vorrei informazioni sui vostri depura
 export const NAV = [
   { to: "/", label: "Home", id: "home" },
   { to: "/prodotti", label: "Depuratori", id: "prodotti" },
-  { to: "/articoli-extra", label: "Articoli Extra", id: "extra" },
+ { to: "/accessori", label: "Miscelatori/CO2", id: "accessori" },
   { to: "/installazione-servizi", label: "Installazione", id: "installazione" },
   { to: "/normative-certificazioni", label: "Normative", id: "normative" },
   { to: "/contatti", label: "Contatti", id: "contatti" },
