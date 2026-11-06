@@ -14,6 +14,7 @@ import Normative from "@/pages/Normative";
 import Contatti from "@/pages/Contatti";
 import Privacy from "@/pages/Privacy";
 import { CookieBanner } from "./components/CookieBanner";
+import AdminPreventivo from "@/pages/AdminPreventivo";
 
 // Transizione morbida tra le pagine (le pagine si sovrappongono, niente schermo vuoto)
 const PageRoutes = () => {
@@ -35,6 +36,7 @@ const PageRoutes = () => {
           <Route path="/contatti" element={<Contatti />} />
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="*" element={<Home />} />
+          <Route path="/admin/preventivo" element={<AdminPreventivo />} />
         </Routes>
       </motion.main>
     </AnimatePresence>
