@@ -173,47 +173,123 @@ const EXTRA_ITEMS = [
     ]
   },
   {
-    id: "mix-quadro", name: "Miscelatore Quadro 3 vie", category: "miscelatori", img: img("faucet.jpg"),
-    tagline: "Linee squadrate per cucine contemporanee.",
-    description: "Design minimale con canna alta e leva laterale dedicata all'acqua depurata. Compatibile con tutti i nostri sistemi sotto-lavello.",
-    specs: [["Vie", "3"], ["Finitura", "Cromo / Inox"], ["Compatibilità", "TOP 30, UF Osmo 5"]]
+    id: "miscelatore-3-vie-3031",
+    name: "Miscelatore 3 Vie Professional",
+    category: "miscelatori",
+    img: img("miscelatore 3 vie.jpg"),
+    tagline: "Rubinetto di prelievo a 3 vie con erogazioni separate per acqua trattata.",
+    description: "Rubinetto a 3 vie modello 3031 con comandi multipli indipendenti per la gestione dell'acqua naturale, fredda e frizzante. Disponibile in svariate finiture estetiche per adattarsi a ogni stile di cucina.",
+    specs: [
+      ["Codice", "10003031-CR"],
+      ["Peso", "1.833 Kg"],
+      ["Tipologia", "Rubinetto di prelievo 3 vie 6mm"],
+      ["Foro lavello", "Ø 30 mm"],
+      ["Altezza totale", "315 mm"],
+      ["Altezza bocca", "253 mm"],
+      ["Sporgenza", "165 mm"],
+      ["Finiture / Varianti", "Cromo (CR), Bronzo (BR), Effetto Ottone (TF), Nero (NE), Granito (GA), Beige (GR), Acciaio Inox (NS), Bianco (BI), Rame (RA), Granito Nero (GN)"]
+    ]
   },
   {
-    id: "co2-600", name: "Bombola CO2 600 g", category: "co2", img: img("x_co2.jpg"),
-    tagline: "Formato compatto per uso domestico.",
-    description: "Bombola in alluminio con anidride carbonica per uso alimentare (E290), per acqua frizzante direttamente dal rubinetto.",
-    specs: [["Capacità", "600 g"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]]
+    id: "miscelatore-5-vie-5024",
+    name: "Miscelatore 5 Vie Professional",
+    category: "miscelatori",
+    img: img("miscelatore 5 vie.jpg"),
+    tagline: "Rubinetto evoluto a 5 vie per acqua di rete (calda/fredda) e sistemi di depurazione.",
+    description: "Soluzione top di gamma con condotti interni completamente separati per evitare qualsiasi commistione tra l'acqua di rete e l'acqua trattata (filtrata, naturale o frizzante).",
+    specs: [
+      ["Codice", "10005024-CR"],
+      ["Peso", "3 Kg"],
+      ["Tipologia", "Rubinetto 5 vie 3/8\" con flussi separati"],
+      ["Foro lavello", "Ø 52 mm"],
+      ["Altezza totale", "320 mm"],
+      ["Altezza bocca", "245 mm"],
+      ["Sporgenza", "160 mm"],
+      ["Connessioni", "Flessibili 10x1 M - 3/8\" F (37 cm) e Flessibili 3/8\" F - 3/8\" F (50 cm)"],
+      ["Varianti colore", "Bianco (BI), Granito Avena (GA), Nero Opaco (NO), Nickel Spazzolato (NS), Cromo (CR)"]
+    ]
   },
   {
-    id: "co2-2kg", name: "Bombola CO2 2 kg", category: "co2", img: img("sparkling.jpg"),
-    tagline: "Per famiglie numerose e uffici.",
-    description: "Maggiore autonomia per erogatori a colonna e sistemi da ufficio. Valvola con riduttore di pressione dedicato.",
-    specs: [["Capacità", "2 kg"], ["Materiale", "Alluminio"], ["Gas", "CO2 alimentare E290"]]
+    id: "miscelatore-5-vie-5026",
+    name: "Miscelatore 5 Vie Design Plus",
+    category: "miscelatori",
+    img: img("depuratore 5 vie plus.jpg"),
+    tagline: "Rubinetto a 5 vie con design squadrato e flussi separati per acqua trattata e di rete.",
+    description: "Modello 5026 dalle linee geometriche e contemporanee. Dotato di condotti completamente indipendenti per acqua calda e fredda di rete più tre vie dedicate ai sistemi di purificazione.",
+    specs: [
+      ["Codice", "10005026-BI"],
+      ["Peso", "3 Kg"],
+      ["Tipologia", "Rubinetto 5 vie 3/8\" a canna quadra squadrata"],
+      ["Altezza totale", "315 mm"],
+      ["Altezza bocca", "280 mm"],
+      ["Sporgenza / Lunghezza", "235 mm"],
+      ["Connessioni", "2x Flessibili 10x1 M - 3/8\" F (37 cm) e 3x innesti rapidi 1/4\""],
+      ["Varianti colore", "Bianco (BI), Granito Avena (GA)"]
+    ]
   },
   {
-    id: "co2-ricarica", name: "Servizio Ricarica CO2", category: "co2", img: img("x_co2.jpg"),
-    tagline: "Vuoto a rendere, ricarica pronta.",
-    description: "Ritiriamo la bombola vuota e consegniamo una bombola piena e controllata. Abbonamento disponibile.",
-    specs: [["Formati", "600 g, 2 kg, altri su richiesta"], ["Modalità", "Sostituzione vuoto/pieno"], ["Abbonamento", "Disponibile"]]
+    id: "miscelatore-5-vie-molla-5339",
+    name: "Miscelatore a Molla 5 Vie Professional",
+    category: "miscelatori",
+    img: img("miscelatori.jpg"),
+    tagline: "Rubinetto professionale a molla in acciaio inox 304 con 5 vie e flussi completamente separati.",
+    description: "Modello 5339 top di gamma con doccetta a molla flessibile. Combina la praticità di un miscelatore da cucina professionale con la separazione totale dei condotti per acqua potabile e acqua depurata.",
+    specs: [
+      ["Codice", "10005339-BI"],
+      ["Peso", "4 Kg"],
+      ["Tipologia", "Rubinetto a molla 5 vie in acciaio inox AISI 304 3/8\""],
+      ["Connessioni Acqua potabile", "2x flessibili 3/8\" F"],
+      ["Connessioni Acqua depurata", "3x innesti rapidi 6mm"],
+      ["Varianti colore / Finiture", "Bianco (BI), Ottone spazzolato (BR), Cromo (CR), Granito avena - fragranite (GA), Nero opaco (NEOP), Nickel spazzolato (NS)"]
+    ]
   },
   {
-    id: "filtri-originali", name: "Filtri di ricambio originali", category: "ricambi", img: img("x_filters.jpg"),
-    tagline: "Sedimenti, carbone attivo, membrane UF e osmotiche.",
-    description: "Cartucce originali per mantenere prestazioni e certificazioni del sistema. Sostituzione rapida a innesto.",
-    specs: [["Tipologie", "Sedimenti, carbone, UF, RO, remineralizzante"], ["Durata media", "6 – 12 mesi"], ["Garanzia", "Ricambio originale"]]
+    id: "watergas-co2-600g",
+    name: "Bombola CO2 Monouso Watergas 600g",
+    category: "co2",
+    img: img("watergas co2 600g usa e getta.jpg"),
+    tagline: "Bombola CO2 monouso E290 per refrigeratori d'acqua e bevande.",
+    description: "Anidride carbonica a uso alimentare ad alta purezza (E290), ideale per gasare e refrigerare l'acqua in impianti domestici, osmosi inversa e microfiltrazione.",
+    specs: [
+      ["Gas", "Anidride Carbonica E290 (100% alimentare)"],
+      ["Contenuto", "600 gr CO2 MAX"],
+      ["Attacco", "11x1"],
+      ["Pressione", "36 BAR a 0°C"],
+      ["Dimensioni", "303 x 72 mm"],
+      ["Applicazioni", "Osmosi Inversa, Refrigeratori, Microfiltrazione"]
+    ]
   },
   {
-    id: "lampada-uv", name: "Lampada UV battericida", category: "ricambi", img: img("x_uv.jpg"),
-    tagline: "Barriera finale contro batteri e virus.",
-    description: "Camera in acciaio inox con lampada UV-C: sanifica l'acqua in uscita senza aggiunta di sostanze chimiche.",
-    specs: [["Lunghezza d'onda", "254 nm (UV-C)"], ["Camera", "Acciaio inox"], ["Sostituzione lampada", "circa ogni 12 mesi"]]
+    id: "bombola-co2-ricaricabile-2kg",
+    name: "Bombola CO2 Ricaricabile in Acciaio 2 kg",
+    category: "co2",
+    img: img("water co2 2kg ricaricabile.jpg"),
+    tagline: "Kit completo bombola CO2 ricaricabile da 2 kg con riduttore di pressione e raccordi.",
+    description: "Soluzione professionale in acciaio ricaricabile adatta per sistemi di gasatura acqua e impianti B2B. Dotata di valvola residuale per mantenere una pressione interna di sicurezza e proteggere il contenitore durante l'utilizzo e le ricariche.",
+    specs: [
+      ["Codice", "19019001-08"],
+      ["Capacità CO2", "2 kg"],
+      ["Altezza", "458 mm"],
+      ["Diametro", "116 mm"],
+      ["Attacco bombola", "W21,8"],
+      ["Riduttore di pressione", "Carbon-Tech (Campo di regolazione: 0-7 bar)"],
+      ["Componenti inclusi", "Bombola 2kg con valvola residuale, riduttore di pressione CO2, terminale dritto e 1,5 mt di tubo LLDPE 1/4\""]
+    ]
   },
   {
-    id: "kit-sanificazione", name: "Kit di manutenzione", category: "manutenzione", img: img("cartridges.jpg"),
-    tagline: "Tutto il necessario per la sanificazione periodica.",
-    description: "Kit con sanificante per uso alimentare, guarnizioni, raccordi e chiave per housing. Pensato per la manutenzione programmata.",
-    specs: [["Contenuto", "Sanificante, O-ring, raccordi, chiave"], ["Uso", "Ogni cambio filtri"], ["Compatibilità", "Tutti i sistemi"]]
-  }
+    id: "installazione-assistenza-su-richiesta",
+    name: "Installazione e Assistenza su Richiesta",
+    category: "manutenzione",
+    img: img("installazione e assistenza su richiesta.jpg"),
+    tagline: "Servizio professionale di installazione e supporto tecnico, senza obblighi o vincoli.",
+    description: "Supporto tecnico specializzato per il montaggio, la manutenzione e il controllo periodico del tuo impianto di depurazione o erogazione. Disponibile interamente su richiesta, senza contratti vincolanti o abbonamenti obbligatori.",
+    specs: [
+      ["Tipologia", "Servizio tecnico a chiamata"],
+      ["Vincoli", "Nessun obbligo o contratto di abbonamento"],
+      ["Intervento", "Installazione, collaudo, sanificazione e manutenzione ordinaria/straordinaria"],
+      ["Copertura", "Tecnici specializzati direttamente a domicilio"]
+    ]
+  },
 ];
 
 export const ACCESSORIES = EXTRA_ITEMS.filter(
