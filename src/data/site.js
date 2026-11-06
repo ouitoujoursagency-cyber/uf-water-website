@@ -24,4 +24,5 @@ export const NAV = [
   { to: "/installazione-servizi", label: "Installazione", id: "installazione" },
   { to: "/normative-certificazioni", label: "Normative", id: "normative" },
   { to: "/contatti", label: "Contatti", id: "contatti" },
+  { to: "/admin/preventivo", label: "🔐 Area Venditori" }
 ];
