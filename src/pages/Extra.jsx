@@ -3,14 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDialog } from "@/components/ProductDialog";
-import { ACCESSORIES } from "@/data/catalog"; // Oppure la lista dedicata agli accessori se separata
+import { ACCESSORIES } from "@/data/catalog";
 
 export default function Extra() {
   const [open, setOpen] = useState(null);
 
   return (
     <div data-testid="extra-page">
-      {/* Hero aggiornato senza menzionare filtri o lampade UV */}
       <PageHero 
         testId="extra-hero" 
         eyebrow="Accessori & CO2" 
@@ -22,15 +21,13 @@ export default function Extra() {
       <section className="mx-auto max-w-7xl px-5 sm:px-8 py-16 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
-            Accessori disponibili
+            {ACCESSORIES.length} accessori disponibili
           </p>
         </div>
 
-        {/* Griglia unica di tutti gli accessori senza i pulsanti di filtro */}
         <motion.div layout className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
-            {/* Sostituisci PRODUCTS con la lista degli accessori se usi un array separato */}
-            {PRODUCTS.map((p, i) => (
+            {ACCESSORIES.map((p, i) => (
               <ProductCard key={p.id} item={p} index={i} onOpen={setOpen} />
             ))}
           </AnimatePresence>
