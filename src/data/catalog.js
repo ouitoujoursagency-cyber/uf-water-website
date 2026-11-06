@@ -4,7 +4,7 @@
 const img = (f) => `/img/${f}`;
 
 export const PRODUCTS = [
-{
+  {
     id: "top30-black-edition",
     name: "TOP 30 – Black Edition",
     category: "casa",
@@ -112,6 +112,7 @@ export const PRODUCTS = [
     description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
     specs: [
       ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
+      ["Temperatura Esercizio", "2° C - 40° C"],
       ["Alimentazione Elettrica", "220V 50Hz"],
       ["Dimensioni (LXPA-CM)", "27x39x34"],
       ["Pompa Acqua", "200 lt/h a paletta"],
@@ -126,7 +127,7 @@ export const PRODUCTS = [
   {
     id: "office-30", 
     name: "Office 30", 
-    category: "ufficio", // <-- Impostato su "ufficio" per mostrare l'etichetta corretta
+    category: "ufficio",
     sub: "Erogatore a colonna", 
     badge: "Per l'ufficio",
     img: img("office 30.jpg"),
@@ -156,10 +157,20 @@ export const EXTRA_CATEGORIES = [
 
 const EXTRA_ITEMS = [
   {
-    id: "mix-arco", name: "Miscelatore Arco 3 vie", category: "miscelatori", img: img("x_mixer.jpg"),
-    tagline: "Acqua di rete + acqua depurata da un unico rubinetto.",
-    description: "Due leve indipendenti: una per l'acqua calda/fredda di rete, una per l'acqua depurata naturale, fredda o frizzante. Canali interni separati.",
-    specs: [["Vie", "3 (rete calda, rete fredda, depurata)"], ["Finitura", "Acciaio spazzolato / Nero opaco"], ["Bocca", "Girevole 360°"]]
+    id: "miscelatore-1-via",
+    name: "Miscelatore a una via",
+    category: "miscelatori",
+    img: img("rubinetto 1 via.jpg"),
+    tagline: "Rubinetto di prelievo a 1 via 1/4\" per acqua depurata.",
+    description: "Rubinetto erogatore dal design elegante e pulito, ideale per l'erogazione di acqua filtrata, naturale o frizzante direttamente dal tuo impianto di depurazione sotto-lavello.",
+    specs: [
+      ["Codice", "10001033"],
+      ["Peso", "0,681 Kg"],
+      ["Tipologia", "Rubinetto di prelievo 1 via 1/4\""],
+      ["Altezza totale", "300 mm"],
+      ["Altezza bocca", "200 mm"],
+      ["Sporgenza", "160 mm"]
+    ]
   },
   {
     id: "mix-quadro", name: "Miscelatore Quadro 3 vie", category: "miscelatori", img: img("faucet.jpg"),
@@ -205,4 +216,10 @@ const EXTRA_ITEMS = [
   }
 ];
 
-export const EXTRAS = EXTRA_ITEMS.map((e) => ({ ...e, sub: EXTRA_CATEGORIES.find((c) => c.id === e.category)?.label }));
+export const ACCESSORIES = EXTRA_ITEMS.filter(
+  (item) => item.category === "miscelatori" || item.category === "co2"
+).map((e) => ({ 
+  ...e, 
+  category: "casa", 
+  sub: EXTRA_CATEGORIES.find((c) => c.id === e.category)?.label 
+}));
