@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Zap, FlaskConical, SprayCan, Headphones, CalendarCheck, Wrench, Check, ArrowRight } from "lucide-react";
+import { Zap, FlaskConical, SprayCan, Headphones, CalendarCheck, Wrench, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Reveal } from "@/components/motion";
@@ -19,15 +19,10 @@ const BENEFITS = [
   { icon: SprayCan, t: "Sanificazione iniziale", d: "Sanifichiamo l'impianto con prodotti per uso alimentare prima del primo utilizzo." },
 ];
 
-const PLANS = [
-  { name: "Base", for: "Casa", items: ["Cambio filtri annuale", "Sanificazione impianto", "Promemoria automatico"] },
-  { name: "Plus", for: "Casa", featured: true, items: ["Cambio filtri programmato", "Sanificazione + lampada UV", "Interventi prioritari", "Ricambi originali inclusi"] },
-  { name: "Business", for: "Ufficio", items: ["Manutenzione periodica su calendario", "Fornitura CO2 programmata", "Report interventi", "Referente dedicato"] },
-];
-
 const FAQ = [
+  ["Il servizio di installazione o manutenzione è obbligatorio?", "Assolutamente no! Il depuratore è tuo dopo l'acquisto e sei completamente libero: non ci sono abbonamenti obbligatori né vincoli contrattuali."],
   ["Servono lavori di muratura?", "No. I sistemi sotto-lavello e gli erogatori si collegano all'impianto esistente senza opere murarie."],
-  ["Ogni quanto vanno cambiati i filtri?", "Dipende dal sistema e dai consumi; indicativamente ogni 6–12 mesi. Con i piani di manutenzione ti avvisiamo noi."],
+  ["Ogni quanto vanno cambiati i filtri?", "Dipende dal sistema e dai consumi; indicativamente ogni 6–12 mesi. Puoi richiederci assistenza o i ricambi in qualsiasi momento senza alcun obbligo."],
   ["Installate anche in uffici e locali commerciali?", "Sì, progettiamo soluzioni per uffici, studi professionali, palestre, bar e ristoranti."],
 ];
 
@@ -79,39 +74,13 @@ export default function Installazione() {
         </Reveal>
         <div>
           <SectionTitle eyebrow="Assistenza post-vendita" lines={["Sempre al tuo fianco,", "anche dopo."]}>
-            Un servizio clienti dedicato, interventi rapidi su chiamata e ricambi originali sempre disponibili.
+            Un servizio clienti dedicato, interventi rapidi su chiamata e ricambi originali sempre disponibili, senza contratti vincolanti.
           </SectionTitle>
           <ul className="mt-8 space-y-4">
-            {[[Headphones, "Supporto telefonico e WhatsApp"], [Wrench, "Interventi tecnici a domicilio e in sede"], [CalendarCheck, "Promemoria per cambio filtri e sanificazione"]].map(([I, t]) => (
+            {[[Headphones, "Supporto telefonico e WhatsApp"], [Wrench, "Interventi tecnici a domicilio e in sede a chiamata"], [CalendarCheck, "Disponibilità per ricambi e sanificazioni su richiesta"]].map(([I, t]) => (
               <li key={t} className="flex items-center gap-4 text-[var(--ink)]"><I className="h-5 w-5 text-teal-700" /> {t}</li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* Piani di manutenzione */}
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 pb-20 md:pb-28" data-testid="maintenance-plans">
-        <SectionTitle eyebrow="Manutenzione programmata" lines={["Scegli il piano", "che fa per te."]} />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {PLANS.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.08} data-testid={`plan-${p.name.toLowerCase()}`}
-              className={`flex flex-col rounded-[28px] p-8 ${p.featured ? "bg-[#06142B] text-white md:-translate-y-4 shadow-[0_30px_60px_-20px_rgba(6,20,43,.5)]" : "bg-white border border-slate-200"}`}>
-              <div className="flex items-center justify-between">
-                <span className={`font-mono text-xs uppercase tracking-widest ${p.featured ? "text-sky-300" : "text-teal-700"}`}>{p.for}</span>
-                {p.featured && <span className="rounded-full bg-sky-400 px-3 py-1 text-xs font-bold text-[#06142B]">Consigliato</span>}
-              </div>
-              <h3 className="mt-4 font-display text-3xl font-black">Piano {p.name}</h3>
-              <ul className="mt-6 flex-1 space-y-3">
-                {p.items.map((it) => (
-                  <li key={it} className={`flex gap-3 text-sm ${p.featured ? "text-slate-200" : "text-slate-700"}`}><Check className="h-4 w-4 shrink-0 text-teal-500 mt-0.5" />{it}</li>
-                ))}
-              </ul>
-              <Link to={`/contatti?prodotto=${encodeURIComponent("Piano " + p.name)}&interesse=${p.for === "Ufficio" ? "ufficio" : "casa"}`} data-testid={`plan-cta-${p.name.toLowerCase()}`}
-                className={`group mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-bold transition-colors ${p.featured ? "bg-sky-400 text-[#06142B] hover:bg-sky-300" : "border border-slate-300 text-[var(--ink)] hover:bg-[#06142B] hover:text-white"}`}>
-                Richiedi il piano <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Reveal>
-          ))}
         </div>
       </section>
 
