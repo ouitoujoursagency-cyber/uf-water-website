@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDialog } from "@/components/ProductDialog";
-import { PRODUCTS } from "@/data/catalog"; // Oppure la lista dedicata agli accessori se separata
+import { ACCESSORIES } from "@/data/catalog"; // Oppure la lista dedicata agli accessori se separata
 
 export default function Extra() {
   const [open, setOpen] = useState(null);
