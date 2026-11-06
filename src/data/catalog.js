@@ -287,6 +287,7 @@ const EXTRA_ITEMS = [
     id: "installazione-assistenza-su-richiesta",
     name: "Installazione e Assistenza su Richiesta",
     category: "manutenzione",
+    badge: "Servizio a chiamata (non vincolante)",
     img: img("installazione e assistenza su richiesta.jpg"),
     tagline: "Servizio professionale di installazione e supporto tecnico, senza obblighi o vincoli.",
     description: "Supporto tecnico specializzato per il montaggio, la manutenzione e il controllo periodico del tuo impianto di depurazione o erogazione. Disponibile interamente su richiesta, senza contratti vincolanti o abbonamenti obbligatori.",
@@ -303,6 +304,6 @@ export const ACCESSORIES = EXTRA_ITEMS.filter(
   (item) => item.category === "miscelatori" || item.category === "co2" || item.category === "manutenzione"
 ).map((e) => ({ 
   ...e, 
-  category: e.badge || "Accessorio", // Forziamo la categoria a prendere il testo del badge
-  sub: e.badge || "Accessorio"        // Forziamo anche il sottotitolo a prendere il badge
+  category: "custom", // Inganniamo la categoria fissa
+  sub: e.badge || "Accessorio" // Forziamo il testo del badge
 }));
