@@ -3,8 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 
 // Scheda prodotto: foto in cornice ritagliata con "spotlight"
 export const ProductCard = ({ item, index, onOpen, tall = false }) => {
-  const isOffice = item.category === "ufficio" || item.category === "business";
-
   return (
     <motion.button
       layout
@@ -26,15 +24,16 @@ export const ProductCard = ({ item, index, onOpen, tall = false }) => {
         {/* Numero progressivo in alto a destra */}
         <span className="absolute right-4 top-4 font-mono text-xs text-white/80">{String(index + 1).padStart(2, "0")}</span>
         
-        {/* Unica etichetta Abitazione / Ufficio in basso a sinistra sulla foto */}
+        {/* Etichetta dinamica personalizzata in basso a sinistra sulla foto */}
         <div className="absolute bottom-4 left-4 z-10 rounded-full bg-[#06142B]/85 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-white tracking-wide shadow-md">
-          {isOffice ? "Ufficio" : "Abitazione"}
+          {item.sub || item.badge || "Accessorio"}
         </div>
 
         {/* Freccia in basso a destra */}
         <span className="absolute bottom-4 right-4 grid h-12 w-12 place-items-center rounded-full bg-sky-400 text-[#06142B] transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110">
           <ArrowUpRight className="h-5 w-5" />
         </span>
+
       </div>
       
       <div className="mt-5 flex items-start justify-between gap-4 px-1">
