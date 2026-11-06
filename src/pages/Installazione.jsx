@@ -36,7 +36,7 @@ export default function Installazione() {
     <div data-testid="installation-page">
       <PageHero testId="installation-hero" eyebrow="Installazione & Servizi" image="/img/installer.jpg"
         lines={["Installazione", <span className="text-water">chiavi in mano.</span>]}
-        intro="Tecnici specializzati per case e uffici: dal sopralluogo al collaudo, fino all'assistenza post-vendita e alla manutenzione programmata." />
+        intro="Tecnici specializzati per case e uffici: dal sopralluogo al collaudo, fino all'assistenza post-vendita e alla manutenzione programmata. Servizio solo su richiesta senza obblighi" />
 
       {/* Processo in 4 fasi */}
       <section className="mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-28" data-testid="install-process">
