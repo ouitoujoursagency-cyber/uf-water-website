@@ -303,6 +303,6 @@ export const ACCESSORIES = EXTRA_ITEMS.filter(
   (item) => item.category === "miscelatori" || item.category === "co2" || item.category === "manutenzione"
 ).map((e) => ({ 
   ...e, 
-  category: "accessori", 
-  sub: e.badge || "Accessorio" // <-- Legge esattamente il testo che hai scritto nel "badge" di ogni prodotto!
+  category: e.badge || "Accessorio", // Forziamo la categoria a prendere il testo del badge
+  sub: e.badge || "Accessorio"        // Forziamo anche il sottotitolo a prendere il badge
 }));
