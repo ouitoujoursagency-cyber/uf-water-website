@@ -29,7 +29,7 @@ const PageRoutes = () => {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/prodotti" element={<Prodotti />} />
-          <Route path="/articoli-extra" element={<Extra />} />
+          <Route path="/accessori" element={<Extra />} />
           <Route path="/installazione-servizi" element={<Installazione />} />
           <Route path="/normative-certificazioni" element={<Normative />} />
           <Route path="/contatti" element={<Contatti />} />
