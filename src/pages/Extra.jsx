@@ -15,13 +15,13 @@ export default function Extra() {
         eyebrow="Accessori & CO2" 
         image="/img/glass.jpg"
         lines={["Miscelatori di design", <span className="text-water">e bombole CO2.</span>]}
-        intro="Completa il tuo impianto con miscelatori di design e bombole di CO2 per l'acqua frizzante." 
+        intro="Completa il tuo impianto con miscelatori di design, bombole di CO2 e servizi di assistenza dedicati." 
       />
 
       <section className="mx-auto max-w-7xl px-5 sm:px-8 py-16 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate-500">
-            {ACCESSORIES.length} accessori disponibili
+            {ACCESSORIES.length} accessori e servizi disponibili
           </p>
         </div>
 
