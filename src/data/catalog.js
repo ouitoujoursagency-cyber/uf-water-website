@@ -304,5 +304,5 @@ export const ACCESSORIES = EXTRA_ITEMS.filter(
 ).map((e) => ({ 
   ...e, 
   category: "accessori", 
-  sub: e.sub // <-- Questo dice al programma di usare la scritta personalizzata che hai messo dentro ogni prodotto!
+  sub: e.badge || "Accessorio" // <-- Legge esattamente il testo che hai scritto nel "badge" di ogni prodotto!
 }));
