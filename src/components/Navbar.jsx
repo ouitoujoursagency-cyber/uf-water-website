@@ -42,7 +42,7 @@ export const Navbar = () => {
         <div className="flex items-center gap-2">
           <Link to="/contatti" data-testid="nav-cta-preventivo"
             className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-sky-400 px-5 py-2.5 text-sm font-bold text-[#06142B] transition-[background-color,transform] duration-300 hover:bg-sky-300 hover:-translate-y-0.5">
-            Richiedi un Preventivo <ArrowUpRight className="h-4 w-4" />
+            Richiedi una consulenza gratuita <ArrowUpRight className="h-4 w-4" />
           </Link>
           <button data-testid="mobile-menu-toggle" onClick={() => setOpen((o) => !o)} aria-label="Apri menu"
             className="lg:hidden grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white">
@@ -64,7 +64,7 @@ export const Navbar = () => {
               </motion.div>
             ))}
             <Link to="/contatti" data-testid="mobile-cta-preventivo" className="mt-6 flex justify-center rounded-full bg-sky-400 py-4 font-bold text-[#06142B]">
-              Richiedi un Preventivo
+              Richiedi una consulenza gratuita
             </Link>
           </motion.nav>
         )}
