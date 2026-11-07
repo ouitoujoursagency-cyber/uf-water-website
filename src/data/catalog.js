@@ -11,15 +11,15 @@ export const PRODUCTS = [
     sub: "Da appoggio",
     badge: "Più richiesto",
     
-    // Immagine futuristica mostrata nella griglia esterna
+    // Immagine futuristica mostrata SOLO NELLA GRIGLIA ESTERNA
     img: img("top30 osmosi.jpg"),
     
-    // ARRAY CON LE 4 FOTO INTERNE PER IL CAROSELLO DEL POPUP
+    // LE 4 FOTO INTERNE PER IL CAROSELLO DEL POPUP (che si aprono cliccando)
     popupImages: [
-      img("top 30 real.jpg"),          // 1ª foto: Foto reale frontale
-      img("top 30 render.jpg"),        // 2ª foto: Render / schema misure standard
-      img("top 30 osmosi real.jpg"),   // 3ª foto: Versione osmosi reale
-      img("top 30 osmosi render.jpg")  // 4ª foto: Render / schema misure osmosi
+      img("top 30 real.jpg"),          // 1ª foto nel popup
+      img("top 30 render.jpg"),        // 2ª foto nel popup
+      img("top 30 osmosi real.jpg"),   // 3ª foto nel popup
+      img("top 30 osmosi render.jpg")  // 4ª foto nel popup
     ],
 
     tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
