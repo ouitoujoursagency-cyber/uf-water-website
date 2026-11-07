@@ -11,7 +11,6 @@ export function ProductDialog({ item, onClose }) {
 
   if (!item) return null;
 
-  // CORRETTO: Legge l'array multiplo (popupImages) se esiste, altrimenti usa il vecchio metodo
   const popupImages = item.popupImages && item.popupImages.length > 0
     ? item.popupImages
     : [item.realImg || item.img, item.schemaImg].filter(Boolean);
@@ -24,7 +23,8 @@ export function ProductDialog({ item, onClose }) {
     setCurrentImgIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
   };
 
-  // Etichetta dinamica per i tuoi 4 scatti
+  const isRender = (index) => popupImages.length === 4 && (index === 1 || index === 3);
+
   const getImageLabel = (index) => {
     if (popupImages.length === 4) {
       switch (index) {
@@ -40,7 +40,6 @@ export function ProductDialog({ item, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fadeIn">
-      {/* Finestra più quadrata e contenuta */}
       <div className="relative w-full max-w-3xl overflow-hidden rounded-[28px] bg-white shadow-2xl flex flex-col md:flex-row max-h-[85vh]">
         
         {/* Pulsante di chiusura */}
@@ -51,23 +50,17 @@ export function ProductDialog({ item, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Colonna Sinistra: Blocco Blu con gestione intelligente dello sfondo e delle proporzioni */}
-        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full transition-colors duration-300 ${
-          (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 ? "bg-white" : "bg-[#06142B]"
-        }`}>
+        {/* Colonna Sinistra: Gestione stabile dello sfondo e dell'immagine */}
+        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full ${isRender(currentImgIndex) ? "bg-white p-6" : "bg-[#06142B]"}`}>
           
           <img 
+            key={currentImgIndex}
             src={popupImages[currentImgIndex]} 
             alt={item.name} 
-            className={`absolute inset-0 h-full w-full transition-all duration-500 ${
-              (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4
-                ? "object-contain bg-white p-6" // Per i render: sfondo bianco pulito, niente sbiadimenti e quote integre
-                : "object-cover"                // Per le foto reali: riempimento a schermo pieno
-            }`}
+            className={`max-h-[380px] w-full object-contain ${isRender(currentImgIndex) ? "p-4" : "h-full object-cover absolute inset-0"}`}
           />
 
-          {/* Sfumatura decorativa applicata solo quando c'è lo sfondo scuro (foto reali) */}
-          {(!((currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4)) && (
+          {!isRender(currentImgIndex) && (
             <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/40 via-transparent to-[#06142B]/20 pointer-events-none" />
           )}
 
@@ -77,9 +70,7 @@ export function ProductDialog({ item, onClose }) {
               <button 
                 onClick={prevImage}
                 className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
-                  (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 
-                    ? "bg-black/20 text-slate-800 hover:bg-black/30" 
-                    : "bg-black/40 text-white hover:bg-black/60"
+                  isRender(currentImgIndex) ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
                 }`}
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -87,9 +78,7 @@ export function ProductDialog({ item, onClose }) {
               <button 
                 onClick={nextImage}
                 className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
-                  (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 
-                    ? "bg-black/20 text-slate-800 hover:bg-black/30" 
-                    : "bg-black/40 text-white hover:bg-black/60"
+                  isRender(currentImgIndex) ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
                 }`}
               >
                 <ChevronRight className="h-4 w-4" />
@@ -104,7 +93,7 @@ export function ProductDialog({ item, onClose }) {
                     className={`h-1.5 rounded-full transition-all ${
                       currentImgIndex === idx 
                         ? "w-5 bg-sky-400" 
-                        : (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
+                        : isRender(currentImgIndex) ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
                     }`}
                   />
                 ))}
