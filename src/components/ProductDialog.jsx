@@ -23,7 +23,12 @@ export function ProductDialog({ item, onClose }) {
     setCurrentImgIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
   };
 
-  const isRender = popupImages.length === 4 && (currentImgIndex === 1 || currentImgIndex === 3);
+  // Riconosce se l'immagine corrente è un render/schema (funziona sia per i prodotti a 4 foto che a 2 foto con schema)
+  const isRender = (index) => {
+    if (popupImages.length === 4) return index === 1 || index === 3;
+    if (popupImages.length === 2) return index === 1;
+    return false;
+  };
 
   const getImageLabel = (index) => {
     if (popupImages.length === 4) {
@@ -50,23 +55,21 @@ export function ProductDialog({ item, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Colonna Sinistra: Blocco Immagine a altezza piena */}
-        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[350px] md:min-h-[480px] ${isRender ? "bg-white" : "bg-[#06142B]"}`}>
+        {/* Colonna Sinistra: Blocco Immagine pulito senza aloni */}
+        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[350px] md:min-h-[480px] ${isRender(currentImgIndex) ? "bg-white" : "bg-[#06142B]"}`}>
           
           <img 
             key={currentImgIndex}
             src={popupImages[currentImgIndex]} 
             alt={item.name} 
             className={
-              isRender 
+              isRender(currentImgIndex)
                 ? "max-h-[420px] w-auto max-w-full object-contain p-6 m-auto z-10" 
                 : "absolute inset-0 h-full w-full object-cover z-10"
             }
           />
 
-          {!isRender && (
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/30 via-transparent to-transparent pointer-events-none z-10" />
-          )}
+          {/* NOTA: Il blocco con il gradiente/alone è stato eliminato completamente */}
 
           {/* Frecce per scorrere */}
           {popupImages.length > 1 && (
@@ -74,7 +77,7 @@ export function ProductDialog({ item, onClose }) {
               <button 
                 onClick={prevImage}
                 className={`absolute left-3 top-1/2 -translate-y-1/2 z-30 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
-                  isRender ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
+                  isRender(currentImgIndex) ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
                 }`}
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -82,7 +85,7 @@ export function ProductDialog({ item, onClose }) {
               <button 
                 onClick={nextImage}
                 className={`absolute right-3 top-1/2 -translate-y-1/2 z-30 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
-                  isRender ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
+                  isRender(currentImgIndex) ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
                 }`}
               >
                 <ChevronRight className="h-4 w-4" />
@@ -97,7 +100,7 @@ export function ProductDialog({ item, onClose }) {
                     className={`h-1.5 rounded-full transition-all ${
                       currentImgIndex === idx 
                         ? "w-5 bg-sky-400" 
-                        : isRender ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
+                        : isRender(currentImgIndex) ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
                     }`}
                   />
                 ))}
