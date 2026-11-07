@@ -51,29 +51,46 @@ export function ProductDialog({ item, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Colonna Sinistra: Blocco Blu con foto reale/schema a schermo pieno */}
-        <div className="relative w-full md:w-1/2 bg-[#06142B] flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full">
+        {/* Colonna Sinistra: Blocco Blu con gestione intelligente dello sfondo e delle proporzioni */}
+        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full transition-colors duration-300 ${
+          (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 ? "bg-white" : "bg-[#06142B]"
+        }`}>
           
           <img 
             src={popupImages[currentImgIndex]} 
             alt={item.name} 
-            className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
+            className={`absolute inset-0 h-full w-full transition-all duration-500 ${
+              (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4
+                ? "object-contain bg-white p-6" // Per i render: sfondo bianco pulito, niente sbiadimenti e quote integre
+                : "object-cover"                // Per le foto reali: riempimento a schermo pieno
+            }`}
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/40 via-transparent to-[#06142B]/20 pointer-events-none" />
+          {/* Sfumatura decorativa applicata solo quando c'è lo sfondo scuro (foto reali) */}
+          {(!((currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4)) && (
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/40 via-transparent to-[#06142B]/20 pointer-events-none" />
+          )}
 
           {/* Frecce per scorrere */}
           {popupImages.length > 1 && (
             <>
               <button 
                 onClick={prevImage}
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/40 text-white backdrop-blur hover:bg-black/60 transition-colors"
+                className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
+                  (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 
+                    ? "bg-black/20 text-slate-800 hover:bg-black/30" 
+                    : "bg-black/40 text-white hover:bg-black/60"
+                }`}
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button 
                 onClick={nextImage}
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/40 text-white backdrop-blur hover:bg-black/60 transition-colors"
+                className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
+                  (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 
+                    ? "bg-black/20 text-slate-800 hover:bg-black/30" 
+                    : "bg-black/40 text-white hover:bg-black/60"
+                }`}
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -84,7 +101,11 @@ export function ProductDialog({ item, onClose }) {
                   <button
                     key={idx}
                     onClick={() => setCurrentImgIndex(idx)}
-                    className={`h-1.5 rounded-full transition-all ${currentImgIndex === idx ? "w-5 bg-sky-400" : "w-1.5 bg-white/50"}`}
+                    className={`h-1.5 rounded-full transition-all ${
+                      currentImgIndex === idx 
+                        ? "w-5 bg-sky-400" 
+                        : (currentImgIndex === 1 || currentImgIndex === 3) && popupImages.length === 4 ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
+                    }`}
                   />
                 ))}
               </div>
