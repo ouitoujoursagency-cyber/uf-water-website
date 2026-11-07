@@ -36,26 +36,33 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "osmo-top",
-    name: "Osmo Top",
+    id: "osmo-quark",
+    name: "Osmo Quark",
     category: "casa",
-    sub: "Da appoggio / Osmosi",
-    badge: "Alta Gamma",
-    img: img("osmo top.jpg"),
-    tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
-    description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
+    sub: "Osmosi inversa",
+    badge: "Alta efficienza",
+    
+    // Immagine futuristica mostrata nella griglia esterna
+    img: img("osmo quark.jpg"),
+    
+    // Le 2 foto interne per il carosello del popup (Foto reale + Render/Schema)
+    popupImages: [
+      img("osmo quark real.jpg"),    // 1ª foto: Foto reale
+      img("osmo quark render.jpg")   // 2ª foto: Render / schema misure
+    ],
+
+    tagline: "Impianto ad osmosi inversa compatto per acqua oligominerale pura, naturale e frizzante refrigerata.",
+    description: "Il depuratore per acqua ad osmosi inversa OSMO QUARK è l'impianto per la casa più completo della sua categoria. Si distingue per la sua compattezza e grande efficienza, erogando acqua oligominerale leggera, naturale e frizzante refrigerata.",
     specs: [
-      ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
-      ["Temperatura Esercizio", "2° C - 40° C"],
+      ["Pressione Ingresso Acqua", "min 1,5 bar – max 4 bar"],
+      ["Temperatura Esercizio", "2° C – 40° C"],
       ["Alimentazione Elettrica", "220V 50Hz"],
-      ["Dimensioni (LXPA-CM)", "27x39x34"],
+      ["Dimensioni (LxPxA)", "27 x 39 x 34 cm"],
       ["Pompa Acqua", "200 lt/h a paletta"],
-      ["Motore Per Pompa Acqua", "165 watt"],
-      ["Vasca Refrigerante", "5 litri"],
-      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
-      ["Modello Compressore", "B38G - 1/8hp - 3,80 cm3"],
-      ["Produzione Osmosi", "110 lt/h"],
-      ["Peso", "23 kg"]
+      ["Motore per pompa acqua", "165 watt"],
+      ["Dimensione Saturatore", "12x12 cm – 0,88 lt"],
+      ["Vasca Refrigerante", "5 litri circa"],
+      ["Controllo Banco Di Ghiaccio", "termostato 2° C – 7° C"],
     ]
   },
   {
