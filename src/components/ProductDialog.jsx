@@ -11,10 +11,10 @@ export function ProductDialog({ item, onClose }) {
 
   if (!item) return null;
 
-  const popupImages = [
-    item.realImg || item.img,
-    item.schemaImg
-  ].filter(Boolean);
+  // CORRETTO: Legge l'array multiplo (popupImages) se esiste, altrimenti usa il vecchio metodo
+  const popupImages = item.popupImages && item.popupImages.length > 0
+    ? item.popupImages
+    : [item.realImg || item.img, item.schemaImg].filter(Boolean);
 
   const nextImage = () => {
     setCurrentImgIndex((prev) => (prev + 1) % popupImages.length);
@@ -22,6 +22,20 @@ export function ProductDialog({ item, onClose }) {
 
   const prevImage = () => {
     setCurrentImgIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
+  };
+
+  // Etichetta dinamica per i tuoi 4 scatti
+  const getImageLabel = (index) => {
+    if (popupImages.length === 4) {
+      switch (index) {
+        case 0: return "📸 Foto Reale (Top 30)";
+        case 1: return "🎨 Render (Top 30)";
+        case 2: return "📸 Foto Reale (Top 30 Osmosi)";
+        case 3: return "🎨 Render (Top 30 Osmosi)";
+        default: return "🔍 Dettaglio";
+      }
+    }
+    return index === 0 ? "📸 Foto Reale" : "📐 Schema e Misure";
   };
 
   return (
@@ -78,7 +92,7 @@ export function ProductDialog({ item, onClose }) {
           )}
 
           <span className="absolute top-3 left-3 z-20 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
-            {currentImgIndex === 0 ? "📸 Foto Reale" : "📐 Schema e Misure"}
+            {getImageLabel(currentImgIndex)}
           </span>
         </div>
 
