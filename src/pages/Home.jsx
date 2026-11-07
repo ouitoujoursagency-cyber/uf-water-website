@@ -45,7 +45,7 @@ const Benefits = () => (
   </section>
 );
 
-// ---------- Vetrina prodotti di punta (Senza switch Business) ----------
+// ---------- Vetrina prodotti di punta (Spazi ridotti sopra e sotto) ----------
 const Showcase = () => {
   const [open, setOpen] = useState(null);
   
@@ -53,83 +53,20 @@ const Showcase = () => {
   const homeProducts = PRODUCTS.filter((p) => p.category === "casa").slice(0, 3);
   
   return (
-    <section data-testid="showcase-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-16 md:py-24">
+    <section data-testid="showcase-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-12 md:py-16">
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionTitle eyebrow="Prodotti di punta" lines={["Depuratori pensati", "per ogni spazio."]} />
       </div>
 
       {/* Griglia pulita dei 3 prodotti di punta */}
-      <div className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {homeProducts.map((p, i) => (
-          <div key={p.id} className={i === 1 ? "lg:mt-12" : ""}>
+          <div key={p.id} className={i === 1 ? "lg:mt-10" : ""}>
             <ProductCard item={p} index={i} onOpen={setOpen} tall />
           </div>
         ))}
       </div>
 
-      <Reveal className="mt-12 flex justify-center">
-        <Link to="/prodotti" data-testid="showcase-all-products" className="group inline-flex items-center gap-2 rounded-full border border-[var(--navy)] px-7 py-4 font-semibold text-[var(--navy)] transition-colors hover:bg-[var(--navy)] hover:text-white">
-          Vedi tutta la gamma <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Link>
-      </Reveal>
-      <ProductDialog item={open} onClose={() => setOpen(null)} />
-    </section>
-  );
-};
-
-// ---------- Installazione chiavi in mano ----------
-const STEPS = [
-  { icon: ClipboardCheck, t: "Sopralluogo gratuito", d: "Analizziamo l'acqua e gli spazi per consigliarti il sistema giusto." },
-  { icon: Wrench, t: "Installazione rapida", d: "Installazione su richiesta o con il tuo idraulico di fiducia, senza opere murarie." },
-  { icon: ShieldCheck, t: "Prodotti certificati", d: "Zero vincoli decennali: acquisti il depuratore e la proprietà è subito tua al 100%. Niente contratti a lungo termine." },
-  { icon: Timer, t: "Senza obbligo di manutenzione", d: "Depuratore chiavi in mano, la ricarica la compri in autonomia." },
-];
-
-const Installation = () => {
-  const { scrollYProgress } = useScroll();
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  return (
-    <section data-testid="installation-section" className="relative overflow-hidden bg-[#06142B] text-white grain">
-      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 py-16 md:py-28 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <SectionTitle dark eyebrow="Chiavi in mano" lines={["Dall'idea al primo", "bicchiere. Pensiamo", "a tutto noi."]}>
-            Un unico referente per scelta, installazione, collaudo e assistenza. Per case, uffici e attività commerciali.
-          </SectionTitle>
-          <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-[24px] [clip-path:inset(0_round_24px)]">
-            <motion.img style={{ y: imgY, scale: 1.2 }} src="/img/venditore.jpg" alt="Tecnico al lavoro in cucina" className="h-full w-full object-cover" loading="lazy" />
-          </div>
-        </div>
-        <ol className="lg:col-span-7 lg:pl-10">
-          {STEPS.map((s, i) => (
-            <Reveal as="li" key={s.t} delay={i * 0.06} className="group grid grid-cols-[auto_1fr] gap-6 border-b border-white/10 py-6 first:pt-0" data-testid={`install-step-${i + 1}`}>
-              <span className="w-16 md:w-20 font-display text-4xl md:text-5xl font-black text-transparent [-webkit-text-stroke:1.2px_#7DD3FC] transition-colors group-hover:text-sky-400/30">0{i + 1}</span>
-              <div>
-                <s.icon className="h-6 w-6 text-sky-300" />
-                <h3 className="mt-2 font-display text-xl md:text-2xl font-extrabold tracking-tight">{s.t}</h3>
-                <p className="mt-1.5 text-sm md:text-base text-slate-300 leading-relaxed">{s.d}</p>
-              </div>
-            </Reveal>
-          ))}
-          <Reveal>
-            <Link to="/installazione-servizi" data-testid="installation-more-link" className="group mt-8 inline-flex items-center gap-2 font-semibold text-sky-300 hover:text-white">
-              Scopri il servizio di installazione <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Reveal>
-        </ol>
-      </div>
-    </section>
-  );
-};
-
-export default function Home() {
-  return (
-    <div data-testid="home-page">
-      <HomeHero />
-      <Benefits />
-      <Marquee />
-      <Showcase />
-      <Installation />
-      <CtaBand />
-    </div>
-  );
-}
+      <Reveal className="mt-10 flex justify-center">
+        <Link to="/prodotti" data-testid="showcase-all-products" className="group inline-flex items-center gap-2 rounded-full border border-[var(--navy)] px-7 py-3.5 font-semibold text-[var(--navy)] transition-colors hover:bg-[var(--navy)] hover:text-white">
+          Vedi tutta la gamma <ArrowRight className
