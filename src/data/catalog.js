@@ -234,7 +234,15 @@ const EXTRA_ITEMS = [
     name: "Miscelatore a una via",
     category: "miscelatori",
     badge: "Rubinetteria 1 Via supplementare",
+    
+    // Immagine esterna (griglia)
     img: img("rubinetto 1 via.jpg"),
+    
+    // 1 sola foto interna nel popup (contesto reale / installato)
+    popupImages: [
+      img("miscelatore 1 via A.jpg")
+    ],
+
     tagline: "Rubinetto di prelievo a 1 via 1/4\" per acqua depurata.",
     description: "Rubinetto erogatore dal design elegante e pulito, ideale per l'erogazione di acqua filtrata, naturale o frizzante direttamente dal tuo impianto di depurazione sotto-lavello.",
     specs: [
@@ -251,7 +259,12 @@ const EXTRA_ITEMS = [
     name: "Miscelatore 3 Vie Professional",
     category: "miscelatori",
     badge: "Rubinetteria 3 Vie supplementare",
+    
     img: img("miscelatore 3 vie.jpg"),
+    popupImages: [
+      img("miscela 3 vie.jpg")
+    ],
+
     tagline: "Rubinetto di prelievo a 3 vie con erogazioni separate per acqua trattata.",
     description: "Rubinetto a 3 vie modello 3031 con comandi multipli indipendenti per la gestione dell'acqua naturale, fredda e frizzante. Disponibile in svariate finiture estetiche per adattarsi a ogni stile di cucina.",
     specs: [
@@ -270,7 +283,12 @@ const EXTRA_ITEMS = [
     name: "Miscelatore 5 Vie Professional",
     category: "miscelatori",
     badge: "Miscelatore 5 Vie unico",
+    
     img: img("miscelatore 5 vie.jpg"),
+    popupImages: [
+      img("miscela 5 vie.jpg")
+    ],
+
     tagline: "Rubinetto evoluto a 5 vie per acqua di rete (calda/fredda) e sistemi di depurazione.",
     description: "Soluzione top di gamma con condotti interni completamente separati per evitare qualsiasi commistione tra l'acqua di rete e l'acqua trattata (filtrata, naturale o frizzante).",
     specs: [
@@ -290,7 +308,12 @@ const EXTRA_ITEMS = [
     name: "Miscelatore 5 Vie Design Plus",
     category: "miscelatori",
     badge: "Miscelatore 5 Vie unico geometrico",
+    
     img: img("depuratore 5 vie plus.jpg"),
+    popupImages: [
+      img("Miscelatore 5 Vie Design Plus.jpg")
+    ],
+
     tagline: "Rubinetto a 5 vie con design squadrato e flussi separati per acqua trattata e di rete.",
     description: "Modello 5026 dalle linee geometriche e contemporanee. Dotato di condotti completamente indipendenti per acqua calda e fredda di rete più tre vie dedicate ai sistemi di purificazione.",
     specs: [
@@ -309,7 +332,12 @@ const EXTRA_ITEMS = [
     name: "Miscelatore a Molla 5 Vie Professional",
     category: "miscelatori",
     badge: "Miscelatore 5 Vie con doccino estraibile",
+    
     img: img("miscelatori.jpg"),
+    popupImages: [
+      img("Miscelatore a Molla 5 Vie Professional.jpg")
+    ],
+
     tagline: "Rubinetto professionale a molla in acciaio inox 304 con 5 vie e flussi completamente separati.",
     description: "Modello 5339 top di gamma con doccetta a molla flessibile. Combina la praticità di un miscelatore da cucina professionale con la separazione totale dei condotti per acqua potabile e acqua depurata.",
     specs: [
@@ -326,6 +354,9 @@ const EXTRA_ITEMS = [
     name: "Bombola CO2 Monouso Watergas 600g",
     category: "co2",
     img: img("watergas co2 600g usa e getta.jpg"),
+    popupImages: [
+      img("Bombola CO2 Monouso Watergas 600g.jpg")
+    ],
     badge: "Usa e getta - circa 70 litri di acqua gasata",
     tagline: "Bombola CO2 monouso E290 per refrigeratori d'acqua e bevande.",
     description: "Anidride carbonica a uso alimentare ad alta purezza (E290), ideale per gasare e refrigerare l'acqua in impianti domestici, osmosi inversa e microfiltrazione.",
@@ -344,6 +375,9 @@ const EXTRA_ITEMS = [
     category: "co2",
     badge: "Ricaricabile da rivenditori autorizzati",
     img: img("water co2 2kg ricaricabile.jpg"),
+    popupImages: [
+      img("Bombola CO2 Ricaricabile in Acciaio 2 kg.jpg")
+    ],
     tagline: "Kit completo bombola CO2 ricaricabile da 2 kg con riduttore di pressione e raccordi.",
     description: "Soluzione professionale in acciaio ricaricabile adatta per sistemi di gasatura acqua e impianti B2B. Dotata di valvola residuale per mantenere una pressione interna di sicurezza e proteggere il contenitore durante l'utilizzo e le ricariche.",
     specs: [
@@ -362,6 +396,9 @@ const EXTRA_ITEMS = [
     category: "manutenzione",
     badge: "Servizio a chiamata (non vincolante)",
     img: img("installazione e assistenza su richiesta.jpg"),
+    popupImages: [
+      img("installazione e assistenza su richiesta real.jpg")
+    ],
     tagline: "Servizio professionale di installazione e supporto tecnico, senza obblighi o vincoli.",
     description: "Supporto tecnico specializzato per il montaggio, la manutenzione e il controllo periodico del tuo impianto di depurazione o erogazione. Disponibile interamente su richiesta, senza contratti vincolanti o abbonamenti obbligatori.",
     specs: [
