@@ -1,74 +1,185 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { Logo } from "@/components/Logo";
-import { NAV } from "@/data/site";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Wrench, CheckCircle, ArrowLeft } from "lucide-react";
 
-// Barra di navigazione fissa con effetto vetro allo scroll + menu mobile a schermo intero
-export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const { pathname } = useLocation();
+export default function OrdinaKitManutenzione() {
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: "",
+    cognome: "",
+    email: "",
+    telefono: "",
+    contratto: "",
+    impianto: ""
+  });
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Qui puoi collegare un servizio di invio email (es. Formspree o EmailJS)
+    console.log("Dati ordine kit manutenzione inviati:", formData);
+
+    // Mostra il messaggio di successo
+    setSubmitted(true);
+  };
 
   return (
-    <header data-testid="site-navbar" className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5 pt-3">
-      <div className={`mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 sm:px-6 py-2.5 transition-[background-color,box-shadow,border-color] duration-500 border ${scrolled || open ? "bg-[#06142B]/80 backdrop-blur-xl border-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,.5)]" : "bg-transparent border-transparent"}`}>
-        <Link to="/" data-testid="nav-logo-link" className="flex items-center">
-          <Logo />
+    <div className="min-h-screen bg-slate-50 pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto">
+        
+        {/* Pulsante per tornare indietro */}
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-[var(--navy)] mb-6 transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" /> Torna alla Home / Catalogo
         </Link>
-        <nav className="hidden lg:flex items-center gap-1">
-          {NAV.map((n) => (
-            <NavLink key={n.to} to={n.to} data-testid={`nav-link-${n.id || n.to}`} end={n.to === "/"}
-              className={({ isActive }) => `relative px-4 py-2 text-sm font-medium transition-colors ${isActive ? "text-white" : "text-slate-300 hover:text-white"}`}>
-              {({ isActive }) => (
-                <>
-                  {isActive && <motion.span layoutId="nav-pill" className="absolute inset-0 rounded-full bg-white/10" transition={{ type: "spring", stiffness: 380, damping: 32 }} />}
-                  <span className="relative">{n.label}</span>
-                </>
-              )}
-            </NavLink>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <Link to="/contatti" data-testid="nav-cta-preventivo"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-sky-400 px-5 py-2.5 text-sm font-bold text-[#06142B] transition-[background-color,transform] duration-300 hover:bg-sky-300 hover:-translate-y-0.5">
-            Richiedi una consulenza gratuita <ArrowUpRight className="h-4 w-4" />
-          </Link>
-          <button data-testid="mobile-menu-toggle" onClick={() => setOpen((o) => !o)} aria-label="Apri menu"
-            className="lg:hidden grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white">
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.nav data-testid="mobile-menu" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35 }} className="lg:hidden mx-auto mt-2 max-w-7xl rounded-3xl border border-white/10 bg-[#06142B]/95 p-6 backdrop-blur-xl">
-            {NAV.map((n, i) => (
-              <motion.div key={n.to} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.04 * i }}>
-                <NavLink to={n.to} data-testid={`mobile-nav-link-${n.id || n.to}`} end={n.to === "/"}
-                  className={({ isActive }) => `flex items-center justify-between border-b border-white/10 py-4 font-display text-2xl font-bold ${isActive ? "text-sky-300" : "text-white"}`}>
-                  {n.label} <ArrowUpRight className="h-5 w-5 opacity-60" />
-                </NavLink>
-              </motion.div>
-            ))}
-            <Link to="/contatti" data-testid="mobile-cta-preventivo" className="mt-6 flex justify-center rounded-full bg-sky-400 py-4 font-bold text-[#06142B]">
-              Richiedi una consulenza gratuita
-            </Link>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </header>
+        <div className="bg-white rounded-[28px] shadow-xl p-6 sm:p-10 border border-slate-100">
+          
+          <div className="text-center mb-8">
+            <span className="inline-grid h-12 w-12 place-items-center rounded-full bg-sky-50 text-sky-600 mb-3 mx-auto border border-sky-100">
+              <Wrench className="h-6 w-6" />
+            </span>
+            <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-[var(--ink)]">
+              Ordina Kit Manutenzione
+            </h1>
+            <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Compila il modulo sottostante per richiedere in autonomia i filtri, le lampade UV o i consumabili per il tuo impianto. Ti ricontatteremo rapidamente per la spedizione.
+            </p>
+          </div>
+
+          {submitted ? (
+            <div className="text-center py-12 px-4 bg-emerald-50 rounded-2xl border border-emerald-100 animate-fadeIn">
+              <CheckCircle className="h-12 w-12 text-emerald-600 mx-auto mb-3" />
+              <h3 className="font-display text-lg font-bold text-emerald-900">Richiesta inviata con successo!</h3>
+              <p className="mt-1 text-xs text-emerald-700 max-w-md mx-auto">
+                Abbiamo ricevuto la tua richiesta di ricambi. È stata presa in carico e ti contatteremo al più presto per confermare l'ordine.
+              </p>
+              <button
+                onClick={() => {
+                  setSubmitted(false);
+                  setFormData({ nome: "", cognome: "", email: "", telefono: "", contratto: "", impianto: "" });
+                }}
+                className="mt-6 rounded-full bg-[var(--navy)] px-6 py-2.5 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-sm"
+              >
+                Invia una nuova richiesta
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Nome *</label>
+                  <input 
+                    type="text" 
+                    name="nome"
+                    required
+                    value={formData.nome}
+                    onChange={handleChange}
+                    placeholder="Il tuo nome"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Cognome *</label>
+                  <input 
+                    type="text" 
+                    name="cognome"
+                    required
+                    value={formData.cognome}
+                    onChange={handleChange}
+                    placeholder="Il tuo cognome"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Email *</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="tua@email.it"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Numero di Telefono *</label>
+                  <input 
+                    type="tel" 
+                    name="telefono"
+                    required
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    placeholder="Il tuo numero"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                    Riferimento del Contratto <span className="text-slate-400 font-normal lowercase">(opzionale)</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    name="contratto"
+                    value={formData.contratto}
+                    onChange={handleChange}
+                    placeholder="Es. N. contratto o codice cliente"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Tipo di Impianto *</label>
+                  <select 
+                    name="impianto"
+                    required
+                    value={formData.impianto}
+                    onChange={handleChange}
+                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
+                  >
+                    <option value="" disabled>Seleziona il tuo impianto...</option>
+                    <option value="TOP 30 – Black Edition / Osmosi">TOP 30 – Black Edition / Osmosi</option>
+                    <option value="Osmo Quark">Osmo Quark</option>
+                    <option value="Osmo Top">Osmo Top</option>
+                    <option value="Gel 30 Sottolavello – Black Edition">Gel 30 Sottolavello – Black Edition</option>
+                    <option value="Osmo Slim">Osmo Slim</option>
+                    <option value="Micro in-line UV">Micro in-line UV</option>
+                    <option value="Office 30">Office 30 (Ufficio)</option>
+                    <option value="Altro / Non ricordo">Altro / Non ricordo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <button 
+                  type="submit"
+                  className="w-full rounded-full bg-[var(--navy)] py-3 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-md text-center cursor-pointer"
+                >
+                  Invia Ordine Kit Manutenzione
+                </button>
+              </div>
+
+            </form>
+          )}
+
+        </div>
+
+      </div>
+    </div>
   );
-};
+}
