@@ -11,7 +11,7 @@ import { ProductDialog } from "@/components/ProductDialog";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS } from "@/data/catalog";
 
-// ---------- Vantaggi (bento coordinato in sfumature di azzurro e ultra-compatto) ----------
+// ---------- Vantaggi (bento con sfondi azzurri pieni e coordinati) ----------
 const Benefits = () => (
   <section data-testid="benefits-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-8 md:py-12">
     <SectionTitle eyebrow="Perché depurare" lines={["Quattro buone ragioni", "per cambiare acqua."]} className="max-w-3xl" />
@@ -25,18 +25,18 @@ const Benefits = () => (
         <span aria-hidden="true" className="absolute -bottom-4 -right-1 font-display text-[6rem] font-black leading-none text-white/[0.06]">€</span>
       </Reveal>
 
-      {/* 2. Sostenibilità - Azzurro pastello chiarissimo */}
-      <Reveal delay={0.08} className="md:col-span-5 rounded-[20px] bg-sky-50/80 border border-sky-100 p-5 sm:p-6 shadow-sm" data-testid="benefit-sostenibilita">
+      {/* 2. Sostenibilità - Azzurro chiaro pieno */}
+      <Reveal delay={0.08} className="md:col-span-5 rounded-[20px] bg-[#EBF4FF] border border-[#BFDBFE] p-5 sm:p-6 shadow-sm" data-testid="benefit-sostenibilita">
         <Leaf className="h-6 w-6 text-sky-600" />
         <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight text-[var(--ink)]">Sostenibilità</h3>
         <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">Meno plastica, meno trasporti, meno CO2. Ogni borraccia riempita al rubinetto è una bottiglia in meno nell'ambiente.</p>
       </Reveal>
 
-      {/* 3. Salute - Azzurro medio elegante */}
-      <Reveal delay={0.04} className="md:col-span-5 rounded-[20px] bg-sky-100/50 border border-sky-200/60 p-5 sm:p-6 shadow-sm" data-testid="benefit-salute">
+      {/* 3. Salute - Azzurro medio pieno */}
+      <Reveal delay={0.04} className="md:col-span-5 rounded-[20px] bg-[#DBEAFE] border border-[#93C5FD] p-5 sm:p-6 shadow-sm" data-testid="benefit-salute">
         <HeartPulse className="h-6 w-6 text-sky-700" />
         <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight text-[var(--ink)]">Salute</h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">Ultrafiltrazione, carbone attivo e UV trattengono impurità, cloro e batteri, preservando i minerali utili.</p>
+        <p className="mt-1.5 text-xs sm:text-sm text-slate-700 leading-relaxed">Ultrafiltrazione, carbone attivo e UV trattengono impurità, cloro e batteri, preservando i minerali utili.</p>
       </Reveal>
 
       {/* 4. Comodità - Foto con gradiente azzurro/blu coordinato */}
