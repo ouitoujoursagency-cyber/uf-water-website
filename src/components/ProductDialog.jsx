@@ -23,7 +23,7 @@ export function ProductDialog({ item, onClose }) {
     setCurrentImgIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
   };
 
-  const isRender = (index) => popupImages.length === 4 && (index === 1 || index === 3);
+  const isRender = popupImages.length === 4 && (currentImgIndex === 1 || currentImgIndex === 3);
 
   const getImageLabel = (index) => {
     if (popupImages.length === 4) {
@@ -50,18 +50,22 @@ export function ProductDialog({ item, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Colonna Sinistra: Gestione stabile dello sfondo e dell'immagine */}
-        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full ${isRender(currentImgIndex) ? "bg-white p-6" : "bg-[#06142B]"}`}>
+        {/* Colonna Sinistra: Blocco Immagine a altezza piena */}
+        <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[350px] md:min-h-[480px] ${isRender ? "bg-white" : "bg-[#06142B]"}`}>
           
           <img 
             key={currentImgIndex}
             src={popupImages[currentImgIndex]} 
             alt={item.name} 
-            className={`max-h-[380px] w-full object-contain ${isRender(currentImgIndex) ? "p-4" : "h-full object-cover absolute inset-0"}`}
+            className={
+              isRender 
+                ? "max-h-[420px] w-auto max-w-full object-contain p-6 m-auto z-10" 
+                : "absolute inset-0 h-full w-full object-cover z-10"
+            }
           />
 
-          {!isRender(currentImgIndex) && (
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/40 via-transparent to-[#06142B]/20 pointer-events-none" />
+          {!isRender && (
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/30 via-transparent to-transparent pointer-events-none z-10" />
           )}
 
           {/* Frecce per scorrere */}
@@ -69,23 +73,23 @@ export function ProductDialog({ item, onClose }) {
             <>
               <button 
                 onClick={prevImage}
-                className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
-                  isRender(currentImgIndex) ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
+                className={`absolute left-3 top-1/2 -translate-y-1/2 z-30 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
+                  isRender ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
                 }`}
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button 
                 onClick={nextImage}
-                className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
-                  isRender(currentImgIndex) ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
+                className={`absolute right-3 top-1/2 -translate-y-1/2 z-30 grid h-8 w-8 place-items-center rounded-full backdrop-blur transition-colors ${
+                  isRender ? "bg-slate-200 text-slate-800 hover:bg-slate-300" : "bg-black/40 text-white hover:bg-black/60"
                 }`}
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
 
               {/* Pallini in basso */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex gap-1.5">
                 {popupImages.map((_, idx) => (
                   <button
                     key={idx}
@@ -93,7 +97,7 @@ export function ProductDialog({ item, onClose }) {
                     className={`h-1.5 rounded-full transition-all ${
                       currentImgIndex === idx 
                         ? "w-5 bg-sky-400" 
-                        : isRender(currentImgIndex) ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
+                        : isRender ? "w-1.5 bg-slate-300" : "w-1.5 bg-white/50"
                     }`}
                   />
                 ))}
@@ -101,12 +105,12 @@ export function ProductDialog({ item, onClose }) {
             </>
           )}
 
-          <span className="absolute top-3 left-3 z-20 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
+          <span className="absolute top-3 left-3 z-30 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
             {getImageLabel(currentImgIndex)}
           </span>
         </div>
 
-        {/* Colonna Destra: Specifiche e Contatti compatti */}
+        {/* Colonna Destra: Specifiche */}
         <div className="w-full md:w-1/2 p-5 md:p-6 overflow-y-auto flex flex-col justify-between bg-white">
           <div>
             {item.badge && (
@@ -117,7 +121,6 @@ export function ProductDialog({ item, onClose }) {
             <h2 className="font-display text-xl sm:text-2xl font-extrabold text-[var(--ink)] leading-tight">{item.name}</h2>
             <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">{item.description}</p>
 
-            {/* Tabella Specifiche ridotta */}
             <div className="mt-4 space-y-2 border-t border-slate-100 pt-3">
               {item.specs && item.specs.map(([label, value], i) => (
                 <div key={i} className="flex justify-between text-xs border-b border-slate-50 pb-1.5">
@@ -128,7 +131,6 @@ export function ProductDialog({ item, onClose }) {
             </div>
           </div>
 
-          {/* Pulsanti di azione */}
           <div className="mt-6 flex flex-col sm:flex-row gap-2 pt-3 border-t border-slate-100">
             <Link 
               to="/contatti" 
