@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight, MessageCircle, Calendar } from "lucide-react";
-import { whatsappLink } from "@/data/site"; // Oppure mantieni il tuo link WhatsApp
 
 export function ProductDialog({ item, onClose }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
@@ -26,7 +26,7 @@ export function ProductDialog({ item, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fadeIn">
-      {/* Finestra più quadrata e contenuta (max-w-3xl invece di 4xl, rounded-[28px]) */}
+      {/* Finestra più quadrata e contenuta */}
       <div className="relative w-full max-w-3xl overflow-hidden rounded-[28px] bg-white shadow-2xl flex flex-col md:flex-row max-h-[85vh]">
         
         {/* Pulsante di chiusura */}
@@ -37,17 +37,15 @@ export function ProductDialog({ item, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Colonna Sinistra: Blocco Blu che riempie tutto lo spazio con l'immagine a schermo pieno */}
+        {/* Colonna Sinistra: Blocco Blu con foto reale/schema a schermo pieno */}
         <div className="relative w-full md:w-1/2 bg-[#06142B] flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full">
           
-          {/* L'immagine ora riempie interamente lo spazio blu con object-cover */}
           <img 
             src={popupImages[currentImgIndex]} 
             alt={item.name} 
             className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
           />
 
-          {/* Sfumatura leggera ai lati per far risaltare le frecce */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/40 via-transparent to-[#06142B]/20 pointer-events-none" />
 
           {/* Frecce per scorrere */}
@@ -79,7 +77,6 @@ export function ProductDialog({ item, onClose }) {
             </>
           )}
 
-          {/* Etichetta indicatore pulita */}
           <span className="absolute top-3 left-3 z-20 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
             {currentImgIndex === 0 ? "📸 Foto Reale" : "📐 Schema e Misure"}
           </span>
@@ -96,7 +93,7 @@ export function ProductDialog({ item, onClose }) {
             <h2 className="font-display text-xl sm:text-2xl font-extrabold text-[var(--ink)] leading-tight">{item.name}</h2>
             <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">{item.description}</p>
 
-            {/* Tabella Specifiche ridotta e fine */}
+            {/* Tabella Specifiche ridotta */}
             <div className="mt-4 space-y-2 border-t border-slate-100 pt-3">
               {item.specs && item.specs.map(([label, value], i) => (
                 <div key={i} className="flex justify-between text-xs border-b border-slate-50 pb-1.5">
@@ -107,10 +104,11 @@ export function ProductDialog({ item, onClose }) {
             </div>
           </div>
 
-          {/* Pulsanti di azione compatti */}
+          {/* Pulsanti di azione */}
           <div className="mt-6 flex flex-col sm:flex-row gap-2 pt-3 border-t border-slate-100">
             <Link 
               to="/contatti" 
+              onClick={onClose}
               className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-[var(--navy)] px-4 py-2.5 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-sm"
             >
               <Calendar className="h-3.5 w-3.5 text-sky-300" /> Prenota sopralluogo
