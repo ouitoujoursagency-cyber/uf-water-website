@@ -14,12 +14,12 @@ export const PRODUCTS = [
     // Immagine futuristica mostrata SOLO NELLA GRIGLIA ESTERNA
     img: img("top30 osmosi.jpg"),
     
-    // LE 4 FOTO INTERNE PER IL CAROSELLO DEL POPUP (che si aprono cliccando)
+    // Le 4 FOTO INTERNE per il carosello del popup (specifico per questo modello)
     popupImages: [
-      img("top 30 real.jpg"),          // 1ª foto nel popup
-      img("top 30 render.jpg"),        // 2ª foto nel popup
-      img("top 30 osmosi real.jpg"),   // 3ª foto nel popup
-      img("top 30 osmosi render.jpg")  // 4ª foto nel popup
+      img("top 30 real.jpg"),          // 1ª foto: Foto reale Top 30
+      img("top 30 render.jpg"),        // 2ª foto: Render Top 30
+      img("top 30 osmosi real.jpg"),   // 3ª foto: Foto reale Top 30 Osmosi
+      img("top 30 osmosi render.jpg")  // 4ª foto: Render Top 30 Osmosi
     ],
 
     tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
@@ -42,13 +42,12 @@ export const PRODUCTS = [
     sub: "Osmosi inversa",
     badge: "Alta efficienza",
     
-    // Immagine futuristica mostrata nella griglia esterna
     img: img("osmo quark.jpg"),
     
-    // Le 2 foto interne per il carosello del popup (Foto reale + Render/Schema)
+    // Le 2 foto interne per il carosello del popup
     popupImages: [
-      img("osmo quark real.jpg"),    // 1ª foto: Foto reale
-      img("osmo quark render.jpg")   // 2ª foto: Render / schema misure
+      img("osmo quark real.jpg"),    // Foto reale Osmo Quark
+      img("osmo quark render.jpg")   // Render Osmo Quark
     ],
 
     tagline: "Impianto ad osmosi inversa compatto per acqua oligominerale pura, naturale e frizzante refrigerata.",
@@ -63,24 +62,42 @@ export const PRODUCTS = [
       ["Dimensione Saturatore", "12x12 cm – 0,88 lt"],
       ["Vasca Refrigerante", "5 litri circa"],
       ["Controllo Banco Di Ghiaccio", "termostato 2° C – 7° C"],
+      ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
+      ["Produzione Osmosi", "110 lt/h"],
+      ["Membrane", "2 da 180GPD"],
+      ["Potenza Assorbita", "270 watt"],
+      ["Prefiltrazione", "Esterna"]
     ]
   },
   {
-    id: "osmo-quark",
-    name: "Osmo Quark",
+    id: "osmo-top",
+    name: "Osmo Top",
     category: "casa",
     sub: "Osmosi inversa",
-    badge: "Alta efficienza",
-    img: img("osmo quark.jpg"),
-    tagline: "Impianto ad osmosi inversa compatto per acqua oligominerale pura, naturale e frizzante refrigerata.",
-    description: "OSMO QUARK è l'impianto per la casa più completo della sua categoria. Garantisce acqua oligominerale leggera e dal gusto gradevole, rimuovendo nitrati, metalli pesanti, batteri e pesticidi.",
+    badge: "Top di gamma",
+    
+    img: img("osmo top.jpg"),
+    
+    // Le 2 foto interne per il carosello del popup
+    popupImages: [
+      img("osmo top real.jpg"),    // Sostituisci con il nome reale del file
+      img("osmo top render.jpg")   // Sostituisci con il nome del render
+    ],
+
+    tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
+    description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
     specs: [
-      ["Tecnologia", "Osmosi inversa a produzione diretta"],
-      ["Acqua erogata", "Naturale e frizzante refrigerata"],
-      ["Dimensioni", "27 x 39 x 34 cm (LxPxA)"],
+      ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
+      ["Temperatura Esercizio", "2° C - 40° C"],
+      ["Alimentazione Elettrica", "220V 50Hz"],
+      ["Dimensioni (LXPA-CM)", "27x39x34"],
+      ["Pompa Acqua", "200 lt/h a paletta"],
+      ["Motore Per Pompa Acqua", "165 watt"],
+      ["Vasca Refrigerante", "5 litri"],
+      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
+      ["Modello Compressore", "B38G - 1/8hp - 3,80 cm3"],
       ["Produzione Osmosi", "110 lt/h"],
-      ["Vasca Refrigerante", "5 litri circa"],
-      ["Alimentazione", "220V 50Hz"]
+      ["Peso", "23 kg"]
     ]
   },
   {
@@ -89,7 +106,14 @@ export const PRODUCTS = [
     category: "casa", 
     sub: "Sottolavello", 
     badge: "Nuovo modello",
+    
     img: img("gel30black.jpg"),
+    
+    popupImages: [
+      img("gel 30 black real.jpg"),
+      img("gel30black render.jpg")
+    ],
+
     tagline: "Impianto acqua casa con termoregolatore digitale, installazione comoda sotto il lavello.",
     description: "Eroga acqua naturale fredda, liscia e frizzante. Soluzione ideale per soddisfare tutte le esigenze della famiglia: bere, lavare, cucinare o preparare bevande. Interamente costruita con materiali atossici certificati, struttura in skinplate nero.",
     specs: [
@@ -110,7 +134,14 @@ export const PRODUCTS = [
     category: "casa", 
     sub: "Sottolavello / Sottozoccolo", 
     badge: "Produzione diretta",
+    
     img: img("osmo slim.jpg"),
+    
+    popupImages: [
+      img("osmo slim real.jpg"),
+      img("osmo slim render.jpg")
+    ],
+
     tagline: "Impianto ad osmosi inversa per la casa a produzione diretta, semplice ed efficace.",
     description: "Eroga acqua oligominerale pura direttamente e in sicurezza, senza acqua stagnante in serbatoi d'accumulo. Rimuove nitrati, metalli pesanti, batteri, virus e pesticidi, ideale per bere, cucinare e preparare bevande.",
     specs: [
@@ -132,7 +163,14 @@ export const PRODUCTS = [
     category: "casa", 
     sub: "Sterilizzatore UV", 
     badge: "Raggi UV",
+    
     img: img("microline uv.jpg"),
+    
+    popupImages: [
+      img("microline uv real.jpg"),
+      img("microline uv render.jpg")
+    ],
+
     tagline: "Sterilizzatore domestico per trasformare il rubinetto di casa in una sorgente d'acqua pura.",
     description: "Sfrutta la microfiltrazione sinterizzata e un sistema di debatterizzazione a raggi UV per eliminare trascinamenti e sostanze chimiche, prevenendo la proliferazione batterica. Dotato di contalitri digitale e struttura in acciaio INOX AISI 304.",
     specs: [
@@ -150,7 +188,14 @@ export const PRODUCTS = [
     category: "ufficio",
     sub: "Erogatore a colonna", 
     badge: "Per l'ufficio",
+    
     img: img("office 30.jpg"),
+    
+    popupImages: [
+      img("office30 real.jpg"),
+      img("office 30 render.jpg")
+    ],
+
     tagline: "Il punto acqua dell'ufficio: naturale, fredda e frizzante.",
     description: "Erogatore a colonna allacciato alla rete idrica: nessun boccione da gestire, acqua sempre disponibile per team e ambienti di lavoro professionali.",
     specs: [
