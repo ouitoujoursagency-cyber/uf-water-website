@@ -11,6 +11,8 @@ export const PRODUCTS = [
     sub: "Da appoggio",
     badge: "Più richiesto",
     img: img("top30 osmosi.jpg"),
+    realImg: img("top 30 real.jpg"),    // Fotografia reale per il popup
+    schemaImg: img("top 30 render.jpg"), // Schema geometrico con misure per il popup
     tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
     description: "TOP 30 è il depuratore ideale per la casa che unisce alte prestazioni e design elegante in skinplate nero e PMMA. Eroga acqua naturale fredda, liscia e frizzante.",
     specs: [
