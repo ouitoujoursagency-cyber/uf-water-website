@@ -25,14 +25,18 @@ export const PRODUCTS = [
     tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
     description: "TOP 30 è il depuratore ideale per la casa che unisce alte prestazioni e design elegante in skinplate nero e PMMA. Eroga acqua naturale fredda, liscia e frizzante.",
     specs: [
-      ["Tecnologia", "Banco di ghiaccio con termoregolatore digitale"],
-      ["Tecnologia Osmosi", "Osmosi inversa a produzione diretta"],
-      ["Acqua erogata", "Naturale fredda, liscia e frizzante"],
-      ["Dimensioni", "17 x 50,5 x 44 cm (LxPxH)"],
-      ["Dimensioni Osmosi", "26,5 x 46,8 x 45 cm (LxPxH)"],
+      ["Pressione Ingresso Acqua", "min 1 bar – max 4 bar"],
+      ["Pompa", "200 lt/h a paletta"],
+      ["Motore Pompa", "150 watt"],
+      ["Dimensione Saturatore", "9x18 cm – 0,76 lt in acciaio INOX AISI 316 L brevettato"],
+      ["Temperatura Esercizio", "2° C – 40° C"],
+      ["Filtrazione", "Esterna"],
+      ["Alimentazione Elettrica", "220V 50 Hz"],
+      ["Dimensioni Cm (LxPxH)", "17x50,5x44 (P comprensiva di raccogli gocce)"],
       ["Vasca Refrigerante", "3,5 litri circa"],
-      ["Alimentazione", "220V 50 Hz"],
-      ["Materiali", "Skinplate nero, PMMA e acciaio inox"]
+      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
+      ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
+      ["Riciclo Acqua Fredda Per Erogatore Esterno", "SOLO SU RICHIESTA"]
     ]
   },
   {
@@ -46,8 +50,8 @@ export const PRODUCTS = [
     
     // Le 2 foto interne per il carosello del popup
     popupImages: [
-      img("osmo quark real.jpg"),    // Foto reale Osmo Quark
-      img("osmo quark render.jpg")   // Render Osmo Quark
+      img("osmo quark real.jpg"),    
+      img("osmo quark render.jpg")   
     ],
 
     tagline: "Impianto ad osmosi inversa compatto per acqua oligominerale pura, naturale e frizzante refrigerata.",
@@ -56,7 +60,7 @@ export const PRODUCTS = [
       ["Pressione Ingresso Acqua", "min 1,5 bar – max 4 bar"],
       ["Temperatura Esercizio", "2° C – 40° C"],
       ["Alimentazione Elettrica", "220V 50Hz"],
-      ["Dimensioni (LxPxA)", "27 x 39 x 34 cm"],
+      ["Dimensioni (LxPxA)", "27x39x34 cm"],
       ["Pompa Acqua", "200 lt/h a paletta"],
       ["Motore per pompa acqua", "165 watt"],
       ["Dimensione Saturatore", "12x12 cm – 0,88 lt"],
@@ -65,6 +69,7 @@ export const PRODUCTS = [
       ["Modello Compressore", "GD40MB 4cm³ 1/8hp"],
       ["Produzione Osmosi", "110 lt/h"],
       ["Membrane", "2 da 180GPD"],
+      ["Riciclo Acqua – Acqua Fredda per Erogatore Esterno", "NO"],
       ["Potenza Assorbita", "270 watt"],
       ["Prefiltrazione", "Esterna"]
     ]
@@ -80,8 +85,8 @@ export const PRODUCTS = [
     
     // Le 2 foto interne per il carosello del popup
     popupImages: [
-      img("osmo top real.jpg"),    // Sostituisci con il nome reale del file
-      img("osmo top render.jpg")   // Sostituisci con il nome del render
+      img("osmo top real.jpg"),    
+      img("osmo top render.jpg")   
     ],
 
     tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
@@ -89,15 +94,18 @@ export const PRODUCTS = [
     specs: [
       ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
       ["Temperatura Esercizio", "2° C - 40° C"],
+      ["Filtrazione", "Esterna"],
       ["Alimentazione Elettrica", "220V 50Hz"],
-      ["Dimensioni (LXPA-CM)", "27x39x34"],
+      ["Dimensioni (LXPA-CM)", "29x39x43 (sottolavello)"],
       ["Pompa Acqua", "200 lt/h a paletta"],
-      ["Motore Per Pompa Acqua", "165 watt"],
-      ["Vasca Refrigerante", "5 litri"],
-      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
-      ["Modello Compressore", "B38G - 1/8hp - 3,80 cm3"],
+      ["Motore Per Pompa Acqua", "150 Watt"],
+      ["Dimensione Saturatore", "9x20 cm -- 1,02 litri"],
+      ["Vasca Refrigerante", "10 litri"],
+      ["Controllo Banco Di Ghiaccio", "termoregolatore digitale da -1,5°C a 32°C"],
+      ["Modello Compressore", "1/8hp - 3,80 cm3"],
       ["Produzione Osmosi", "110 lt/h"],
-      ["Peso", "23 kg"]
+      ["Numero Membrane", "2 da 180 GPD"],
+      ["Riciclo Acqua - Acqua Fredda Per Erogatore Esterno", "NO"]
     ]
   },
   {
@@ -164,7 +172,7 @@ export const PRODUCTS = [
     sub: "Sterilizzatore UV", 
     badge: "Raggi UV",
     
-    img: img("microline uv.jpg"),
+    img: img("microline uv ok.jpg"),
     
     popupImages: [
       img("microline uv real.jpg"),
