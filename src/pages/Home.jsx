@@ -11,36 +11,45 @@ import { ProductDialog } from "@/components/ProductDialog";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS } from "@/data/catalog";
 
-// ---------- Vantaggi (bento ultra-compatto e fine) ----------
+// ---------- Vantaggi (bento coordinato in sfumature di azzurro e ultra-compatto) ----------
 const Benefits = () => (
-  <section data-testid="benefits-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-12 md:py-16">
+  <section data-testid="benefits-section" className="mx-auto max-w-7xl px-5 sm:px-8 py-8 md:py-12">
     <SectionTitle eyebrow="Perché depurare" lines={["Quattro buone ragioni", "per cambiare acqua."]} className="max-w-3xl" />
-    <div className="mt-8 grid gap-4 md:grid-cols-12 md:auto-rows-[minmax(160px,auto)]">
-      <Reveal className="md:col-span-7 relative overflow-hidden rounded-[20px] bg-[#06142B] p-5 sm:p-6 text-white" data-testid="benefit-risparmio">
+    <div className="mt-6 grid gap-4 md:grid-cols-12 md:auto-rows-[minmax(160px,auto)]">
+      
+      {/* 1. Risparmio - Blu profondo istituzionale */}
+      <Reveal className="md:col-span-7 relative overflow-hidden rounded-[20px] bg-[#06142B] p-5 sm:p-6 text-white shadow-sm" data-testid="benefit-risparmio">
         <PiggyBank className="h-6 w-6 text-sky-300" />
         <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight">Risparmio</h3>
         <p className="mt-1.5 max-w-md text-xs sm:text-sm text-slate-300 leading-relaxed">Niente più casse d'acqua da comprare, trasportare e stoccare. Il costo per litro diventa una frazione di quello dell'acqua in bottiglia.</p>
         <span aria-hidden="true" className="absolute -bottom-4 -right-1 font-display text-[6rem] font-black leading-none text-white/[0.06]">€</span>
       </Reveal>
-      <Reveal delay={0.08} className="md:col-span-5 rounded-[20px] bg-teal-50 border border-teal-100 p-5 sm:p-6" data-testid="benefit-sostenibilita">
-        <Leaf className="h-6 w-6 text-teal-700" />
+
+      {/* 2. Sostenibilità - Azzurro pastello chiarissimo */}
+      <Reveal delay={0.08} className="md:col-span-5 rounded-[20px] bg-sky-50/80 border border-sky-100 p-5 sm:p-6 shadow-sm" data-testid="benefit-sostenibilita">
+        <Leaf className="h-6 w-6 text-sky-600" />
         <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight text-[var(--ink)]">Sostenibilità</h3>
         <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">Meno plastica, meno trasporti, meno CO2. Ogni borraccia riempita al rubinetto è una bottiglia in meno nell'ambiente.</p>
       </Reveal>
-      <Reveal delay={0.04} className="md:col-span-5 rounded-[20px] bg-white border border-slate-200 p-5 sm:p-6" data-testid="benefit-salute">
-        <HeartPulse className="h-6 w-6 text-sky-600" />
+
+      {/* 3. Salute - Azzurro medio elegante */}
+      <Reveal delay={0.04} className="md:col-span-5 rounded-[20px] bg-sky-100/50 border border-sky-200/60 p-5 sm:p-6 shadow-sm" data-testid="benefit-salute">
+        <HeartPulse className="h-6 w-6 text-sky-700" />
         <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight text-[var(--ink)]">Salute</h3>
         <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">Ultrafiltrazione, carbone attivo e UV trattengono impurità, cloro e batteri, preservando i minerali utili.</p>
       </Reveal>
-      <Reveal delay={0.12} className="md:col-span-7 relative min-h-[180px] overflow-hidden rounded-[20px]" data-testid="benefit-comodita">
+
+      {/* 4. Comodità - Foto con gradiente azzurro/blu coordinato */}
+      <Reveal delay={0.12} className="md:col-span-7 relative min-h-[180px] overflow-hidden rounded-[20px] shadow-sm" data-testid="benefit-comodita">
         <img src="/img/pour.jpg" alt="Acqua versata in un bicchiere" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/90 via-[#06142B]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/95 via-[#06142B]/50 to-transparent" />
         <div className="relative flex h-full flex-col justify-end p-5 sm:p-6 text-white">
           <Sparkles className="h-6 w-6 text-sky-300" />
           <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight">Comodità</h3>
           <p className="mt-1.5 max-w-md text-xs sm:text-sm text-slate-200 leading-relaxed">Naturale, fredda o frizzante: sempre pronta, direttamente dal rubinetto di casa o dall'erogatore in ufficio.</p>
         </div>
       </Reveal>
+
     </div>
   </section>
 );
