@@ -6,17 +6,19 @@ const img = (f) => `/img/${f}`;
 export const PRODUCTS = [
   {
     id: "top30-black-edition",
-    name: "TOP 30 – Black Edition",
+    name: "TOP 30 – Black Edition / Osmosi",
     category: "casa",
     sub: "Da appoggio",
     badge: "Più richiesto",
-    img: img("top30.jpg"),
+    img: img("top30 osmosi.jpg"),
     tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
     description: "TOP 30 è il depuratore ideale per la casa che unisce alte prestazioni e design elegante in skinplate nero e PMMA. Eroga acqua naturale fredda, liscia e frizzante.",
     specs: [
       ["Tecnologia", "Banco di ghiaccio con termoregolatore digitale"],
+      ["Tecnologia Osmosi", "Osmosi inversa a produzione diretta"],
       ["Acqua erogata", "Naturale fredda, liscia e frizzante"],
       ["Dimensioni", "17 x 50,5 x 44 cm (LxPxH)"],
+      ["Dimensioni Osmosi", "26,5 x 46,8 x 45 cm (LxPxH)"],
       ["Vasca Refrigerante", "3,5 litri circa"],
       ["Alimentazione", "220V 50 Hz"],
       ["Materiali", "Skinplate nero, PMMA e acciaio inox"]
