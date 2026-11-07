@@ -13,6 +13,7 @@ import Installazione from "@/pages/Installazione";
 import Normative from "@/pages/Normative";
 import Contatti from "@/pages/Contatti";
 import Privacy from "@/pages/Privacy";
+import OrdinaKitManutenzione from "@/pages/OrdinaKitManutenzione"; // <-- 1. IMPORT DELLA NUOVA PAGINA
 import { CookieBanner } from "./components/CookieBanner";
 import AdminPreventivo from "@/pages/AdminPreventivo";
 
@@ -32,11 +33,12 @@ const PageRoutes = () => {
           <Route path="/prodotti" element={<Prodotti />} />
           <Route path="/accessori" element={<Extra />} />
           <Route path="/installazione-servizi" element={<Installazione />} />
+          <Route path="/ordina-kit-manutenzione" element={<OrdinaKitManutenzione />} /> {/* <-- 2. AGGIUNTA DELLA ROTTA */}
           <Route path="/normative-certificazioni" element={<Normative />} />
           <Route path="/contatti" element={<Contatti />} />
           <Route path="/privacy-policy" element={<Privacy />} />
-          <Route path="*" element={<Home />} />
           <Route path="/admin/preventivo" element={<AdminPreventivo />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </motion.main>
     </AnimatePresence>
