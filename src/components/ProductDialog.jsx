@@ -23,7 +23,6 @@ export function ProductDialog({ item, onClose }) {
     setCurrentImgIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
   };
 
-  // Riconosce se l'immagine corrente è un render/schema (funziona sia per i prodotti a 4 foto che a 2 foto con schema)
   const isRender = (index) => {
     if (popupImages.length === 4) return index === 1 || index === 3;
     if (popupImages.length === 2) return index === 1;
@@ -55,7 +54,7 @@ export function ProductDialog({ item, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Colonna Sinistra: Blocco Immagine pulito senza aloni */}
+        {/* Colonna Sinistra: Blocco Immagine */}
         <div className={`relative w-full md:w-1/2 flex items-center justify-center overflow-hidden min-h-[350px] md:min-h-[480px] ${isRender(currentImgIndex) ? "bg-white" : "bg-[#06142B]"}`}>
           
           <img 
@@ -64,12 +63,10 @@ export function ProductDialog({ item, onClose }) {
             alt={item.name} 
             className={
               isRender(currentImgIndex)
-                ? "max-h-[420px] w-auto max-w-full object-contain p-6 m-auto z-10" 
-                : "absolute inset-0 h-full w-full object-cover z-10"
+                ? "h-full w-full object-contain p-4 z-10" // Render grande e pulito senza linee
+                : "absolute inset-0 h-full w-full object-cover z-10" // Foto reale a schermo pieno
             }
           />
-
-          {/* NOTA: Il blocco con il gradiente/alone è stato eliminato completamente */}
 
           {/* Frecce per scorrere */}
           {popupImages.length > 1 && (
