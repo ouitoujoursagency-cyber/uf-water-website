@@ -39,14 +39,13 @@ const Benefits = () => (
         <p className="mt-1.5 text-xs sm:text-sm text-slate-700 leading-relaxed">Ultrafiltrazione, carbone attivo e UV trattengono impurità, cloro e batteri, preservando i minerali utili.</p>
       </Reveal>
 
-      {/* 4. Comodità - Foto con gradiente azzurro/blu coordinato */}
-      <Reveal delay={0.12} className="md:col-span-7 relative min-h-[180px] overflow-hidden rounded-[20px] shadow-sm" data-testid="benefit-comodita">
-        <img src="/img/pour.jpg" alt="Acqua versata in un bicchiere" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/95 via-[#06142B]/50 to-transparent" />
-        <div className="relative flex h-full flex-col justify-end p-5 sm:p-6 text-white">
+      {/* 4. Comodità - Sfondo con gradiente blu/azzurro elegante e pulito */}
+      <Reveal delay={0.12} className="md:col-span-7 relative min-h-[180px] overflow-hidden rounded-[20px] bg-gradient-to-br from-[#0A2540] via-[#06142B] to-[#030914] p-5 sm:p-6 text-white shadow-sm border border-sky-900/40" data-testid="benefit-comodita">
+        <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-sky-500/10 blur-2xl pointer-events-none" />
+        <div className="relative flex h-full flex-col justify-end">
           <Sparkles className="h-6 w-6 text-sky-300" />
           <h3 className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight">Comodità</h3>
-          <p className="mt-1.5 max-w-md text-xs sm:text-sm text-slate-200 leading-relaxed">Naturale, fredda o frizzante: sempre pronta, direttamente dal rubinetto di casa o dall'erogatore in ufficio.</p>
+          <p className="mt-1.5 max-w-md text-xs sm:text-sm text-slate-300 leading-relaxed">Naturale, fredda o frizzante: sempre pronta, direttamente dal rubinetto di casa o dall'erogatore in ufficio.</p>
         </div>
       </Reveal>
 
