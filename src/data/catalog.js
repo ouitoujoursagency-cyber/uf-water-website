@@ -10,9 +10,18 @@ export const PRODUCTS = [
     category: "casa",
     sub: "Da appoggio",
     badge: "Più richiesto",
+    
+    // Immagine futuristica mostrata nella griglia esterna
     img: img("top30 osmosi.jpg"),
-    realImg: img("top 30 real.jpg"),    // Fotografia reale per il popup
-    schemaImg: img("top 30 render.jpg"), // Schema geometrico con misure per il popup
+    
+    // ARRAY CON LE 4 FOTO INTERNE PER IL CAROSELLO DEL POPUP
+    popupImages: [
+      img("top 30 real.jpg"),          // 1ª foto: Foto reale frontale
+      img("top 30 render.jpg"),        // 2ª foto: Render / schema misure standard
+      img("top 30 osmosi real.jpg"),   // 3ª foto: Versione osmosi reale
+      img("top 30 osmosi render.jpg")  // 4ª foto: Render / schema misure osmosi
+    ],
+
     tagline: "Erogatore d'acqua compatto da appoggio con tecnologia a banco di ghiaccio.",
     description: "TOP 30 è il depuratore ideale per la casa che unisce alte prestazioni e design elegante in skinplate nero e PMMA. Eroga acqua naturale fredda, liscia e frizzante.",
     specs: [
@@ -24,6 +33,29 @@ export const PRODUCTS = [
       ["Vasca Refrigerante", "3,5 litri circa"],
       ["Alimentazione", "220V 50 Hz"],
       ["Materiali", "Skinplate nero, PMMA e acciaio inox"]
+    ]
+  },
+  {
+    id: "osmo-top",
+    name: "Osmo Top",
+    category: "casa",
+    sub: "Da appoggio / Osmosi",
+    badge: "Alta Gamma",
+    img: img("osmo top.jpg"),
+    tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
+    description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
+    specs: [
+      ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
+      ["Temperatura Esercizio", "2° C - 40° C"],
+      ["Alimentazione Elettrica", "220V 50Hz"],
+      ["Dimensioni (LXPA-CM)", "27x39x34"],
+      ["Pompa Acqua", "200 lt/h a paletta"],
+      ["Motore Per Pompa Acqua", "165 watt"],
+      ["Vasca Refrigerante", "5 litri"],
+      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
+      ["Modello Compressore", "B38G - 1/8hp - 3,80 cm3"],
+      ["Produzione Osmosi", "110 lt/h"],
+      ["Peso", "23 kg"]
     ]
   },
   {
@@ -103,29 +135,6 @@ export const PRODUCTS = [
       ["Dimensioni Cm (LxPxH)", "36x36x8"],
       ["Potenza Lampada UV", "11 W – 4 lt/min"],
       ["Materiale Struttura", "Acciaio INOX AISI 304"]
-    ]
-  },
-  {
-    id: "osmo-top", 
-    name: "Osmo Top", 
-    category: "casa", 
-    sub: "Osmosi inversa", 
-    badge: "Top di gamma",
-    img: img("osmo top.jpg"),
-    tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
-    description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
-    specs: [
-      ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
-      ["Temperatura Esercizio", "2° C - 40° C"],
-      ["Alimentazione Elettrica", "220V 50Hz"],
-      ["Dimensioni (LXPA-CM)", "27x39x34"],
-      ["Pompa Acqua", "200 lt/h a paletta"],
-      ["Motore Per Pompa Acqua", "165 watt"],
-      ["Vasca Refrigerante", "5 litri"],
-      ["Controllo Banco Di Ghiaccio", "termostato da -2°C a 7°C"],
-      ["Modello Compressore", "B38G - 1/8hp - 3,80 cm3"],
-      ["Produzione Osmosi", "110 lt/h"],
-      ["Peso", "23 kg"]
     ]
   },
   {
@@ -308,6 +317,6 @@ export const ACCESSORIES = EXTRA_ITEMS.filter(
   (item) => item.category === "miscelatori" || item.category === "co2" || item.category === "manutenzione"
 ).map((e) => ({ 
   ...e, 
-  category: "custom", // Inganniamo la categoria fissa
-  sub: e.badge || "Accessorio" // Forziamo il testo del badge
+  category: "custom", 
+  sub: e.badge || "Accessorio" 
 }));
