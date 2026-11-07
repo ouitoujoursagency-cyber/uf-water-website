@@ -1,124 +1,133 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowRight, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { whatsappLink } from "@/data/site";
+import { X, ChevronLeft, ChevronRight, MessageCircle, Calendar } from "lucide-react";
+import { whatsappLink } from "@/data/site"; // Oppure mantieni il tuo link WhatsApp
 
-// Scheda tecnica in finestra modale con carosello (Foto reale + Schema tecnico) e richiesta preventivo
-export const ProductDialog = ({ item, onClose }) => {
-  const navigate = useNavigate();
+export function ProductDialog({ item, onClose }) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-  // Resetta l'indice del carosello ogni volta che si apre un nuovo prodotto
   useEffect(() => {
     setCurrentImgIndex(0);
   }, [item]);
 
-  const interest = item?.category === "ufficio" ? "ufficio" : "casa";
-  const ask = () => {
-    onClose();
-    navigate(`/contatti?prodotto=${encodeURIComponent(item.name)}&interesse=${interest}`);
-  };
+  if (!item) return null;
 
-  // Creazione array di immagini per il carosello del popup:
-  // 1. Fotografia reale (item.realImg o fallback sull'immagine principale)
-  // 2. Schema geometrico / Misure (item.schemaImg)
-  const popupImages = item ? [
+  const popupImages = [
     item.realImg || item.img,
     item.schemaImg
-  ].filter(Boolean) : [];
+  ].filter(Boolean);
 
-  const nextImage = (e) => {
-    e.stopPropagation();
+  const nextImage = () => {
     setCurrentImgIndex((prev) => (prev + 1) % popupImages.length);
   };
 
-  const prevImage = (e) => {
-    e.stopPropagation();
+  const prevImage = () => {
     setCurrentImgIndex((prev) => (prev - 1 + popupImages.length) % popupImages.length);
   };
 
   return (
-    <Dialog open={!!item} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent data-testid="product-dialog" data-lenis-prevent className="max-w-4xl w-[94vw] max-h-[90vh] overflow-y-auto p-0 rounded-[28px] border-0 gap-0">
-        {item && (
-          <div className="grid md:grid-cols-2">
-            
-            {/* Sezione Immagine con Carosello (Foto Reale / Schema Tecnico) */}
-            <div className="relative aspect-square md:aspect-auto bg-[#06142B] flex items-center justify-center p-6 min-h-[300px]">
-              <img 
-                src={popupImages[currentImgIndex]} 
-                alt={item.name} 
-                className="max-h-[380px] w-full object-contain transition-all duration-300" 
-              />
-              
-              {item.badge && (
-                <span className="absolute left-5 top-5 z-10 rounded-full bg-sky-400 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-[#06142B]">
-                  {item.badge}
-                </span>
-              )}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fadeIn">
+      {/* Finestra più quadrata e contenuta (max-w-3xl invece di 4xl, rounded-[28px]) */}
+      <div className="relative w-full max-w-3xl overflow-hidden rounded-[28px] bg-white shadow-2xl flex flex-col md:flex-row max-h-[85vh]">
+        
+        {/* Pulsante di chiusura */}
+        <button 
+          onClick={onClose}
+          className="absolute right-4 top-4 z-30 grid h-9 w-9 place-items-center rounded-full bg-black/10 text-slate-700 hover:bg-black/20 transition-colors"
+        >
+          <X className="h-4 w-4" />
+        </button>
 
-              {/* Etichetta informativa per distinguere foto reale e schema */}
-              <span className="absolute bottom-4 left-5 z-10 rounded-full bg-black/40 px-3 py-1 text-[11px] font-medium text-white backdrop-blur-md">
-                {currentImgIndex === 0 ? "📸 Fotografia Reale" : "📐 Schema Tecnico e Misure"}
+        {/* Colonna Sinistra: Blocco Blu che riempie tutto lo spazio con l'immagine a schermo pieno */}
+        <div className="relative w-full md:w-1/2 bg-[#06142B] flex items-center justify-center overflow-hidden min-h-[320px] md:min-h-full">
+          
+          {/* L'immagine ora riempie interamente lo spazio blu con object-cover */}
+          <img 
+            src={popupImages[currentImgIndex]} 
+            alt={item.name} 
+            className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
+          />
+
+          {/* Sfumatura leggera ai lati per far risaltare le frecce */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06142B]/40 via-transparent to-[#06142B]/20 pointer-events-none" />
+
+          {/* Frecce per scorrere */}
+          {popupImages.length > 1 && (
+            <>
+              <button 
+                onClick={prevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/40 text-white backdrop-blur hover:bg-black/60 transition-colors"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button 
+                onClick={nextImage}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 grid h-8 w-8 place-items-center rounded-full bg-black/40 text-white backdrop-blur hover:bg-black/60 transition-colors"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+
+              {/* Pallini in basso */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+                {popupImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentImgIndex(idx)}
+                    className={`h-1.5 rounded-full transition-all ${currentImgIndex === idx ? "w-5 bg-sky-400" : "w-1.5 bg-white/50"}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* Etichetta indicatore pulita */}
+          <span className="absolute top-3 left-3 z-20 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
+            {currentImgIndex === 0 ? "📸 Foto Reale" : "📐 Schema e Misure"}
+          </span>
+        </div>
+
+        {/* Colonna Destra: Specifiche e Contatti compatti */}
+        <div className="w-full md:w-1/2 p-5 md:p-6 overflow-y-auto flex flex-col justify-between bg-white">
+          <div>
+            {item.badge && (
+              <span className="inline-block rounded-full bg-sky-50 px-2.5 py-0.5 text-[11px] font-bold text-sky-700 mb-2 border border-sky-100">
+                {item.badge}
               </span>
+            )}
+            <h2 className="font-display text-xl sm:text-2xl font-extrabold text-[var(--ink)] leading-tight">{item.name}</h2>
+            <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">{item.description}</p>
 
-              {/* Frecce e indicatori di scorrimento se sono presenti più immagini */}
-              {popupImages.length > 1 && (
-                <>
-                  <button onClick={prevImage} className="absolute left-3 top-1/2 -translate-y-1/2 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/40 transition-colors">
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-                  <button onClick={nextImage} className="absolute right-3 top-1/2 -translate-y-1/2 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/40 transition-colors">
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-
-                  <div className="absolute bottom-4 right-5 z-10 flex gap-1.5">
-                    {popupImages.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={(e) => { e.stopPropagation(); setCurrentImgIndex(idx); }}
-                        className={`h-2 rounded-full transition-all ${currentImgIndex === idx ? "w-5 bg-sky-400" : "w-2 bg-white/40"}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
+            {/* Tabella Specifiche ridotta e fine */}
+            <div className="mt-4 space-y-2 border-t border-slate-100 pt-3">
+              {item.specs && item.specs.map(([label, value], i) => (
+                <div key={i} className="flex justify-between text-xs border-b border-slate-50 pb-1.5">
+                  <span className="font-semibold uppercase tracking-wider text-slate-400">{label}</span>
+                  <span className="font-medium text-slate-700 text-right">{value}</span>
+                </div>
+              ))}
             </div>
-
-            {/* Sezione Specifiche e Contatti */}
-            <div className="p-6 sm:p-8 flex flex-col justify-between">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-700">{item.sub || "Accessorio"}</p>
-                <DialogTitle className="mt-2 font-display text-3xl font-black tracking-tight text-[var(--ink)]">{item.name}</DialogTitle>
-                <DialogDescription className="mt-3 text-sm text-slate-600 leading-relaxed">{item.description}</DialogDescription>
-                
-                <dl className="mt-6 divide-y divide-slate-200 border-y border-slate-200" data-testid="product-dialog-specs">
-                  {item.specs.map(([k, v]) => (
-                    <div key={k} className="grid grid-cols-5 gap-3 py-3 text-sm">
-                      <dt className="col-span-2 font-mono text-xs uppercase tracking-wider text-slate-500 pt-0.5">{k}</dt>
-                      <dd className="col-span-3 font-medium text-[var(--ink)]">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <p className="mt-3 text-xs text-slate-500">Dati tecnici indicativi. Prezzo su preventivo personalizzato.</p>
-              </div>
-
-              <div className="mt-6 flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
-                <button onClick={ask} data-testid="product-dialog-quote-button"
-                  className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#06142B] px-6 py-3.5 font-bold text-white transition-colors hover:bg-[var(--navy)] shadow-sm">
-                  Prenota un sopralluogo gratuito <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
-                <a href={whatsappLink(`Ciao, vorrei informazioni su ${item.name}.`)} target="_blank" rel="noopener noreferrer" data-testid="product-dialog-whatsapp"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-6 py-3.5 font-semibold text-[var(--ink)] transition-colors hover:border-[#25D366] hover:text-[#128C7E] shadow-sm">
-                  <MessageCircle className="h-4 w-4 text-emerald-600" /> WhatsApp
-                </a>
-              </div>
-            </div>
-
           </div>
-        )}
-      </DialogContent>
-    </Dialog>
+
+          {/* Pulsanti di azione compatti */}
+          <div className="mt-6 flex flex-col sm:flex-row gap-2 pt-3 border-t border-slate-100">
+            <Link 
+              to="/contatti" 
+              className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-[var(--navy)] px-4 py-2.5 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-sm"
+            >
+              <Calendar className="h-3.5 w-3.5 text-sky-300" /> Prenota sopralluogo
+            </Link>
+            <a 
+              href="https://whatsapp.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-slate-200 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            >
+              <MessageCircle className="h-3.5 w-3.5 text-emerald-600" /> WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
   );
-};
+}
