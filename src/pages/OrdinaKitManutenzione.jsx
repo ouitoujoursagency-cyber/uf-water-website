@@ -26,12 +26,12 @@ export default function OrdinaKitManutenzione() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      {/* Sezione superiore con sfondo blu scuro e metà pagina */}
-      <div className="bg-[#06142B] pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Sezione superiore con sfondo blu scuro e padding corretto per contenere tutto */}
+      <div className="bg-[#06142B] pt-32 pb-36 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" /> Torna alla Home / Catalogo
           </Link>
@@ -39,11 +39,11 @@ export default function OrdinaKitManutenzione() {
       </div>
 
       {/* Contenuto principale con layout a due colonne (Titolo a sinistra, Form a destra sovrapposto) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-20 pb-20 flex-grow">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-28 pb-20 flex-grow">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Colonna di sinistra: Titolo e descrizione */}
-          <div className="lg:col-span-5 text-white pt-6">
+          {/* Colonna di sinistra: Titolo e descrizione ben visibili */}
+          <div className="lg:col-span-5 text-white pt-4">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4">
               <Wrench className="h-3.5 w-3.5" /> Assistenza e Ricambi
             </span>
