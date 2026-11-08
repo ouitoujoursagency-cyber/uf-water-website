@@ -196,28 +196,28 @@ export default function OrdinaKitManutenzione() {
         </div>
       </div>
 
-      {/* Sezione inferiore con le due immagini allineate, intere e con meno spazio bianco sotto */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Sezione inferiore con le due foto quadrate, centrate e pulite sul fondo bianco */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
           
-          {/* Immagine 1: a sinistra (stesso margine negativo per allinearla) */}
-          <div className="relative -mt-36 z-20">
-            <div className="rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-slate-900 h-72 sm:h-80 flex items-center justify-center">
+          {/* Foto 1 */}
+          <div className="mx-auto w-full max-w-md">
+            <div className="aspect-square rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione.jpg" 
                 alt="Kit manutenzione" 
-                className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
+                className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
 
-          {/* Immagine 2: a destra (stesso margine negativo e stessa altezza per allinearla perfettamente) */}
-          <div className="relative -mt-36 z-20">
-            <div className="rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-slate-900 h-72 sm:h-80 flex items-center justify-center">
+          {/* Foto 2 */}
+          <div className="mx-auto w-full max-w-md">
+            <div className="aspect-square rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione autonomia.jpg" 
                 alt="Kit manutenzione autonomia" 
-                className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
+                className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
