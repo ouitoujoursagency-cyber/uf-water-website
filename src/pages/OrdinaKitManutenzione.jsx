@@ -196,28 +196,28 @@ export default function OrdinaKitManutenzione() {
         </div>
       </div>
 
-      {/* Sezione inferiore con le due immagini arrotondate a cavallo tra il blu e il bianco */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      {/* Sezione inferiore con le due immagini allineate, intere e con meno spazio bianco sotto */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          {/* Immagine 1: a sinistra */}
+          {/* Immagine 1: a sinistra (stesso margine negativo per allinearla) */}
           <div className="relative -mt-36 z-20">
-            <div className="rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-white h-72 sm:h-80">
+            <div className="rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-slate-900 h-72 sm:h-80 flex items-center justify-center">
               <img 
                 src="/img/kit manutenzione.jpg" 
                 alt="Kit manutenzione" 
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
 
-          {/* Immagine 2: a destra */}
-          <div className="relative -mt-36 lg:-mt-24 z-20">
-            <div className="rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-white h-72 sm:h-80">
+          {/* Immagine 2: a destra (stesso margine negativo e stessa altezza per allinearla perfettamente) */}
+          <div className="relative -mt-36 z-20">
+            <div className="rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-slate-900 h-72 sm:h-80 flex items-center justify-center">
               <img 
                 src="/img/kit manutenzione autonomia.jpg" 
                 alt="Kit manutenzione autonomia" 
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
