@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Wrench, CheckCircle, ArrowLeft } from "lucide-react";
 
-export function OrdinaRicambi() {
+export default function OrdinaKitManutenzione() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
@@ -47,7 +47,7 @@ export function OrdinaRicambi() {
               <Wrench className="h-6 w-6" />
             </span>
             <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-[var(--ink)]">
-              Ordina Ricambi e Manutenzione
+              Ordina Kit Manutenzione
             </h1>
             <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
               Compila il modulo sottostante per richiedere in autonomia i filtri, le lampade UV o i consumabili per il tuo impianto. Ti ricontatteremo rapidamente per la spedizione.
@@ -59,7 +59,7 @@ export function OrdinaRicambi() {
               <CheckCircle className="h-12 w-12 text-emerald-600 mx-auto mb-3" />
               <h3 className="font-display text-lg font-bold text-emerald-900">Richiesta inviata con successo!</h3>
               <p className="mt-1 text-xs text-emerald-700 max-w-md mx-auto">
-                Abbiamo ricevuto la tua richiesta di ricambi. Ti è stata presa in carico e ti contatteremo al più presto per confermare l'ordine.
+                Abbiamo ricevuto la tua richiesta di ricambi. È stata presa in carico e ti contatteremo al più presto per confermare l'ordine.
               </p>
               <button
                 onClick={() => {
@@ -170,7 +170,7 @@ export function OrdinaRicambi() {
                   type="submit"
                   className="w-full rounded-full bg-[var(--navy)] py-3 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-md text-center"
                 >
-                  Invia Ordine Ricambi
+                  Invia Ordine Kit Manutenzione
                 </button>
               </div>
 
