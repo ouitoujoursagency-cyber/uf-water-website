@@ -196,13 +196,13 @@ export default function OrdinaKitManutenzione() {
         </div>
       </div>
 
-      {/* Sezione inferiore con le due foto quadrate, centrate e pulite sul fondo bianco */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+      {/* Sezione inferiore con le due foto quadrate sovrapposte parzialmente alla banda blu */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
           
-          {/* Foto 1 */}
-          <div className="mx-auto w-full max-w-md">
-            <div className="aspect-square rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-white">
+          {/* Foto 1 con margine negativo -mt-20 per salire sul blu */}
+          <div className="mx-auto w-full max-w-md relative -mt-20 z-20">
+            <div className="aspect-square rounded-[24px] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione.jpg" 
                 alt="Kit manutenzione" 
@@ -211,9 +211,9 @@ export default function OrdinaKitManutenzione() {
             </div>
           </div>
 
-          {/* Foto 2 */}
-          <div className="mx-auto w-full max-w-md">
-            <div className="aspect-square rounded-[24px] overflow-hidden shadow-xl border-4 border-white bg-white">
+          {/* Foto 2 con margine negativo -mt-20 per salire sul blu */}
+          <div className="mx-auto w-full max-w-md relative -mt-20 z-20">
+            <div className="aspect-square rounded-[24px] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione autonomia.jpg" 
                 alt="Kit manutenzione autonomia" 
