@@ -22,6 +22,7 @@ export const NAV = [
   { to: "/prodotti", label: "Depuratori", id: "prodotti" },
  { to: "/accessori", label: "Miscelatori/CO2", id: "accessori" },
   { to: "/installazione-servizi", label: "Installazione", id: "installazione" },
+  { to: "/ordina-kit-manutenzione", label: "Ordina Kit Manutenzione" },
   { to: "/normative-certificazioni", label: "Normative", id: "normative" },
   { to: "/contatti", label: "Contatti", id: "contatti" },
   { to: "/admin/preventivo", label: "🔐 Area Venditori" }
