@@ -21,15 +21,15 @@ export default function OrdinaKitManutenzione() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Qui puoi integrare il servizio di invio email (es. EmailJS, Formspree o chiamata API al tuo server)
-    console.log("Dati ordine ricambi inviati:", formData);
+    // Qui puoi integrare il servizio di invio email (es. Formspree o EmailJS)
+    console.log("Dati ordine kit manutenzione inviati:", formData);
 
     // Mostra il messaggio di conferma
     setSubmitted(true);
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 pt-28 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         
         {/* Pulsante per tornare indietro */}
@@ -168,7 +168,7 @@ export default function OrdinaKitManutenzione() {
               <div className="pt-4">
                 <button 
                   type="submit"
-                  className="w-full rounded-full bg-[var(--navy)] py-3 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-md text-center"
+                  className="w-full rounded-full bg-[var(--navy)] py-3 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-md text-center cursor-pointer"
                 >
                   Invia Ordine Kit Manutenzione
                 </button>

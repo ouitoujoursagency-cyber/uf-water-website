@@ -21,10 +21,10 @@ export default function OrdinaKitManutenzione() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Qui puoi collegare un servizio di invio email (es. Formspree o EmailJS)
+    // Qui puoi integrare il servizio di invio email (es. Formspree o EmailJS)
     console.log("Dati ordine kit manutenzione inviati:", formData);
 
-    // Mostra il messaggio di successo
+    // Mostra il messaggio di conferma
     setSubmitted(true);
   };
 
