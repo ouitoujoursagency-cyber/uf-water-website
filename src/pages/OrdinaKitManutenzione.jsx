@@ -29,28 +29,29 @@ export default function OrdinaKitManutenzione() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-200/70 pt-28 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         
         {/* Pulsante per tornare indietro */}
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-[var(--navy)] mb-6 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-[var(--navy)] mb-6 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" /> Torna alla Home / Catalogo
         </Link>
 
-        <div className="bg-white rounded-[28px] shadow-xl p-6 sm:p-10 border border-slate-100">
+        {/* Box principale con contrasto e ombra accentuati */}
+        <div className="bg-white rounded-[28px] shadow-2xl p-6 sm:p-10 border border-slate-300/80">
           
           <div className="text-center mb-8">
-            <span className="inline-grid h-12 w-12 place-items-center rounded-full bg-sky-50 text-sky-600 mb-3 mx-auto border border-sky-100">
+            <span className="inline-grid h-12 w-12 place-items-center rounded-full bg-sky-50 text-sky-600 mb-3 mx-auto border border-sky-100 shadow-sm">
               <Wrench className="h-6 w-6" />
             </span>
             <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-[var(--ink)]">
               Ordina Kit Manutenzione
             </h1>
-            <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Compila il modulo sottostante per richiedere in autonomia i filtri, le lampade UV o i consumabili per il tuo impianto. Ti ricontatteremo rapidamente per la spedizione.
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Compila il modulo sottostante per richiedere in autonomia i filtri e i consumabili per il tuo impianto. Ti ricontatteremo rapidamente per la spedizione.
             </p>
           </div>
 
@@ -76,7 +77,7 @@ export default function OrdinaKitManutenzione() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Nome *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Nome *</label>
                   <input 
                     type="text" 
                     name="nome"
@@ -84,11 +85,11 @@ export default function OrdinaKitManutenzione() {
                     value={formData.nome}
                     onChange={handleChange}
                     placeholder="Il tuo nome"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Cognome *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Cognome *</label>
                   <input 
                     type="text" 
                     name="cognome"
@@ -96,14 +97,14 @@ export default function OrdinaKitManutenzione() {
                     value={formData.cognome}
                     onChange={handleChange}
                     placeholder="Il tuo cognome"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Email *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Email *</label>
                   <input 
                     type="email" 
                     name="email"
@@ -111,11 +112,11 @@ export default function OrdinaKitManutenzione() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="tua@email.it"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Numero di Telefono *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Numero di Telefono *</label>
                   <input 
                     type="tel" 
                     name="telefono"
@@ -123,14 +124,14 @@ export default function OrdinaKitManutenzione() {
                     value={formData.telefono}
                     onChange={handleChange}
                     placeholder="Il tuo numero"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">
                     Riferimento del Contratto <span className="text-slate-400 font-normal lowercase">(opzionale)</span>
                   </label>
                   <input 
@@ -139,18 +140,18 @@ export default function OrdinaKitManutenzione() {
                     value={formData.contratto}
                     onChange={handleChange}
                     placeholder="Es. N. contratto o codice cliente"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Tipo di Impianto *</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Tipo di Impianto *</label>
                   <select 
                     name="impianto"
                     required
                     value={formData.impianto}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-white focus:outline-none focus:border-sky-500 transition-colors"
                   >
                     <option value="" disabled>Seleziona il tuo impianto...</option>
                     <option value="TOP 30 – Black Edition / Osmosi">TOP 30 – Black Edition / Osmosi</option>
@@ -158,7 +159,6 @@ export default function OrdinaKitManutenzione() {
                     <option value="Osmo Top">Osmo Top</option>
                     <option value="Gel 30 Sottolavello – Black Edition">Gel 30 Sottolavello – Black Edition</option>
                     <option value="Osmo Slim">Osmo Slim</option>
-                    <option value="Micro in-line UV">Micro in-line UV</option>
                     <option value="Office 30">Office 30 (Ufficio)</option>
                     <option value="Altro / Non ricordo">Altro / Non ricordo</option>
                   </select>
