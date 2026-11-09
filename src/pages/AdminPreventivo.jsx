@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+rt { useState, useEffect, useRef } from "react";
 import { PRODUCTS, ACCESSORIES } from "@/data/catalog";
 import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Trash2, ShoppingCart, Printer, ArrowDownRight } from "lucide-react";
 
@@ -41,7 +41,7 @@ export default function AdminPreventivo() {
 
   const [showCartModal, setShowCartModal] = useState(false);
   const [showSignatureModal, setShowSignatureModal] = useState(false);
-  const [showFullClauses, setShowFullClauses] = useState(false); // Stato per visualizzare le clausole complete (se richiesto dal piega-pagina)
+  const [showFullClauses, setShowFullClauses] = useState(false); // Stato per visualizzare/nascondere le clausole nel form di compilazione
 
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -219,13 +219,13 @@ export default function AdminPreventivo() {
           </button>
         </div>
 
-        {/* ================= VISTA ANTEPRIMA PREVENTIVO (NON FIRMATO) ================= */}
+        {/* ================= VISTA ANTEPRIMA PREVENTIVO (NON FIRMATO - CON TUTTE LE CLAUSOLE FISSE) ================= */}
         {isPreviewMode ? (
           <div className="space-y-8 print:space-y-6">
             <div className="print:hidden flex justify-between items-center bg-sky-50 border border-sky-100 p-4 rounded-2xl">
               <div>
                 <h3 className="text-sm font-bold text-sky-900">Preventivo Pronto per la Consegna</h3>
-                <p className="text-xs text-sky-700">Il cliente ha scelto di ricevere il preventivo senza firmare subito.</p>
+                <p className="text-xs text-sky-700">Il cliente ha scelto di ricevere il preventivo completo di termini e condizioni.</p>
               </div>
               <div className="flex gap-2">
                 <button 
@@ -243,8 +243,8 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* Documento ufficiale stampabile con angolo piegato in basso a destra */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 space-y-6 relative overflow-hidden">
+            {/* Documento ufficiale stampabile (Senza angolo piegato, clausole presenti per intero) */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 space-y-6">
               <div className="flex justify-between items-start border-b border-slate-200 pb-6">
                 <div>
                   <h2 className="text-xl font-black text-slate-900">UF WATER TECHNOLOGY</h2>
@@ -307,41 +307,20 @@ export default function AdminPreventivo() {
                 </div>
               )}
 
-              {/* Sezione Clausole Riassuntive sul Foglio Principale */}
-              <div className="pt-4 border-t border-slate-200 text-xs text-slate-600 space-y-2 pr-20">
-                <h4 className="font-bold text-slate-800 uppercase tracking-wider text-[11px]">Condizioni Generali di Fornitura</h4>
-                <p>1. <strong>Validità:</strong> Il presente preventivo ha validità di 30 giorni dalla data di emissione.</p>
-                <p>2. <strong>Pagamento e Garanzia:</strong> Salvo accordi specifici, i pagamenti seguono le scadenze concordate. I prodotti godono di garanzia ufficiale a norma di legge.</p>
-                {showFullClauses && (
-                  <div className="space-y-2 pt-2 animate-fadeIn text-[11px] text-slate-500">
-                    <p>3. <strong>Esecuzione:</strong> L'installazione richiede la predisposizione autonoma delle utenze idriche ed elettriche da parte del committente.</p>
-                    <p>4. <strong>Recesso:</strong> Per i consumatori valgono le normative vigenti in materia di contratti fuori dai locali commerciali o a distanza.</p>
-                    <p>5. <strong>Foro Competente:</strong> Per qualsiasi controversia è competente in via esclusiva il Foro di Brescia.</p>
-                  </div>
-                )}
+              {/* Tutte le 10 Clausole Complete (formato pagina intera) */}
+              <div className="pt-6 border-t border-slate-200 text-[11px] text-slate-600 space-y-2.5 leading-relaxed">
+                <h4 className="font-bold text-slate-800 uppercase tracking-wider text-xs mb-3">Condizioni Generali di Vendita</h4>
+                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista).[cite: 3]</p>
+                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce.[cite: 3]</p>
+                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge. Il prezzo non comprende le spese di spedizione se non diversamente specificato.[cite: 3]</p>
+                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati. In caso di acquisto del solo dispositivo, la consegna avviene entro i termini stabiliti senza oneri di installazione a carico del venditore. In caso di servizio di installazione, il cliente deve predisporre autonomamente la rete elettrica e le opere propedeutiche nel rispetto del Vademecum.[cite: 3]</p>
+                <p><strong>5 - RISOLUZIONE DEL CONTRATTO:</strong> In caso di mancato pagamento del prezzo, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c., fatto salvo il diritto al risarcimento dei danni e all'azione per il recupero delle somme dovute.[cite: 3]</p>
+                <p><strong>6 - RECESSO:</strong> Ai sensi degli artt. 52 e ss. del Codice del Consumo, il Cliente Consumatore ha diritto di recedere entro 14 giorni di calendario dal ricevimento della merce, mediante comunicazione scritta e provvedendo alla restituzione a proprie spese dei beni integri e nel loro imballo originale.[cite: 3]</p>
+                <p><strong>7 - TRASPORTO:</strong> Tutte le spese di trasporto, quando quantificate nel Modulo d'Ordine, sono a carico del Cliente, rimanendo il venditore liberato da ogni rischio con la consegna al vettore.[cite: 3]</p>
+                <p><strong>8 - GARANZIA PRODOTTO:</strong> I prodotti sono garantiti per 24 mesi contro i difetti di conformità ai sensi del Codice del Consumo (per i consumatori) o del Codice Civile (per professionisti). Sono esclusi dalla garanzia i guasti derivanti da utilizzo di componenti o consumabili non originali, manomissioni o uso difforme dalle istruzioni.[cite: 3]</p>
+                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Il venditore risponde di eventuali danni a cose o persone derivanti da malfunzionamento solo in caso di dolo o colpa grave. È esclusa ogni responsabilità per danni derivanti da uso improprio o non conforme dei prodotti.[cite: 3]</p>
+                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia nascente in relazione alla stipulazione, validità, interpretazione o esecuzione del presente contratto sarà competente in via esclusiva il Foro di Brescia.[cite: 3]</p>
               </div>
-
-              {/* Angolo Piegato (Dog-Ear) in basso a destra con freccetta e scritta di segnalazione */}
-              <div 
-                onClick={() => setShowFullClauses(!showFullClauses)}
-                className="absolute bottom-0 right-0 w-24 h-24 cursor-pointer group z-20 print:hidden"
-                title={showFullClauses ? "Riduci clausole" : "Leggi tutte le clausole"}
-              >
-                {/* Scritta e freccia di segnalazione */}
-                <div className="absolute bottom-8 right-10 flex items-center gap-1 text-[10px] font-bold text-sky-600 bg-white/90 px-2 py-0.5 rounded-md shadow-sm border border-sky-100 group-hover:bg-sky-600 group-hover:text-white transition-all whitespace-nowrap pointer-events-none">
-                  <span>{showFullClauses ? "Meno" : "Tutte le clausole"}</span>
-                  <ArrowDownRight className="w-3 h-3 animate-bounce" />
-                </div>
-
-                {/* Illustrazione angolo piegato */}
-                <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[48px] border-r-[48px] border-b-slate-300 border-r-transparent group-hover:border-b-sky-500 transition-colors duration-300 shadow-[-6px_-6px_12px_rgba(0,0,0,0.1)]"></div>
-                <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[44px] border-r-[44px] border-b-white border-r-transparent"></div>
-                
-                <span className="absolute bottom-1.5 right-1.5 text-[10px] font-mono font-bold text-slate-600 group-hover:text-sky-600 transition-colors">
-                  {showFullClauses ? "▲" : "§"}
-                </span>
-              </div>
-
             </div>
           </div>
         ) : submitted ? (
@@ -374,7 +353,8 @@ export default function AdminPreventivo() {
             </div>
           </div>
         ) : (
-          <form onSubmit={handleGenerateQuoteOnly} className="space-y-8">
+          /* ================= FORM DI COMPILAZIONE (CON ANGOLO PIEGATO IN BASSO A DESTRA) ================= */
+          <form onSubmit={handleGenerateQuoteOnly} className="space-y-8 relative pb-12">
             
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -649,6 +629,26 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
+            {/* Visualizzatore a scomparsa delle clausole nel form di compilazione */}
+            {showFullClauses && (
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-300 space-y-3 animate-fadeIn text-[11px] text-slate-600">
+                <div className="flex justify-between items-center border-b border-slate-200 pb-2">
+                  <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Termini e Condizioni di Vendita (Anteprima Compilazione)</h4>
+                  <button type="button" onClick={() => setShowFullClauses(false)} className="text-xs text-red-600 font-bold hover:underline">Chiudi [X]</button>
+                </div>
+                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista).[cite: 3]</p>
+                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce.[cite: 3]</p>
+                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge.[cite: 3]</p>
+                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati.[cite: 3]</p>
+                <p><strong>5 - RISOLUZIONE:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.[cite: 3]</p>
+                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo.[cite: 3]</p>
+                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine.[cite: 3]</p>
+                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità.[cite: 3]</p>
+                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave.[cite: 3]</p>
+                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia.[cite: 3]</p>
+              </div>
+            )}
+
             <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row gap-4">
               
               <button 
@@ -666,6 +666,26 @@ export default function AdminPreventivo() {
                 <FileText className="h-4 w-4" /> Genera Modulo Preventivo (Senza Firma)
               </button>
 
+            </div>
+
+            {/* Angolo Piegato (Dog-Ear) in basso a destra del form di compilazione con freccia e scritta "Termini e condizioni" */}
+            <div 
+              onClick={() => setShowFullClauses(!showFullClauses)}
+              className="absolute bottom-4 right-0 w-32 h-32 cursor-pointer group z-20"
+              title="Visualizza Termini e Condizioni"
+            >
+              <div className="absolute bottom-6 right-8 flex items-center gap-1.5 text-[11px] font-bold text-sky-700 bg-white/95 px-2.5 py-1 rounded-lg shadow-md border border-sky-200 group-hover:bg-sky-600 group-hover:text-white transition-all whitespace-nowrap pointer-events-none">
+                <span>Termini e Condizioni</span>
+                <ArrowDownRight className="w-4 h-4 animate-bounce text-sky-600 group-hover:text-white" />
+              </div>
+
+              {/* Illustrazione angolo piegato */}
+              <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[52px] border-r-[52px] border-b-slate-300 border-r-transparent group-hover:border-b-sky-500 transition-colors duration-300 shadow-[-6px_-6px_12px_rgba(0,0,0,0.1)]"></div>
+              <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[48px] border-r-[48px] border-b-white border-r-transparent"></div>
+              
+              <span className="absolute bottom-1.5 right-1.5 text-[10px] font-mono font-bold text-slate-600 group-hover:text-sky-600 transition-colors">
+                {showFullClauses ? "▲" : "§"}
+              </span>
             </div>
 
           </form>
