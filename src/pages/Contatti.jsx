@@ -3,15 +3,15 @@ import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 
 export default function Contatti() {
   return (
-    <div className="min-h-screen bg-[#06142B] text-white pt-36 pb-16 px-4 sm:px-8 relative overflow-hidden">
+    <div className="bg-[#06142B] text-white pt-36 pb-10 px-4 sm:px-8 relative overflow-hidden">
       
       {/* Sfondo sfumato decorativo */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
       
-      <div className="mx-auto max-w-7xl space-y-12">
+      <div className="mx-auto max-w-7xl space-y-8">
         
         {/* Intestazione */}
-        <div className="text-center max-w-2xl mx-auto space-y-3">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
           <h1 className="font-display text-3xl sm:text-4xl font-black">Contatta UF Water</h1>
           <p className="text-xs sm:text-sm text-slate-300">Siamo a tua disposizione per informazioni, preventivi e assistenza personalizzata.</p>
         </div>
@@ -66,7 +66,7 @@ export default function Contatti() {
         </div>
 
         {/* Pulsante rapido WhatsApp in basso */}
-        <div className="text-center pt-2">
+        <div className="text-center pt-2 pb-2">
           <a 
             href="https://wa.me/393331234567" 
             target="_blank" 
