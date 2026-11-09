@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PRODUCTS, ACCESSORIES } from "@/data/catalog";
-import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Bookmark, ArrowLeft } from "lucide-react";
+import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Bookmark, ArrowLeft, Trash2, ShoppingCart, Check } from "lucide-react";
 
 export default function AdminPreventivo() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,10 +40,15 @@ export default function AdminPreventivo() {
   const [submitted, setSubmitted] = useState(false);
   const [isSigned, setIsSigned] = useState(false);
 
-  // Stati per il Pop-up di Firma e il cambio pagina (angolo piegato)
+  // Stati per il flusso di Firma e Carrello Anteprima
+  const [showCartModal, setShowCartModal] = useState(false);
   const [showSignatureModal, setShowSignatureModal] = useState(false);
-  const [signatureName, setSignatureName] = useState("");
-  const [isClausePage, setIsClausePage] = useState(false); // Gira pagina per le clausole
+  const [isClausePage, setIsClausePage] = useState(false);
+
+  // Canvas per la firma con pennino
+  const canvasRef = useRef(null);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [hasSignature, setHasSignature] = useState(false);
 
   // PIN segreto per l'accesso
   const SECURE_PIN = "1234";
@@ -88,18 +93,68 @@ export default function AdminPreventivo() {
     }
   };
 
-  const handleSubmitQuote = (e, signed = false) => {
+  // Funzione per trovare l'immagine del prodotto o accessorio dai cataloghi
+  const getItemImage = (itemName) => {
+    const prod = PRODUCTS.find(p => p.name === itemName);
+    if (prod && prod.image) return prod.image;
+    const acc = ACCESSORIES.find(a => a.name === itemName);
+    if (acc && acc.image) return acc.image;
+    return null;
+  };
+
+  // Click su Firma Contratto: apre prima il carrello riepilogo
+  const handleOpenCart = (e) => {
     e.preventDefault();
-    if (signed) {
-      setShowSignatureModal(true);
-      return;
-    }
-    finalizeSubmission(false);
+    setShowCartModal(true);
+  };
+
+  // Gestione disegno firma su Canvas (Pennino)
+  const startDrawing = (e) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX || e.touches[0].clientX) - rect.left;
+    const y = (e.clientY || e.touches[0].clientY) - rect.top;
+    
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    setIsDrawing(true);
+    setHasSignature(true);
+  };
+
+  const draw = (e) => {
+    if (!isDrawing) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX || e.touches[0].clientX) - rect.left;
+    const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#06142B";
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  };
+
+  const stopDrawing = () => {
+    setIsDrawing(false);
+  };
+
+  const clearSignature = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setHasSignature(false);
   };
 
   const finalizeSubmission = (signed) => {
     setIsSigned(signed);
     setShowSignatureModal(false);
+    setShowCartModal(false);
     const currentNum = parseInt(quoteMeta.numeroProposta.replace(/\D/g, "")) || 100;
     localStorage.setItem("uf_last_proposal_num", currentNum.toString());
     setSubmitted(true);
@@ -164,7 +219,7 @@ export default function AdminPreventivo() {
               </h3>
               <p className="text-slate-600 mt-2 max-w-md mx-auto text-sm leading-relaxed">
                 Il modulo è stato compilato per <strong>{clientData.name || "Cliente"}</strong> ({quoteMeta.numeroProposta}). 
-                {isSigned ? ` Firmato digitalmente da: ${signatureName || clientData.name}.` : " Preventivo pronto per essere consegnato o stampato."}
+                {isSigned ? " Il contratto è stato firmato con firma autografa." : " Preventivo pronto per essere consegnato o stampato."}
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-4 pt-4">
@@ -189,7 +244,7 @@ export default function AdminPreventivo() {
             </div>
           </div>
         ) : (
-          <form onSubmit={(e) => handleSubmitQuote(e, false)} className="space-y-8">
+          <form onSubmit={(e) => { e.preventDefault(); finalizeSubmission(false); }} className="space-y-8">
             
             {/* SEZIONE 0: Dati Data e Venditore in alto a sinistra */}
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -317,11 +372,11 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* SEZIONE 2: Impianto e Accessori */}
+            {/* SEZIONE 2: Impianto e Miscelatori/CO2 */}
             <div className="pt-4 border-t border-slate-200">
               <h3 className="font-display text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-sky-100 text-sky-700 text-xs font-mono">2</span>
-                Impianti & Accessori Selezionati (Selezione Multipla)
+                Impianti & Miscelatori/CO2 Selezionati (Selezione Multipla)
               </h3>
 
               <div className="grid gap-6 sm:grid-cols-2">
@@ -373,15 +428,15 @@ export default function AdminPreventivo() {
                   </div>
                 </div>
 
-                {/* Accessori */}
+                {/* Miscelatori / CO2 */}
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1.5 font-semibold">Accessori / Optional</label>
+                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1.5 font-semibold">Miscelatori / CO2</label>
                   <select 
                     onChange={handleAccessoryChange}
                     defaultValue=""
                     className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 bg-white mb-2"
                   >
-                    <option value="" disabled>Aggiungi accessorio...</option>
+                    <option value="" disabled>Aggiungi miscelatore o CO2...</option>
                     {ACCESSORIES.map(a => (
                       <option key={a.id} value={a.name}>{a.name}</option>
                     ))}
@@ -391,7 +446,7 @@ export default function AdminPreventivo() {
                   <div className="flex gap-2 mt-2">
                     <input 
                       type="text"
-                      placeholder="Scrivi accessorio personalizzato..."
+                      placeholder="Scrivi articolo personalizzato..."
                       value={customAccessory}
                       onChange={(e) => setCustomAccessory(e.target.value)}
                       className="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs text-slate-800 bg-white"
@@ -422,7 +477,7 @@ export default function AdminPreventivo() {
 
               </div>
 
-              {/* Modalità di pagamento aggiornata con opzione scrittura */}
+              {/* Modalità di pagamento con opzione scrittura */}
               <div className="grid gap-4 sm:grid-cols-2 mt-6">
                 <div>
                   <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1">Modalità di Pagamento</label>
@@ -432,8 +487,6 @@ export default function AdminPreventivo() {
                     className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 bg-white mb-2"
                   >
                     <option value="Bonifico Bancario">Bonifico Bancario</option>
-                    <option value="Finanziamento">Finanziamento Credito al Consumo</option>
-                    <option value="Contrassegno">Contrassegno al Corriere</option>
                     <option value="Altro">Altro (specifica sotto)</option>
                   </select>
 
@@ -477,7 +530,7 @@ export default function AdminPreventivo() {
               
               <button 
                 type="button"
-                onClick={(e) => handleSubmitQuote(e, true)}
+                onClick={handleOpenCart}
                 className="flex-1 rounded-full bg-emerald-600 py-4 font-bold text-white hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-600/20 text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
               >
                 <PenTool className="h-4 w-4" /> Firma Contratto per Accettazione
@@ -496,42 +549,141 @@ export default function AdminPreventivo() {
         )}
       </div>
 
-      {/* ================= MODALE FIRMA CONTRATTO & EFFETTO ANGOLO PIEGATO ================= */}
+      {/* ================= MODALE 1: ANTEPRIMA CARRELLO ARTICOLI ================= */}
+      {showCartModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="relative w-full max-w-lg rounded-[32px] bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div className="flex items-center gap-2">
+                <ShoppingCart className="h-5 w-5 text-sky-600" />
+                <h3 className="font-display text-lg font-black text-slate-900">Riepilogo Articoli Selezionati</h3>
+              </div>
+              <button onClick={() => setShowCartModal(false)} className="text-slate-400 hover:text-slate-700 font-bold text-sm">✕</button>
+            </div>
+
+            <div className="max-h-72 overflow-y-auto space-y-3 pr-1">
+              {selectedProducts.length === 0 && selectedAccessories.length === 0 ? (
+                <p className="text-xs text-slate-500 text-center py-6">Nessun articolo selezionato nel preventivo.</p>
+              ) : (
+                <>
+                  {selectedProducts.map((item, idx) => {
+                    const img = getItemImage(item);
+                    return (
+                      <div key={idx} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
+                        <div className="flex items-center gap-3">
+                          {img ? (
+                            <img src={img} alt={item} className="w-12 h-12 object-cover rounded-xl border border-slate-200 bg-white" />
+                          ) : (
+                            <div className="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xs font-bold">Extra</div>
+                          )}
+                          <div>
+                            <p className="text-xs font-bold text-slate-900">{item}</p>
+                            <span className="text-[10px] text-sky-700 font-mono font-semibold">Sistema Principale</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {selectedAccessories.map((item, idx) => {
+                    const img = getItemImage(item);
+                    return (
+                      <div key={idx} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
+                        <div className="flex items-center gap-3">
+                          {img ? (
+                            <img src={img} alt={item} className="w-12 h-12 object-cover rounded-xl border border-slate-200 bg-white" />
+                          ) : (
+                            <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-bold">Extra</div>
+                          )}
+                          <div>
+                            <p className="text-xs font-bold text-slate-900">{item}</p>
+                            <span className="text-[10px] text-teal-700 font-mono font-semibold">Miscelatore / CO2</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
+            </div>
+
+            <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-between">
+              <span className="text-xs font-bold text-sky-900">Totale Concordato:</span>
+              <span className="font-display text-base font-black text-sky-900">€ {clientData.totalPrice || "0,00"}</span>
+            </div>
+
+            <div className="flex gap-3 pt-2">
+              <button 
+                type="button"
+                onClick={() => setShowCartModal(false)}
+                className="flex-1 rounded-full bg-slate-100 py-3.5 text-xs font-bold text-slate-700 hover:bg-slate-200 transition-colors"
+              >
+                Torna a Modificare
+              </button>
+              <button 
+                type="button"
+                onClick={() => { setShowCartModal(false); setShowSignatureModal(true); }}
+                className="flex-1 rounded-full bg-emerald-600 py-3.5 text-xs font-bold text-white hover:bg-emerald-500 transition-colors shadow-md"
+              >
+                Procedi alla Firma
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================= MODALE 2: FIRMA AUTOGRAFA & CLAUSOLE (PAGINA GIRATA) ================= */}
       {showSignatureModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fadeIn">
           <div className="relative w-full max-w-lg rounded-[32px] bg-white border border-slate-200 shadow-2xl p-8 overflow-hidden transition-all duration-300">
             
-            {/* PAGINA 1: FIRMA */}
+            {/* PAGINA 1: FIRMA CON PENNINO */}
             {!isClausePage ? (
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div className="text-center">
-                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-mono font-bold border border-emerald-100">Accettazione e Firma</span>
-                  <h3 className="font-display text-2xl font-black text-slate-900 mt-2">Firma del Contratto</h3>
+                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-mono font-bold border border-emerald-100">Firma Autografa</span>
+                  <h3 className="font-display text-xl font-black text-slate-900 mt-2">Firma del Contratto</h3>
                   <p className="text-xs text-slate-600 mt-1">
-                    Il cliente accetta i termini dell'ordine {quoteMeta.numeroProposta} per un totale di <strong>€ {clientData.totalPrice || "0,00"}</strong>.
+                    Firma nell'apposito spazio sottostante per confermare l'accettazione della proposta {quoteMeta.numeroProposta}.
                   </p>
                 </div>
 
-                <div className="space-y-4 pt-2">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1">Nome e Cognome per la Firma *</label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="Firma digitale (Digita Nome e Cognome)"
-                      value={signatureName}
-                      onChange={(e) => setSignatureName(e.target.value)}
-                      className="w-full rounded-2xl border-2 border-dashed border-slate-300 px-5 py-4 text-center font-display text-lg text-slate-900 bg-slate-50 focus:outline-none focus:border-sky-500"
-                      autoFocus
-                    />
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center px-1">
+                    <label className="text-xs font-mono uppercase tracking-wider text-slate-600 font-semibold">Casella per la Firma *</label>
+                    <button 
+                      type="button" 
+                      onClick={clearSignature}
+                      className="text-[11px] text-red-600 hover:underline font-bold flex items-center gap-1"
+                    >
+                      <Trash2 className="h-3 w-3" /> Pulisci firma
+                    </button>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 leading-relaxed">
-                    💡 <em>Nota:</em> Cliccando su "Conferma e Accetta", il contratto viene validato digitalmente. Puoi consultare le clausole cliccando sull'angolo in basso a destra.
+                  {/* Canvas per il pennino */}
+                  <div className="border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50 overflow-hidden relative touch-none">
+                    <canvas 
+                      ref={canvasRef}
+                      width={440}
+                      height={150}
+                      onMouseDown={startDrawing}
+                      onMouseMove={draw}
+                      onMouseUp={stopDrawing}
+                      onMouseLeave={stopDrawing}
+                      onTouchStart={startDrawing}
+                      onTouchMove={draw}
+                      onTouchEnd={stopDrawing}
+                      className="w-full h-36 cursor-crosshair bg-white"
+                    />
+                    {!hasSignature && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none text-slate-300 text-xs font-mono tracking-widest">
+                        Firma qui con il mouse o il dito
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex gap-3 pt-2">
                   <button 
                     type="button"
                     onClick={() => setShowSignatureModal(false)}
@@ -542,19 +694,19 @@ export default function AdminPreventivo() {
                   <button 
                     type="button"
                     onClick={() => finalizeSubmission(true)}
-                    disabled={!signatureName}
-                    className={`flex-1 rounded-full py-3.5 text-xs font-bold text-white transition-colors shadow-md ${signatureName ? "bg-emerald-600 hover:bg-emerald-500" : "bg-slate-300 cursor-not-allowed"}`}
+                    disabled={!hasSignature}
+                    className={`flex-1 rounded-full py-3.5 text-xs font-bold text-white transition-colors shadow-md ${hasSignature ? "bg-emerald-600 hover:bg-emerald-500" : "bg-slate-300 cursor-not-allowed"}`}
                   >
                     Conferma e Accetta
                   </button>
                 </div>
               </div>
             ) : (
-              /* PAGINA 2: CLAUSOLE CONTRATTUALI */
+              /* PAGINA 2: CLAUSOLE CONTRATTUALI AMPLIATE */
               <div className="space-y-4 animate-fadeIn">
                 <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-                  <h3 className="font-display text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <Bookmark className="h-5 w-5 text-sky-600" /> Clausole Contrattuali & Condizioni
+                  <h3 className="font-display text-base font-bold text-slate-900 flex items-center gap-2">
+                    <Bookmark className="h-5 w-5 text-sky-600" /> Condizioni Generali di Contratto
                   </h3>
                   <button 
                     onClick={() => setIsClausePage(false)}
@@ -564,11 +716,13 @@ export default function AdminPreventivo() {
                   </button>
                 </div>
 
-                <div className="max-h-64 overflow-y-auto text-xs text-slate-600 space-y-3 pr-2 leading-relaxed">
-                  <p><strong>Art. 1 (Oggetto):</strong> Il presente documento costituisce proposta d'ordine e contratto di fornitura per i sistemi di trattamento acqua UF Water Technology indicati.</p>
-                  <p><strong>Art. 2 (Consegna e Installazione):</strong> I tempi di consegna sono indicativi e subordinati alla disponibilità logistica. L'installazione standard comprende i raccordi previsti a listino.</p>
-                  <p><strong>Art. 3 (Garanzia):</strong> Tutti gli impianti godono di garanzia legale conformemente alle normative vigenti sui prodotti per uso domestico e commerciale.</p>
-                  <p><strong>Art. 4 (Diritto di Recesso):</strong> Ai sensi delle normative europee, il committente ha facoltà di recedere dal contratto entro 14 giorni dalla sottoscrizione qualora stipulato fuori dai locali commerciali.</p>
+                <div className="max-h-72 overflow-y-auto text-[11px] text-slate-600 space-y-2.5 pr-2 leading-relaxed">
+                  <p><strong>Art. 1 (Oggetto della Fornitura):</strong> Il presente documento costituisce proposta d'ordine e contratto di fornitura per i sistemi di trattamento acqua UF Water Technology e i relativi accessori specificati in prima pagina.</p>
+                  <p><strong>Art. 2 (Confezionamento e Installazione):</strong> I termini di consegna si intendono puramente indicativi e non essenziali. L'installazione standard è subordinata alla conformità degli impianti idrici ed elettrici del committente.</p>
+                  <p><strong>Art. 3 (Garanzia e Assistenza):</strong> I prodotti beneficiano della garanzia legale di conformità conformemente alle normative vigenti. La garanzia decade in caso di manomissione o mancata esecuzione della manutenzione programmata con consumabili originali.</p>
+                  <p><strong>Art. 4 (Modalità di Pagamento):</strong> Il corrispettivo dovrà essere corrisposto secondo i termini concordati. Il mancato pagamento anche di una sola rata o scadenza comporterà la decadenza dal beneficio del termine.</p>
+                  <p><strong>Art. 5 (Diritto di Recesso):</strong> Ai sensi degli artt. 52 e ss. del Codice del Consumo, qualora il contratto sia stipulato fuori dai locali commerciali, il committente ha diritto di recedere entro 14 giorni dalla sottoscrizione senza penali.</p>
+                  <p><strong>Art. 6 (Foro Competente):</strong> Per qualsiasi controversia derivante dall'interpretazione o esecuzione del presente contratto sarà competente in via esclusiva il Foro di residenza o domicilio del consumatore.</p>
                 </div>
 
                 <div className="pt-2">
