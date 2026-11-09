@@ -52,8 +52,8 @@ export function Navbar() {
         {/* ================= SECONDA RIGA: Area Venditori, Invita un amico, Consulenza ================= */}
         <div className="hidden lg:flex items-center justify-between pt-3 mt-3 border-t border-white/10">
           <div className="flex items-center gap-3">
-            {/* Pulsante Area Venditori (Assicurati che punti alla rotta corretta o gestisca il PIN) */}
-            <Link to="/venditori" className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
+            {/* CORRETTO: ora punta a /admin/preventivo dove si attiva il PIN */}
+            <Link to="/admin/preventivo" className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
               <Lock className="h-3.5 w-3.5 text-amber-400" /> Area Venditori
             </Link>
 
@@ -90,7 +90,8 @@ export function Navbar() {
             ))}
             
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-              <Link to="/venditori" className="flex items-center gap-2 text-sm text-slate-300 py-1">
+              {/* CORRETTO anche nel menu mobile */}
+              <Link to="/admin/preventivo" className="flex items-center gap-2 text-sm text-slate-300 py-1">
                 <Lock className="h-4 w-4 text-amber-400" /> Area Venditori
               </Link>
               <Link to="/invita-un-amico" className="flex items-center gap-2 text-sm text-sky-400 py-1">
