@@ -23,7 +23,7 @@ export function Navbar() {
     <header data-testid="site-navbar" className="fixed inset-x-0 top-0 z-50 px-3 sm:px-5 pt-3">
       <div className={`mx-auto flex flex-col max-w-7xl rounded-3xl px-4 sm:px-6 py-3 transition-[background-color,box-shadow,border-color] duration-500 border ${scrolled || open ? "bg-[#06142B]/90 backdrop-blur-xl border-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,.5)]" : "bg-[#06142B]/80 backdrop-blur-md border-white/10"}`}>
         
-        {/* ================= PRIMA RIGA: Logo + Menu Principale pulito (senza Area Venditori) ================= */}
+        {/* ================= PRIMA RIGA: Logo + Menu Principale pulito ================= */}
         <div className="flex items-center justify-between">
           <Link to="/" data-testid="nav-logo-link" className="flex items-center">
             <Logo />
@@ -49,11 +49,11 @@ export function Navbar() {
           </button>
         </div>
 
-        {/* ================= SECONDA RIGA: Area Venditori (corretta), Invita un amico, Consulenza ================= */}
+        {/* ================= SECONDA RIGA: Area Venditori, Invita un amico, Consulenza ================= */}
         <div className="hidden lg:flex items-center justify-between pt-3 mt-3 border-t border-white/10">
           <div className="flex items-center gap-3">
-            {/* Area Venditori con il percorso corretto (sostituisci /area-venditori se nel tuo router usi un altro percorso o un trigger per il PIN) */}
-            <Link to="/area-venditori" className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
+            {/* Pulsante Area Venditori (Assicurati che punti alla rotta corretta o gestisca il PIN) */}
+            <Link to="/venditori" className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors">
               <Lock className="h-3.5 w-3.5 text-amber-400" /> Area Venditori
             </Link>
 
@@ -75,7 +75,7 @@ export function Navbar() {
 
       </div>
 
-      {/* ================= MENU MOBILE (Smartphone) ================= */}
+      {/* ================= MENU MOBILE ================= */}
       <AnimatePresence>
         {open && (
           <motion.nav data-testid="mobile-menu" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
@@ -90,7 +90,7 @@ export function Navbar() {
             ))}
             
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-              <Link to="/area-venditori" className="flex items-center gap-2 text-sm text-slate-300 py-1">
+              <Link to="/venditori" className="flex items-center gap-2 text-sm text-slate-300 py-1">
                 <Lock className="h-4 w-4 text-amber-400" /> Area Venditori
               </Link>
               <Link to="/invita-un-amico" className="flex items-center gap-2 text-sm text-sky-400 py-1">

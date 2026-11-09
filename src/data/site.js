@@ -25,5 +25,4 @@ export const NAV = [
   { to: "/ordina-kit-manutenzione", label: "Ordina Kit Manutenzione" },
   { to: "/normative-certificazioni", label: "Normative", id: "normative" },
   { to: "/contatti", label: "Contatti", id: "contatti" },
-  { to: "/admin/preventivo", label: "🔐 Area Venditori" }
 ];
