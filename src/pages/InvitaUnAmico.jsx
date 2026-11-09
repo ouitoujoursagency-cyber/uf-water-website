@@ -30,13 +30,13 @@ export default function InvitaUnAmico() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06142B] text-white pt-40 pb-24 px-4 sm:px-8 relative overflow-hidden">
+    <div className="min-h-screen bg-[#06142B] text-white pt-40 pb-16 px-4 sm:px-8 relative overflow-hidden">
       
       {/* Elementi decorativi di sfondo sfumati */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="mx-auto max-w-7xl relative z-10 space-y-16">
+      <div className="mx-auto max-w-7xl relative z-10 space-y-12">
         
         {/* Sezione Principale / Hero & Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -52,7 +52,7 @@ export default function InvitaUnAmico() {
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg">
-              Fai conoscere UF Water a un amico: tu ricevi un <strong>kit di filtri originali in omaggio</strong>, mentre il tuo amico ottiene subito uno <strong>sconto del 15%</strong> sul suo primo impianto di purificazione[cite: 7].
+              Fai conoscere UF Water a un amico: tu ricevi un <strong>kit di filtri originali in omaggio</strong>, mentre il tuo amico ottiene subito uno <strong>sconto del 15%</strong> sul suo primo impianto di purificazione.
             </p>
 
             <div className="pt-2">
@@ -183,8 +183,8 @@ export default function InvitaUnAmico() {
         </div>
 
         {/* Come Funziona (3 Step) */}
-        <div className="pt-10 border-t border-white/10">
-          <div className="text-center max-w-xl mx-auto mb-12">
+        <div className="pt-8 border-t border-white/10">
+          <div className="text-center max-w-xl mx-auto mb-10">
             <h2 className="font-display text-2xl sm:text-3xl font-black">Come funziona in 3 semplici passi</h2>
             <p className="text-xs text-slate-400 mt-2">Un processo semplice e trasparente per premiare la tua fiducia.</p>
           </div>
@@ -199,7 +199,7 @@ export default function InvitaUnAmico() {
             <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm space-y-3">
               <div className="w-10 h-10 rounded-2xl bg-teal-500/20 text-teal-400 grid place-items-center font-bold text-sm">2</div>
               <h4 className="font-bold text-base">L'amico acquista</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">Il tuo amico sceglie il suo impianto UF Water e riceve subito uno sconto esclusivo del 15% sul totale[cite: 7].</p>
+              <p className="text-xs text-slate-300 leading-relaxed">Il tuo amico sceglie il suo impianto UF Water e riceve subito uno sconto esclusivo del 15% sul totale.</p>
             </div>
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm space-y-3">
@@ -210,29 +210,24 @@ export default function InvitaUnAmico() {
           </div>
         </div>
 
-        {/* Sezione Immagini (Portaunamico.jpg e Portaunamico2.jpg in riquadri quadrati, non invadenti) */}
-        <div className="pt-6">
-          <div className="text-center max-w-xl mx-auto mb-8">
-            <h3 className="font-display text-xl font-bold">Galleria & Esperienze</h3>
-            <p className="text-xs text-slate-400 mt-1">Immagini ufficiali del programma Porta un Amico.</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Sezione Immagini (Quadrate, intere senza bordi blu esterni) */}
+        <div className="pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Immagine 1 */}
-            <div className="aspect-square w-full rounded-[32px] overflow-hidden border border-white/10 bg-white/5 shadow-xl flex items-center justify-center p-3">
+            <div className="aspect-square w-full rounded-[32px] overflow-hidden shadow-2xl">
               <img 
                 src="/img/Portaunamico.jpg" 
                 alt="Porta un amico 1" 
-                className="w-full h-full object-contain rounded-2xl" 
+                className="w-full h-full object-cover" 
               />
             </div>
 
             {/* Immagine 2 */}
-            <div className="aspect-square w-full rounded-[32px] overflow-hidden border border-white/10 bg-white/5 shadow-xl flex items-center justify-center p-3">
+            <div className="aspect-square w-full rounded-[32px] overflow-hidden shadow-2xl">
               <img 
                 src="/img/Portaunamico2.jpg" 
                 alt="Porta un amico 2" 
-                className="w-full h-full object-contain rounded-2xl" 
+                className="w-full h-full object-cover" 
               />
             </div>
           </div>
