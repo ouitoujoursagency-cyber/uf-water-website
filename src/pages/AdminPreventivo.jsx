@@ -1,4 +1,4 @@
-rt { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PRODUCTS, ACCESSORIES } from "@/data/catalog";
 import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Trash2, ShoppingCart, Printer, ArrowDownRight } from "lucide-react";
 
@@ -41,7 +41,7 @@ export default function AdminPreventivo() {
 
   const [showCartModal, setShowCartModal] = useState(false);
   const [showSignatureModal, setShowSignatureModal] = useState(false);
-  const [showFullClauses, setShowFullClauses] = useState(false); // Stato per visualizzare/nascondere le clausole nel form di compilazione
+  const [showFullClauses, setShowFullClauses] = useState(false);
 
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -219,7 +219,7 @@ export default function AdminPreventivo() {
           </button>
         </div>
 
-        {/* ================= VISTA ANTEPRIMA PREVENTIVO (NON FIRMATO - CON TUTTE LE CLAUSOLE FISSE) ================= */}
+        {/* ================= VISTA ANTEPRIMA PREVENTIVO (NON FIRMATO) ================= */}
         {isPreviewMode ? (
           <div className="space-y-8 print:space-y-6">
             <div className="print:hidden flex justify-between items-center bg-sky-50 border border-sky-100 p-4 rounded-2xl">
@@ -243,7 +243,7 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* Documento ufficiale stampabile (Senza angolo piegato, clausole presenti per intero) */}
+            {/* Documento ufficiale stampabile */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 space-y-6">
               <div className="flex justify-between items-start border-b border-slate-200 pb-6">
                 <div>
@@ -307,19 +307,19 @@ export default function AdminPreventivo() {
                 </div>
               )}
 
-              {/* Tutte le 10 Clausole Complete (formato pagina intera) */}
+              {/* Tutte le 10 Clausole Complete */}
               <div className="pt-6 border-t border-slate-200 text-[11px] text-slate-600 space-y-2.5 leading-relaxed">
                 <h4 className="font-bold text-slate-800 uppercase tracking-wider text-xs mb-3">Condizioni Generali di Vendita</h4>
-                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista).[cite: 3]</p>
-                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce.[cite: 3]</p>
-                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge. Il prezzo non comprende le spese di spedizione se non diversamente specificato.[cite: 3]</p>
-                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati. In caso di acquisto del solo dispositivo, la consegna avviene entro i termini stabiliti senza oneri di installazione a carico del venditore. In caso di servizio di installazione, il cliente deve predisporre autonomamente la rete elettrica e le opere propedeutiche nel rispetto del Vademecum.[cite: 3]</p>
-                <p><strong>5 - RISOLUZIONE DEL CONTRATTO:</strong> In caso di mancato pagamento del prezzo, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c., fatto salvo il diritto al risarcimento dei danni e all'azione per il recupero delle somme dovute.[cite: 3]</p>
-                <p><strong>6 - RECESSO:</strong> Ai sensi degli artt. 52 e ss. del Codice del Consumo, il Cliente Consumatore ha diritto di recedere entro 14 giorni di calendario dal ricevimento della merce, mediante comunicazione scritta e provvedendo alla restituzione a proprie spese dei beni integri e nel loro imballo originale.[cite: 3]</p>
-                <p><strong>7 - TRASPORTO:</strong> Tutte le spese di trasporto, quando quantificate nel Modulo d'Ordine, sono a carico del Cliente, rimanendo il venditore liberato da ogni rischio con la consegna al vettore.[cite: 3]</p>
-                <p><strong>8 - GARANZIA PRODOTTO:</strong> I prodotti sono garantiti per 24 mesi contro i difetti di conformità ai sensi del Codice del Consumo (per i consumatori) o del Codice Civile (per professionisti). Sono esclusi dalla garanzia i guasti derivanti da utilizzo di componenti o consumabili non originali, manomissioni o uso difforme dalle istruzioni.[cite: 3]</p>
-                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Il venditore risponde di eventuali danni a cose o persone derivanti da malfunzionamento solo in caso di dolo o colpa grave. È esclusa ogni responsabilità per danni derivanti da uso improprio o non conforme dei prodotti.[cite: 3]</p>
-                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia nascente in relazione alla stipulazione, validità, interpretazione o esecuzione del presente contratto sarà competente in via esclusiva il Foro di Brescia.[cite: 3]</p>
+                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista)[cite: 3].</p>
+                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce[cite: 3].</p>
+                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge[cite: 3].</p>
+                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati[cite: 3].</p>
+                <p><strong>5 - RISOLUZIONE DEL CONTRATTO:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.[cite: 3]</p>
+                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo[cite: 3].</p>
+                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine[cite: 3].</p>
+                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità[cite: 3].</p>
+                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave[cite: 3].</p>
+                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia[cite: 3].</p>
               </div>
             </div>
           </div>
@@ -629,28 +629,27 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* Visualizzatore a scomparsa delle clausole nel form di compilazione */}
+            {/* Visualizzatore a scomparsa delle clausole nel form */}
             {showFullClauses && (
               <div className="p-6 rounded-2xl bg-slate-50 border border-slate-300 space-y-3 animate-fadeIn text-[11px] text-slate-600">
                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                  <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Termini e Condizioni di Vendita (Anteprima Compilazione)</h4>
+                  <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Termini e Condizioni di Vendita</h4>
                   <button type="button" onClick={() => setShowFullClauses(false)} className="text-xs text-red-600 font-bold hover:underline">Chiudi [X]</button>
                 </div>
-                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista).[cite: 3]</p>
-                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce.[cite: 3]</p>
-                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge.[cite: 3]</p>
-                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati.[cite: 3]</p>
+                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine[cite: 3].</p>
+                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine[cite: 3].</p>
+                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo di IVA[cite: 3].</p>
+                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati[cite: 3].</p>
                 <p><strong>5 - RISOLUZIONE:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.[cite: 3]</p>
-                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo.[cite: 3]</p>
-                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine.[cite: 3]</p>
-                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità.[cite: 3]</p>
-                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave.[cite: 3]</p>
-                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia.[cite: 3]</p>
+                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo[cite: 3].</p>
+                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine[cite: 3].</p>
+                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità[cite: 3].</p>
+                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave[cite: 3].</p>
+                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia[cite: 3].</p>
               </div>
             )}
 
             <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row gap-4">
-              
               <button 
                 type="button"
                 onClick={handleOpenCart}
@@ -665,10 +664,9 @@ export default function AdminPreventivo() {
               >
                 <FileText className="h-4 w-4" /> Genera Modulo Preventivo (Senza Firma)
               </button>
-
             </div>
 
-            {/* Angolo Piegato (Dog-Ear) in basso a destra del form di compilazione con freccia e scritta "Termini e condizioni" */}
+            {/* Angolo Piegato (Dog-Ear) in basso a destra del form */}
             <div 
               onClick={() => setShowFullClauses(!showFullClauses)}
               className="absolute bottom-4 right-0 w-32 h-32 cursor-pointer group z-20"
@@ -679,7 +677,6 @@ export default function AdminPreventivo() {
                 <ArrowDownRight className="w-4 h-4 animate-bounce text-sky-600 group-hover:text-white" />
               </div>
 
-              {/* Illustrazione angolo piegato */}
               <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[52px] border-r-[52px] border-b-slate-300 border-r-transparent group-hover:border-b-sky-500 transition-colors duration-300 shadow-[-6px_-6px_12px_rgba(0,0,0,0.1)]"></div>
               <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[48px] border-r-[48px] border-b-white border-r-transparent"></div>
               
@@ -692,7 +689,7 @@ export default function AdminPreventivo() {
         )}
       </div>
 
-      {/* ================= MODALE 1: ANTEPRIMA CARRELLO CON IMMAGINI REALI ================= */}
+      {/* ================= MODALE CARRELLO ================= */}
       {showCartModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fadeIn">
           <div className="relative w-full max-w-lg rounded-[32px] bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 space-y-6">
@@ -775,7 +772,7 @@ export default function AdminPreventivo() {
         </div>
       )}
 
-      {/* ================= MODALE 2: SOLO FIRMA AUTOGRAFA ================= */}
+      {/* ================= MODALE FIRMA ================= */}
       {showSignatureModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fadeIn">
           <div className="relative w-full max-w-lg rounded-[32px] bg-white border border-slate-200 shadow-2xl p-8 overflow-hidden transition-all duration-300">
