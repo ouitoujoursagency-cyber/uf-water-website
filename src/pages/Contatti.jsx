@@ -1,52 +1,83 @@
+import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
-import { MaskLines, Eyebrow, Reveal } from "@/components/motion";
-import { ContactForm } from "@/components/ContactForm";
-import { COMPANY, whatsappLink } from "@/data/site";
-
-const INFO = [
-  { icon: MapPin, label: "Indirizzo", value: COMPANY.address, id: "address" },
-  { icon: Phone, label: "Telefono", value: COMPANY.phone, href: COMPANY.phoneHref, id: "phone" },
-  { icon: Mail, label: "Email", value: COMPANY.email, href: COMPANY.emailHref, id: "email" },
-  { icon: Clock, label: "Orari", value: COMPANY.hours.join(" · "), id: "hours" },
-];
 
 export default function Contatti() {
   return (
-    <div data-testid="contact-page" className="relative">
-      <div className="absolute inset-x-0 top-0 h-[560px] bg-[#06142B] grain" aria-hidden="true" />
-      <section className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 pt-36 pb-20 md:pt-44 lg:grid-cols-12">
-        <div className="lg:col-span-5 text-white">
-          <Eyebrow dark>Contatti</Eyebrow>
-          <h1 className="mt-6 font-display font-black tracking-tight leading-[0.98] text-4xl sm:text-5xl lg:text-6xl">
-            <MaskLines lines={["Parliamo della", <span className="text-water">tua acqua.</span>]} delay={0.15} />
-          </h1>
-          <p className="mt-6 max-w-md text-slate-300 leading-relaxed">Compila il modulo per un preventivo gratuito, oppure scrivici direttamente su WhatsApp.</p>
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" data-testid="contact-whatsapp-button"
-            className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#25D366] px-7 py-4 font-bold text-white transition-transform duration-300 hover:-translate-y-0.5">
-            <MessageCircle className="h-5 w-5" /> Chatta su WhatsApp
+    <div className="min-h-screen bg-[#06142B] text-white pt-36 pb-16 px-4 sm:px-8 relative overflow-hidden">
+      
+      {/* Sfondo sfumato decorativo */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div className="mx-auto max-w-7xl space-y-12">
+        
+        {/* Intestazione */}
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <h1 className="font-display text-3xl sm:text-4xl font-black">Contatta UF Water</h1>
+          <p className="text-xs sm:text-sm text-slate-300">Siamo a tua disposizione per informazioni, preventivi e assistenza personalizzata.</p>
+        </div>
+
+        {/* 4 Card Informazioni (Indirizzo, Telefono, Email, Orari) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          {/* Card Indirizzo */}
+          <div className="bg-white text-slate-900 rounded-3xl p-6 shadow-xl border border-slate-200 flex flex-col justify-between space-y-4">
+            <div className="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 grid place-items-center">
+              <MapPin className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">Indirizzo</p>
+              <p className="text-sm font-semibold text-slate-800">Brescia, Bergamo, Milano e provincia</p>
+            </div>
+          </div>
+
+          {/* Card Telefono */}
+          <div className="bg-white text-slate-900 rounded-3xl p-6 shadow-xl border border-slate-200 flex flex-col justify-between space-y-4">
+            <div className="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 grid place-items-center">
+              <Phone className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">Telefono</p>
+              <a href="tel:+3933279088909" className="text-sm font-semibold text-slate-800 hover:text-sky-600 transition-colors">+39 33279088909</a>
+            </div>
+          </div>
+
+          {/* Card Email */}
+          <div className="bg-white text-slate-900 rounded-3xl p-6 shadow-xl border border-slate-200 flex flex-col justify-between space-y-4">
+            <div className="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 grid place-items-center">
+              <Mail className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">Email</p>
+              <a href="mailto:ufwater@hotmail.com" className="text-sm font-semibold text-slate-800 hover:text-sky-600 transition-colors break-all">ufwater@hotmail.com</a>
+            </div>
+          </div>
+
+          {/* Card Orari */}
+          <div className="bg-white text-slate-900 rounded-3xl p-6 shadow-xl border border-slate-200 flex flex-col justify-between space-y-4">
+            <div className="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 grid place-items-center">
+              <Clock className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">Orari</p>
+              <p className="text-xs font-semibold text-slate-800 leading-relaxed">Rispondiamo entro 24 ore.<br />Sopralluoghi su appuntamento.</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Pulsante rapido WhatsApp in basso */}
+        <div className="text-center pt-2">
+          <a 
+            href="https://wa.me/393331234567" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-600/20"
+          >
+            <MessageCircle className="w-4 h-4" /> Contattaci direttamente su WhatsApp
           </a>
         </div>
-        <Reveal className="lg:col-span-7" y={40}>
-          <ContactForm />
-        </Reveal>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 pb-24" data-testid="company-info">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {INFO.map((c, i) => (
-            <Reveal key={c.id} delay={i * 0.06} className="rounded-[24px] border border-slate-200 bg-white p-7">
-              <c.icon className="h-6 w-6 text-sky-600" />
-              <p className="mt-5 font-mono text-xs uppercase tracking-wider text-slate-500">{c.label}</p>
-              {c.href
-                ? <a href={c.href} data-testid={`contact-info-${c.id}`} className="mt-1 block font-semibold text-[var(--ink)] hover:text-sky-700 break-words">{c.value}</a>
-                : <p data-testid={`contact-info-${c.id}`} className="mt-1 font-semibold text-[var(--ink)]">{c.value}</p>}
-            </Reveal>
-          ))}
-        </div>
-        <Reveal className="mt-5 grid h-64 place-items-center rounded-[28px] border border-dashed border-slate-300 bg-white text-center text-slate-500" data-testid="map-placeholder">
-          <div><MapPin className="mx-auto h-8 w-8 text-sky-500" /><p className="mt-3 text-sm">[Mappa Google — inserire l'indirizzo reale]</p></div>
-        </Reveal>
-      </section>
+      </div>
     </div>
   );
 }
