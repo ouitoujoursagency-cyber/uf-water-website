@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { PRODUCTS, ACCESSORIES } from "@/data/catalog";
-import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Trash2, ShoppingCart, Printer, ArrowDownRight } from "lucide-react";
+import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Trash2, ShoppingCart, Printer, ArrowDownRight, Droplet } from "lucide-react";
 
 export default function AdminPreventivo() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -310,16 +310,16 @@ export default function AdminPreventivo() {
               {/* Tutte le 10 Clausole Complete */}
               <div className="pt-6 border-t border-slate-200 text-[11px] text-slate-600 space-y-2.5 leading-relaxed">
                 <h4 className="font-bold text-slate-800 uppercase tracking-wider text-xs mb-3">Condizioni Generali di Vendita</h4>
-                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista)[cite: 3].</p>
-                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce[cite: 3].</p>
-                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge[cite: 3].</p>
-                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati[cite: 3].</p>
-                <p><strong>5 - RISOLUZIONE DEL CONTRATTO:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.[cite: 3]</p>
-                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo[cite: 3].</p>
-                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine[cite: 3].</p>
-                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità[cite: 3].</p>
-                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave[cite: 3].</p>
-                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia[cite: 3].</p>
+                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista).</p>
+                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce.</p>
+                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge.</p>
+                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati.</p>
+                <p><strong>5 - RISOLUZIONE DEL CONTRATTO:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.</p>
+                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo.</p>
+                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine.</p>
+                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità.</p>
+                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave.</p>
+                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia.</p>
               </div>
             </div>
           </div>
@@ -353,8 +353,8 @@ export default function AdminPreventivo() {
             </div>
           </div>
         ) : (
-          /* ================= FORM DI COMPILAZIONE (CON ANGOLO PIEGATO IN BASSO A DESTRA) ================= */
-          <form onSubmit={handleGenerateQuoteOnly} className="space-y-8 relative pb-12">
+          /* ================= FORM DI COMPILAZIONE (CON ANGOLO PIEGATO SPOSTATO PIÙ IN BASSO E STILE GOCCIA) ================= */
+          <form onSubmit={handleGenerateQuoteOnly} className="space-y-8 relative pb-20">
             
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -631,21 +631,21 @@ export default function AdminPreventivo() {
 
             {/* Visualizzatore a scomparsa delle clausole nel form */}
             {showFullClauses && (
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-300 space-y-3 animate-fadeIn text-[11px] text-slate-600">
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-300 space-y-3 animate-fadeIn text-[11px] text-slate-600 mb-16">
                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                   <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Termini e Condizioni di Vendita</h4>
                   <button type="button" onClick={() => setShowFullClauses(false)} className="text-xs text-red-600 font-bold hover:underline">Chiudi [X]</button>
                 </div>
-                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine[cite: 3].</p>
-                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine[cite: 3].</p>
-                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo di IVA[cite: 3].</p>
-                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati[cite: 3].</p>
-                <p><strong>5 - RISOLUZIONE:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.[cite: 3]</p>
-                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo[cite: 3].</p>
-                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine[cite: 3].</p>
-                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità[cite: 3].</p>
-                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave[cite: 3].</p>
-                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia[cite: 3].</p>
+                <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine.</p>
+                <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine.</p>
+                <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo di IVA.</p>
+                <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati.</p>
+                <p><strong>5 - RISOLUZIONE:</strong> In caso di mancato pagamento, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c.</p>
+                <p><strong>6 - RECESSO:</strong> Diritto di recesso per il Consumatore entro 14 giorni ai sensi del Codice del Consumo.</p>
+                <p><strong>7 - TRASPORTO:</strong> Spese di trasporto a carico del Cliente come quantificate nell'ordine.</p>
+                <p><strong>8 - GARANZIA PRODOTTO:</strong> Garanzia legale di 24 mesi contro i difetti di conformità.</p>
+                <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Responsabilità limitata nei casi previsti dalla legge e dolo/colpa grave.</p>
+                <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia sarà competente in via esclusiva il Foro di Brescia.</p>
               </div>
             )}
 
@@ -666,15 +666,16 @@ export default function AdminPreventivo() {
               </button>
             </div>
 
-            {/* Angolo Piegato (Dog-Ear) in basso a destra del form */}
+            {/* Angolo Piegato (Dog-Ear) in basso a destra del form, spostato più in basso e con badge a goccia */}
             <div 
               onClick={() => setShowFullClauses(!showFullClauses)}
-              className="absolute bottom-4 right-0 w-32 h-32 cursor-pointer group z-20"
+              className="absolute -bottom-6 right-0 w-36 h-36 cursor-pointer group z-30"
               title="Visualizza Termini e Condizioni"
             >
-              <div className="absolute bottom-6 right-8 flex items-center gap-1.5 text-[11px] font-bold text-sky-700 bg-white/95 px-2.5 py-1 rounded-lg shadow-md border border-sky-200 group-hover:bg-sky-600 group-hover:text-white transition-all whitespace-nowrap pointer-events-none">
+              <div className="absolute bottom-10 right-10 flex items-center gap-1.5 text-[11px] font-bold text-slate-800 bg-sky-50 px-3 py-1.5 rounded-full shadow-md border border-sky-200 group-hover:bg-sky-600 group-hover:text-white transition-all whitespace-nowrap pointer-events-none">
+                <Droplet className="w-3.5 h-3.5 text-sky-500 group-hover:text-white fill-sky-400" />
                 <span>Termini e Condizioni</span>
-                <ArrowDownRight className="w-4 h-4 animate-bounce text-sky-600 group-hover:text-white" />
+                <ArrowDownRight className="w-3.5 h-3.5 animate-bounce text-sky-600 group-hover:text-white" />
               </div>
 
               <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[52px] border-r-[52px] border-b-slate-300 border-r-transparent group-hover:border-b-sky-500 transition-colors duration-300 shadow-[-6px_-6px_12px_rgba(0,0,0,0.1)]"></div>
