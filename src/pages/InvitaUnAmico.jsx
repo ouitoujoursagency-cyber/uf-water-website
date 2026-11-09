@@ -13,7 +13,6 @@ export default function InvitaUnAmico() {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Generatore di un link referral simulato basato sull'email
   const referralLink = formData.email 
     ? `https://ufwater.it/ref/${btoa(formData.email).slice(0, 8)}` 
     : "https://ufwater.it/ref/tuo-codice";
@@ -31,7 +30,7 @@ export default function InvitaUnAmico() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06142B] text-white py-32 px-4 sm:px-8 relative overflow-hidden">
+    <div className="min-h-screen bg-[#06142B] text-white pt-40 pb-24 px-4 sm:px-8 relative overflow-hidden">
       
       {/* Elementi decorativi di sfondo sfumati */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -42,7 +41,7 @@ export default function InvitaUnAmico() {
         {/* Sezione Principale / Hero & Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Testo a Sinistra (Stile coerente con l'immagine di riferimento) */}
+          {/* Testo a Sinistra */}
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-sky-400 font-mono text-xs uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" /> Programma Referral UF Water
@@ -53,7 +52,7 @@ export default function InvitaUnAmico() {
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg">
-              Fai conoscere UF Water a un amico: tu ricevi un <strong>kit di filtri originali in omaggio</strong> (o il 50% di sconto sulla manutenzione), mentre il tuo amico ottiene subito uno <strong>sconto del 15%</strong> sul suo primo impianto di purificazione.
+              Fai conoscere UF Water a un amico: tu ricevi un <strong>kit di filtri originali in omaggio</strong>, mentre il tuo amico ottiene subito uno <strong>sconto del 15%</strong> sul suo primo impianto di purificazione[cite: 7].
             </p>
 
             <div className="pt-2">
@@ -69,7 +68,7 @@ export default function InvitaUnAmico() {
             </div>
           </div>
 
-          {/* Form a Destra (Card bianca arrotondata come nello screenshot) */}
+          {/* Form a Destra */}
           <div className="lg:col-span-6">
             <div className="bg-white text-slate-900 rounded-[32px] p-6 sm:p-10 shadow-2xl border border-slate-200">
               
@@ -200,7 +199,7 @@ export default function InvitaUnAmico() {
             <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm space-y-3">
               <div className="w-10 h-10 rounded-2xl bg-teal-500/20 text-teal-400 grid place-items-center font-bold text-sm">2</div>
               <h4 className="font-bold text-base">L'amico acquista</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">Il tuo amico sceglie il suo impianto UF Water e riceve subito uno sconto esclusivo del 15% sul totale.</p>
+              <p className="text-xs text-slate-300 leading-relaxed">Il tuo amico sceglie il suo impianto UF Water e riceve subito uno sconto esclusivo del 15% sul totale[cite: 7].</p>
             </div>
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm space-y-3">
@@ -211,30 +210,30 @@ export default function InvitaUnAmico() {
           </div>
         </div>
 
-        {/* Riquadri per Immagini (Come richiesto) */}
+        {/* Sezione Immagini (Portaunamico.jpg e Portaunamico2.jpg in riquadri quadrati, non invadenti) */}
         <div className="pt-6">
           <div className="text-center max-w-xl mx-auto mb-8">
             <h3 className="font-display text-xl font-bold">Galleria & Esperienze</h3>
-            <p className="text-xs text-slate-400 mt-1">Spazi pronti per inserire le immagini della promozione.</p>
+            <p className="text-xs text-slate-400 mt-1">Immagini ufficiali del programma Porta un Amico.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Riquadro Immagine 1 */}
-            <div className="h-64 sm:h-80 rounded-[32px] border-2 border-dashed border-white/20 bg-white/5 flex flex-col items-center justify-center text-center p-6 transition-all hover:border-sky-400/50 group">
-              <div className="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 grid place-items-center mb-3 group-hover:scale-110 transition-transform">
-                <Droplet className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-bold text-slate-300">Riquadro Immagine 1</p>
-              <p className="text-xs text-slate-500 mt-1">Sostituisci questo blocco con il tag `&lt;img src="..." /&gt;` o l'immagine desiderata.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Immagine 1 */}
+            <div className="aspect-square w-full rounded-[32px] overflow-hidden border border-white/10 bg-white/5 shadow-xl flex items-center justify-center p-3">
+              <img 
+                src="/img/Portaunamico.jpg" 
+                alt="Porta un amico 1" 
+                className="w-full h-full object-contain rounded-2xl" 
+              />
             </div>
 
-            {/* Riquadro Immagine 2 */}
-            <div className="h-64 sm:h-80 rounded-[32px] border-2 border-dashed border-white/20 bg-white/5 flex flex-col items-center justify-center text-center p-6 transition-all hover:border-teal-400/50 group">
-              <div className="w-12 h-12 rounded-2xl bg-teal-500/20 text-teal-400 grid place-items-center mb-3 group-hover:scale-110 transition-transform">
-                <Gift className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-bold text-slate-300">Riquadro Immagine 2</p>
-              <p className="text-xs text-slate-500 mt-1">Sostituisci questo blocco con il tag `&lt;img src="..." /&gt;` o l'immagine desiderata.</p>
+            {/* Immagine 2 */}
+            <div className="aspect-square w-full rounded-[32px] overflow-hidden border border-white/10 bg-white/5 shadow-xl flex items-center justify-center p-3">
+              <img 
+                src="/img/Portaunamico2.jpg" 
+                alt="Porta un amico 2" 
+                className="w-full h-full object-contain rounded-2xl" 
+              />
             </div>
           </div>
         </div>
