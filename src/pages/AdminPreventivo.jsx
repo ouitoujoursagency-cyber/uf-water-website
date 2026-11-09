@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { PRODUCTS, ACCESSORIES } from "@/data/catalog";
-import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Bookmark, ArrowLeft, Trash2, ShoppingCart, Check } from "lucide-react";
+import { ArrowUpRight, Lock, CheckCircle2, RotateCcw, FileText, Plus, PenTool, Bookmark, ArrowLeft, Trash2, ShoppingCart } from "lucide-react";
 
 export default function AdminPreventivo() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [pin, setPin] = useState("");
   
-  // Campi intestazione preventivo
   const [quoteMeta, setQuoteMeta] = useState({
     data: new Date().toISOString().split('T')[0],
     venditore: "",
@@ -30,7 +29,6 @@ export default function AdminPreventivo() {
     totalPrice: ""
   });
 
-  // Gestione selezioni multiple e voci personalizzate
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [customProduct, setCustomProduct] = useState("");
   
@@ -40,20 +38,16 @@ export default function AdminPreventivo() {
   const [submitted, setSubmitted] = useState(false);
   const [isSigned, setIsSigned] = useState(false);
 
-  // Stati per il flusso di Firma e Carrello Anteprima
   const [showCartModal, setShowCartModal] = useState(false);
   const [showSignatureModal, setShowSignatureModal] = useState(false);
   const [isClausePage, setIsClausePage] = useState(false);
 
-  // Canvas per la firma con pennino
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [hasSignature, setHasSignature] = useState(false);
 
-  // PIN segreto per l'accesso
   const SECURE_PIN = "1234";
 
-  // Generatore numero proposta automatico crescente
   useEffect(() => {
     const lastNum = localStorage.getItem("uf_last_proposal_num") || "100";
     const nextNum = (parseInt(lastNum) + 1).toString().padStart(4, '0');
@@ -93,22 +87,23 @@ export default function AdminPreventivo() {
     }
   };
 
-  // Funzione per trovare l'immagine del prodotto o accessorio dai cataloghi
   const getItemImage = (itemName) => {
-    const prod = PRODUCTS.find(p => p.name === itemName);
-    if (prod && prod.image) return prod.image;
-    const acc = ACCESSORIES.find(a => a.name === itemName);
-    if (acc && acc.image) return acc.image;
+    const prod = PRODUCTS.find(p => p.name?.toLowerCase().trim() === itemName?.toLowerCase().trim());
+    if (prod) {
+      return prod.image || prod.img || prod.photo || prod.foto || (prod.images && prod.images[0]) || null;
+    }
+    const acc = ACCESSORIES.find(a => a.name?.toLowerCase().trim() === itemName?.toLowerCase().trim());
+    if (acc) {
+      return acc.image || acc.img || acc.photo || acc.foto || (acc.images && acc.images[0]) || null;
+    }
     return null;
   };
 
-  // Click su Firma Contratto: apre prima il carrello riepilogo
   const handleOpenCart = (e) => {
     e.preventDefault();
     setShowCartModal(true);
   };
 
-  // Gestione disegno firma su Canvas (Pennino)
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -246,7 +241,6 @@ export default function AdminPreventivo() {
         ) : (
           <form onSubmit={(e) => { e.preventDefault(); finalizeSubmission(false); }} className="space-y-8">
             
-            {/* SEZIONE 0: Dati Data e Venditore in alto a sinistra */}
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1.5 font-semibold">Data Preventivo *</label>
@@ -271,7 +265,6 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* SEZIONE 1: Dati Committente */}
             <div>
               <h3 className="font-display text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-sky-100 text-sky-700 text-xs font-mono">1</span>
@@ -372,7 +365,6 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* SEZIONE 2: Impianto e Miscelatori/CO2 */}
             <div className="pt-4 border-t border-slate-200">
               <h3 className="font-display text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-sky-100 text-sky-700 text-xs font-mono">2</span>
@@ -381,7 +373,6 @@ export default function AdminPreventivo() {
 
               <div className="grid gap-6 sm:grid-cols-2">
                 
-                {/* Sistema Principale */}
                 <div>
                   <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1.5 font-semibold">Sistema Principale</label>
                   <select 
@@ -428,7 +419,6 @@ export default function AdminPreventivo() {
                   </div>
                 </div>
 
-                {/* Miscelatori / CO2 */}
                 <div>
                   <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1.5 font-semibold">Miscelatori / CO2</label>
                   <select 
@@ -477,7 +467,6 @@ export default function AdminPreventivo() {
 
               </div>
 
-              {/* Modalità di pagamento con opzione scrittura */}
               <div className="grid gap-4 sm:grid-cols-2 mt-6">
                 <div>
                   <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-1">Modalità di Pagamento</label>
@@ -525,7 +514,6 @@ export default function AdminPreventivo() {
               </div>
             </div>
 
-            {/* SEZIONE 3: I Due Tasti Finali */}
             <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row gap-4">
               
               <button 
@@ -549,7 +537,7 @@ export default function AdminPreventivo() {
         )}
       </div>
 
-      {/* ================= MODALE 1: ANTEPRIMA CARRELLO ARTICOLI ================= */}
+      {/* ================= MODALE 1: ANTEPRIMA CARRELLO CON IMMAGINI REALI ================= */}
       {showCartModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fadeIn">
           <div className="relative w-full max-w-lg rounded-[32px] bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 space-y-6">
@@ -567,14 +555,14 @@ export default function AdminPreventivo() {
               ) : (
                 <>
                   {selectedProducts.map((item, idx) => {
-                    const img = getItemImage(item);
+                    const imgUrl = getItemImage(item);
                     return (
                       <div key={idx} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
                         <div className="flex items-center gap-3">
-                          {img ? (
-                            <img src={img} alt={item} className="w-12 h-12 object-cover rounded-xl border border-slate-200 bg-white" />
+                          {imgUrl ? (
+                            <img src={imgUrl} alt={item} className="w-12 h-12 object-cover rounded-xl border border-slate-200 bg-white" />
                           ) : (
-                            <div className="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xs font-bold">Extra</div>
+                            <div className="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-[10px] font-bold text-center px-1">Articolo</div>
                           )}
                           <div>
                             <p className="text-xs font-bold text-slate-900">{item}</p>
@@ -586,14 +574,14 @@ export default function AdminPreventivo() {
                   })}
 
                   {selectedAccessories.map((item, idx) => {
-                    const img = getItemImage(item);
+                    const imgUrl = getItemImage(item);
                     return (
                       <div key={idx} className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
                         <div className="flex items-center gap-3">
-                          {img ? (
-                            <img src={img} alt={item} className="w-12 h-12 object-cover rounded-xl border border-slate-200 bg-white" />
+                          {imgUrl ? (
+                            <img src={imgUrl} alt={item} className="w-12 h-12 object-cover rounded-xl border border-slate-200 bg-white" />
                           ) : (
-                            <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-bold">Extra</div>
+                            <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-[10px] font-bold text-center px-1">Articolo</div>
                           )}
                           <div>
                             <p className="text-xs font-bold text-slate-900">{item}</p>
@@ -632,12 +620,11 @@ export default function AdminPreventivo() {
         </div>
       )}
 
-      {/* ================= MODALE 2: FIRMA AUTOGRAFA & CLAUSOLE (PAGINA GIRATA) ================= */}
+      {/* ================= MODALE 2: FIRMA AUTOGRAFA & CLAUSOLE AGGIORNATE ================= */}
       {showSignatureModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fadeIn">
           <div className="relative w-full max-w-lg rounded-[32px] bg-white border border-slate-200 shadow-2xl p-8 overflow-hidden transition-all duration-300">
             
-            {/* PAGINA 1: FIRMA CON PENNINO */}
             {!isClausePage ? (
               <div className="space-y-5">
                 <div className="text-center">
@@ -660,7 +647,6 @@ export default function AdminPreventivo() {
                     </button>
                   </div>
 
-                  {/* Canvas per il pennino */}
                   <div className="border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50 overflow-hidden relative touch-none">
                     <canvas 
                       ref={canvasRef}
@@ -702,11 +688,10 @@ export default function AdminPreventivo() {
                 </div>
               </div>
             ) : (
-              /* PAGINA 2: CLAUSOLE CONTRATTUALI AMPLIATE */
               <div className="space-y-4 animate-fadeIn">
                 <div className="flex justify-between items-center border-b border-slate-100 pb-3">
                   <h3 className="font-display text-base font-bold text-slate-900 flex items-center gap-2">
-                    <Bookmark className="h-5 w-5 text-sky-600" /> Condizioni Generali di Contratto
+                    <Bookmark className="h-5 w-5 text-sky-600" /> Condizioni Generali di Vendita
                   </h3>
                   <button 
                     onClick={() => setIsClausePage(false)}
@@ -716,13 +701,18 @@ export default function AdminPreventivo() {
                   </button>
                 </div>
 
+                {/* Clausole aggiornate basate sul documento ufficiale */}
                 <div className="max-h-72 overflow-y-auto text-[11px] text-slate-600 space-y-2.5 pr-2 leading-relaxed">
-                  <p><strong>Art. 1 (Oggetto della Fornitura):</strong> Il presente documento costituisce proposta d'ordine e contratto di fornitura per i sistemi di trattamento acqua UF Water Technology e i relativi accessori specificati in prima pagina.</p>
-                  <p><strong>Art. 2 (Confezionamento e Installazione):</strong> I termini di consegna si intendono puramente indicativi e non essenziali. L'installazione standard è subordinata alla conformità degli impianti idrici ed elettrici del committente.</p>
-                  <p><strong>Art. 3 (Garanzia e Assistenza):</strong> I prodotti beneficiano della garanzia legale di conformità conformemente alle normative vigenti. La garanzia decade in caso di manomissione o mancata esecuzione della manutenzione programmata con consumabili originali.</p>
-                  <p><strong>Art. 4 (Modalità di Pagamento):</strong> Il corrispettivo dovrà essere corrisposto secondo i termini concordati. Il mancato pagamento anche di una sola rata o scadenza comporterà la decadenza dal beneficio del termine.</p>
-                  <p><strong>Art. 5 (Diritto di Recesso):</strong> Ai sensi degli artt. 52 e ss. del Codice del Consumo, qualora il contratto sia stipulato fuori dai locali commerciali, il committente ha diritto di recedere entro 14 giorni dalla sottoscrizione senza penali.</p>
-                  <p><strong>Art. 6 (Foro Competente):</strong> Per qualsiasi controversia derivante dall'interpretazione o esecuzione del presente contratto sarà competente in via esclusiva il Foro di residenza o domicilio del consumatore.</p>
+                  <p><strong>1 - OGGETTO:</strong> Oggetto della presente vendita sono gli articoli e i servizi elencati nel Modulo d'Ordine, forniti all'acquirente che acquista per soddisfare esigenze di vendita quotidiana (Consumatore) o per finalità connesse ad un'attività commerciale o professionale (Imprenditore/Professionista).</p>
+                  <p><strong>2 - PERFEZIONAMENTO ED EFFETTI:</strong> La vendita si intende perfezionata con la sottoscrizione del Modulo d'Ordine; da tale momento decorrono i termini per l'adempimento del pagamento e della successiva consegna della merce.</p>
+                  <p><strong>3 - PREZZO:</strong> Il prezzo totale è quello indicato nel Modulo d'Ordine, comprensivo o maggiorato di IVA come per legge. Il prezzo non comprende le spese di spedizione se non diversamente specificato.</p>
+                  <p><strong>4 - OBBLIGHI ED ESECUZIONE:</strong> Il Cliente si obbliga al pagamento del prezzo nei modi e nei termini indicati. In caso di acquisto del solo dispositivo, la consegna avviene entro i termini stabiliti senza oneri di installazione a carico del venditore. In caso di servizio di installazione, il cliente deve predisporre autonomamente la rete elettrica e le opere propedeutiche nel rispetto del Vademecum.</p>
+                  <p><strong>5 - RISOLUZIONE DEL CONTRATTO:</strong> In caso di mancato pagamento del prezzo, il contratto si risolverà di diritto ai sensi dell'art. 1456 c.c., fatto salvo il diritto al risarcimento dei danni e all'azione per il recupero delle somme dovute.</p>
+                  <p><strong>6 - RECESSO:</strong> Ai sensi degli artt. 52 e ss. del Codice del Consumo, il Cliente Consumatore ha diritto di recedere entro 14 giorni di calendario dal ricevimento della merce, mediante comunicazione scritta e provvedendo alla restituzione a proprie spese dei beni integri e nel loro imballo originale.</p>
+                  <p><strong>7 - TRASPORTO:</strong> Tutte le spese di trasporto, quando quantificate nel Modulo d'Ordine, sono a carico del Cliente, rimanendo il venditore liberato da ogni rischio con la consegna al vettore.</p>
+                  <p><strong>8 - GARANZIA PRODOTTO:</strong> I prodotti sono garantiti per 24 mesi contro i difetti di conformità ai sensi del Codice del Consumo (per i consumatori) o del Codice Civile (per professionisti). Sono esclusi dalla garanzia i guasti derivanti da utilizzo di componenti o consumabili non originali, manomissioni o uso difforme dalle istruzioni.</p>
+                  <p><strong>9 - LIMITAZIONI DI RESPONSABILITÀ:</strong> Il venditore risponde di eventuali danni a cose o persone derivanti da malfunzionamento solo in caso di dolo o colpa grave. È esclusa ogni responsabilità per danni derivanti da uso improprio o non conforme dei prodotti.</p>
+                  <p><strong>10 - FORO COMPETENTE:</strong> Per qualsiasi controversia nascente in relazione alla stipulazione, validità, interpretazione o esecuzione del presente contratto sarà competente in via esclusiva il Foro stabilito dalla normativa vigente (Foro di Brescia).</p>
                 </div>
 
                 <div className="pt-2">
@@ -737,16 +727,13 @@ export default function AdminPreventivo() {
               </div>
             )}
 
-            {/* ================= ANGOLO DI CARTA PIEGATO (PAGINA GIRATA) IN BASSO A DESTRA ================= */}
             <div 
               onClick={() => setIsClausePage(!isClausePage)}
               className="absolute bottom-0 right-0 w-16 h-16 cursor-pointer group z-20"
               title={isClausePage ? "Torna alla firma" : "Leggi le clausole contrattuali"}
             >
-              {/* Effetto triangolo della carta piegata */}
               <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[36px] border-r-[36px] border-b-slate-300 border-r-transparent group-hover:border-b-sky-500 transition-colors duration-300 shadow-[-4px_-4px_8px_rgba(0,0,0,0.1)]"></div>
               
-              {/* Testo o icona sull'angolo */}
               <span className="absolute bottom-1 right-1 text-[10px] font-mono font-bold text-slate-700 group-hover:text-white transition-colors duration-300">
                 {isClausePage ? "↩" : "§"}
               </span>
