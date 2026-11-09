@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    // `overline` is a Tailwind utility; without this an app's own eyebrow-label class draws a line above the text.
-    blocklist: ["overline"],
-    darkMode: ["class"],
-    content: [
+  // `overline` is a Tailwind utility; without this an app's own eyebrow-label class draws a line above the text.
+  blocklist: ["overline"],
+  darkMode: ["class"],
+  content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
@@ -60,6 +60,10 @@ module.exports = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))'
         }
+      },
+      // Aggiunta per evitare l'errore della cubic-bezier nelle classi arbitrary
+      transitionTimingFunction: {
+        'custom-ease': 'cubic-bezier(.22, 1, .36, 1)',
       },
       keyframes: {
         'accordion-down': {
