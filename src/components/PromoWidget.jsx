@@ -31,7 +31,7 @@ export default function PromoWidget() {
 
   return (
     <>
-      {/* Contenitore fluttuante in basso a destra */}
+      {/* Contenitore fluttuante in basso a destra (WhatsApp sopra, Goccia sotto senza residui) */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 cursor-pointer">
         
         {/* Pulsante WhatsApp */}
@@ -39,7 +39,7 @@ export default function PromoWidget() {
           href="https://wa.me/393330000000" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="w-12 h-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110"
+          className="w-12 h-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-110"
           title="Scrivici su WhatsApp"
         >
           <MessageCircle className="w-6 h-6" />
@@ -88,7 +88,7 @@ export default function PromoWidget() {
             {/* Layout a 2 Colonne */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
               
-              {/* COLONNA SINISTRA: Titolo e Locandina (Cliccabile per ingrandire) */}
+              {/* COLONNA SINISTRA: Titolo e Locandina */}
               <div className="space-y-3 flex flex-col items-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-600 font-mono text-xs font-bold uppercase tracking-widest">
                   <Sparkles className="w-3.5 h-3.5" /> Offerte Speciali UF Water
