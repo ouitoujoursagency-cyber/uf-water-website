@@ -14,10 +14,10 @@ import Normative from "@/pages/Normative";
 import Contatti from "@/pages/Contatti";
 import Privacy from "@/pages/Privacy";
 import OrdinaKitManutenzione from "@/pages/OrdinaKitManutenzione";
-import InvitaUnAmico from "@/pages/InvitaUnAmico"; // <-- 1. IMPORT DELLA NUOVA PAGINA
+import InvitaUnAmico from "@/pages/InvitaUnAmico"; 
 import { CookieBanner } from "./components/CookieBanner";
 import AdminPreventivo from "@/pages/AdminPreventivo";
-import PromoWidget from "./components/PromoWidget";
+import PromoWidget from "./components/PromoWidget"; // <-- Import del widget della goccia
 
 // Transizione morbida tra le pagine (le pagine si sovrappongono, niente schermo vuoto)
 const PageRoutes = () => {
@@ -36,7 +36,7 @@ const PageRoutes = () => {
           <Route path="/accessori" element={<Extra />} />
           <Route path="/installazione-servizi" element={<Installazione />} />
           <Route path="/ordina-kit-manutenzione" element={<OrdinaKitManutenzione />} />
-          <Route path="/invita-un-amico" element={<InvitaUnAmico />} /> {/* <-- 2. AGGIUNTA DELLA ROTTA */}
+          <Route path="/invita-un-amico" element={<InvitaUnAmico />} />
           <Route path="/normative-certificazioni" element={<Normative />} />
           <Route path="/contatti" element={<Contatti />} />
           <Route path="/privacy-policy" element={<Privacy />} />
@@ -58,6 +58,7 @@ function App() {
       <WhatsAppButton />
       <Toaster position="top-center" richColors />
       <CookieBanner />
+      <PromoWidget /> {/* <-- Inserito qui per essere visibile in sovraimpressione su tutte le pagine */}
     </BrowserRouter>
   );
 }
