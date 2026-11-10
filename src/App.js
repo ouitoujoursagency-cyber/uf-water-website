@@ -133,13 +133,13 @@ function PromoWidget() {
 export default function App() {
   return (
     <div className="min-h-screen bg-[#06142B] text-white relative">
-      {/* Qui dentro va il resto della tua struttura attuale (Navbar, Router, Pagine, ecc.) */}
+      {/* Qui dentro puoi inserire il tuo layout, le tue pagine o il router */}
       
       <div className="flex items-center justify-center h-screen">
         <h1 className="text-3xl font-bold">Benvenuto su UF Water</h1>
       </div>
 
-      {/* Widget Goccia Promo sempre attivo in basso a destra */}
+      {/* Widget Goccia Promo sempre attivo in basso a destra su tutte le pagine */}
       <PromoWidget />
     </div>
   );
