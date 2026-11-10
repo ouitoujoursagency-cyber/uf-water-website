@@ -17,6 +17,7 @@ import OrdinaKitManutenzione from "@/pages/OrdinaKitManutenzione";
 import InvitaUnAmico from "@/pages/InvitaUnAmico"; // <-- 1. IMPORT DELLA NUOVA PAGINA
 import { CookieBanner } from "./components/CookieBanner";
 import AdminPreventivo from "@/pages/AdminPreventivo";
+import PromoWidget from "./components/PromoWidget";
 
 // Transizione morbida tra le pagine (le pagine si sovrappongono, niente schermo vuoto)
 const PageRoutes = () => {
