@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { X, Sparkles, MessageCircle, Instagram, Facebook, Copy, Check } from "lucide-react";
+import { X, Sparkles, MessageCircle, Instagram, Facebook, Copy, Check, ZoomIn } from "lucide-react";
 
 export default function PromoWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
   const [copied, setCopied] = useState(false);
   const promoLink = window.location.href;
 
@@ -76,7 +77,7 @@ export default function PromoWidget() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
           <div className="relative w-full max-w-4xl bg-white text-slate-900 rounded-[32px] p-6 sm:p-8 shadow-2xl border border-slate-200 overflow-hidden">
             
-            {/* Pulsante chiusura */}
+            {/* Pulsante chiusura principale */}
             <button 
               onClick={() => setIsOpen(false)}
               className="absolute top-5 right-5 z-10 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-colors shadow-md"
@@ -87,18 +88,27 @@ export default function PromoWidget() {
             {/* Layout a 2 Colonne */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
               
-              {/* COLONNA SINISTRA: Titolo e Locandina Intera */}
+              {/* COLONNA SINISTRA: Titolo e Locandina (Cliccabile per ingrandire) */}
               <div className="space-y-3 flex flex-col items-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-600 font-mono text-xs font-bold uppercase tracking-widest">
                   <Sparkles className="w-3.5 h-3.5" /> Offerte Speciali UF Water
                 </div>
 
-                <div className="w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50 p-2 flex items-center justify-center">
+                <div 
+                  onClick={() => setIsZoomed(true)}
+                  className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50 p-2 flex items-center justify-center cursor-pointer group"
+                  title="Clicca per ingrandire l'immagine"
+                >
                   <img 
                     src="/img/promo.jpg" 
                     alt="Promozioni UF Water" 
-                    className="w-full h-auto object-contain rounded-xl max-h-[380px]"
+                    className="w-full h-auto object-contain rounded-xl max-h-[380px] group-hover:scale-[1.02] transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
+                    <span className="bg-white/90 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                      <ZoomIn className="w-4 h-4" /> Ingrandisci
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -163,6 +173,27 @@ export default function PromoWidget() {
               </div>
 
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* SOTTOMODALE: Immagine a Schermo Intero con X */}
+      {isZoomed && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-md animate-fadeIn">
+          <button 
+            onClick={() => setIsZoomed(false)}
+            className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors shadow-2xl"
+            title="Chiudi immagine ingrandita"
+          >
+            <X className="w-7 h-7" />
+          </button>
+          
+          <div className="relative max-w-5xl max-h-[90vh] flex items-center justify-center">
+            <img 
+              src="/img/promo.jpg" 
+              alt="Promozioni UF Water Ingrandita" 
+              className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+            />
           </div>
         </div>
       )}
