@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Users, Gift, Share2, CheckCircle2, MessageCircle, ArrowRight, Droplet, Sparkles } from "lucide-react";
+import { Users, Gift, Share2, CheckCircle2, MessageCircle, ArrowRight, Droplet, Sparkles, Check } from "lucide-react";
+
+const GIFTS = [
+  "Bombola CO2 da 600g (acqua gasata)",
+  "Set caraffa e bicchieri",
+  "Borraccia in alluminio",
+  "Uscita gratuita del tecnico (manutenzione)",
+  "50€ di buono Amazon"
+];
 
 export default function InvitaUnAmico() {
   const [formData, setFormData] = useState({
@@ -7,7 +15,8 @@ export default function InvitaUnAmico() {
     surname: "",
     email: "",
     phone: "",
-    friendEmail: ""
+    friendEmail: "",
+    selectedGift: GIFTS[0]
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -52,7 +61,7 @@ export default function InvitaUnAmico() {
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg">
-              Fai conoscere UF Water a un amico: tu ricevi un <strong>kit di filtri originali in omaggio</strong>, mentre il tuo amico ottiene subito uno <strong>sconto del 15%</strong> sul suo primo impianto di purificazione.
+              Fai conoscere UF Water a un amico: ricevi subito un <strong>regalo immediato a tua scelta</strong> (tra CO2, accessori, manutenzione o buono Amazon), mentre il tuo amico riceve uno <strong>sconto immediato</strong> sul suo primo impianto di purificazione.
             </p>
 
             <div className="pt-2">
@@ -76,7 +85,7 @@ export default function InvitaUnAmico() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="mb-2">
                     <h3 className="font-display text-xl font-black text-slate-900">Inizia subito a invitare</h3>
-                    <p className="text-xs text-slate-500">Inserisci i tuoi dati per generare il tuo link personale.</p>
+                    <p className="text-xs text-slate-500">Inserisci i tuoi dati e scegli il tuo premio.</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -130,6 +139,19 @@ export default function InvitaUnAmico() {
                   </div>
 
                   <div>
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-600 mb-1 font-semibold">Scegli il tuo regalo omaggio *</label>
+                    <select 
+                      value={formData.selectedGift}
+                      onChange={(e) => setFormData({...formData, selectedGift: e.target.value})}
+                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-800 bg-slate-50 focus:outline-none focus:border-sky-500 font-medium"
+                    >
+                      {GIFTS.map((gift, idx) => (
+                        <option key={idx} value={gift}>{gift}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
                     <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-600 mb-1 font-semibold">Email del tuo amico (facoltativo)</label>
                     <input 
                       type="email" 
@@ -154,7 +176,7 @@ export default function InvitaUnAmico() {
                   </div>
                   <h3 className="font-display text-xl font-extrabold text-slate-900">Link Generato con Successo!</h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Ottimo {formData.name}, il tuo link referral è pronto. Condividilo con i tuoi amici per iniziare ad accumulare kit filtri omaggio.
+                    Ottimo {formData.name}, il tuo link referral è pronto. Hai scelto come premio: <strong className="text-slate-900">{formData.selectedGift}</strong>. Condividi il link con i tuoi amici!
                   </p>
 
                   <div className="bg-slate-100 p-3 rounded-2xl border border-slate-200 flex items-center justify-between gap-2 mt-4">
@@ -199,13 +221,13 @@ export default function InvitaUnAmico() {
             <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm space-y-3">
               <div className="w-10 h-10 rounded-2xl bg-teal-500/20 text-teal-400 grid place-items-center font-bold text-sm">2</div>
               <h4 className="font-bold text-base">L'amico acquista</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">Il tuo amico sceglie il suo impianto UF Water e riceve subito uno sconto esclusivo del 15% sul totale.</p>
+              <p className="text-xs text-slate-300 leading-relaxed">Il tuo amico sceglie il suo impianto UF Water e riceve subito uno sconto immediato sul suo primo impianto di purificazione.</p>
             </div>
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm space-y-3">
               <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 grid place-items-center font-bold text-sm">3</div>
               <h4 className="font-bold text-base">Ricevi il tuo premio</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">Appena completata l'installazione del tuo amico, ricevi il kit filtri di ricambio omaggio direttamente a casa.</p>
+              <p className="text-xs text-slate-300 leading-relaxed">Appena completata l'installazione del tuo amico, ricevi il regalo immediato che hai scelto (CO2, accessori, manutenzione o buono Amazon).</p>
             </div>
           </div>
         </div>
