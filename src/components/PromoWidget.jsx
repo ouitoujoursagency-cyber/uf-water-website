@@ -31,10 +31,10 @@ export default function PromoWidget() {
 
   return (
     <>
-      {/* Contenitore fluttuante in basso a destra (WhatsApp sopra, Goccia sotto senza residui) */}
+      {/* Contenitore fluttuante in basso a destra (Solo WhatsApp sopra e Goccia sotto, pulito) */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 cursor-pointer">
         
-        {/* Pulsante WhatsApp */}
+        {/* Pulsante WhatsApp (In alto) */}
         <a 
           href="https://wa.me/393330000000" 
           target="_blank" 
@@ -45,7 +45,7 @@ export default function PromoWidget() {
           <MessageCircle className="w-6 h-6" />
         </a>
 
-        {/* Goccia + Cartello Promozioni */}
+        {/* Goccia + Cartello Promozioni (In basso, senza residui sotto) */}
         <div className="flex items-end gap-3 group">
           <div 
             onClick={() => setIsOpen(true)}
@@ -56,10 +56,9 @@ export default function PromoWidget() {
 
           <div 
             onClick={() => setIsOpen(true)}
-            className="relative w-16 h-16 bg-gradient-to-tr from-sky-600 to-cyan-400 rounded-full rounded-bl-none shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300"
-            style={{ transform: "rotate(-15deg)" }}
+            className="relative w-16 h-16 bg-gradient-to-tr from-sky-600 to-cyan-400 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300"
           >
-            <div className="flex flex-col items-center gap-1.5" style={{ transform: "rotate(15deg)" }}>
+            <div className="flex flex-col items-center gap-1.5">
               <div className="flex gap-2">
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>

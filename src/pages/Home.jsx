@@ -10,6 +10,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { ProductDialog } from "@/components/ProductDialog";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS } from "@/data/catalog";
+import PromoWidget from "@/components/PromoWidget"; // Importiamo il widget promozioni
 
 // ---------- Vantaggi (bento con sfondi azzurri pieni e coordinati) ----------
 const Benefits = () => (
@@ -57,7 +58,6 @@ const Benefits = () => (
 const Showcase = () => {
   const [open, setOpen] = useState(null);
   
-  // Filtriamo i prodotti domestici principali per la home
   const homeProducts = PRODUCTS.filter((p) => p.category === "casa").slice(0, 3);
   
   return (
@@ -66,7 +66,6 @@ const Showcase = () => {
         <SectionTitle eyebrow="Prodotti di punta" lines={["Depuratori pensati", "per ogni spazio."]} />
       </div>
 
-      {/* Griglia pulita dei 3 prodotti di punta */}
       <div className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {homeProducts.map((p, i) => (
           <div key={p.id} className={i === 1 ? "lg:mt-10" : ""}>
