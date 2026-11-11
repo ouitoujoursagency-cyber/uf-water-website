@@ -47,7 +47,7 @@ export default function AdminPreventivo() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [hasSignature, setHasSignature] = useState(false);
 
-  const SECURE_PIN = "1234";
+  const SECURE_PIN = "water2026";
 
   useEffect(() => {
     const lastNum = localStorage.getItem("uf_last_proposal_num") || "100";
@@ -353,7 +353,7 @@ export default function AdminPreventivo() {
             </div>
           </div>
         ) : (
-          /* ================= FORM DI COMPILAZIONE (CON ANGOLO PIEGATO SPOSTATO PIÙ IN BASSO E STILE GOCCIA) ================= */
+          /* ================= FORM DI COMPILAZIONE ================= */
           <form onSubmit={handleGenerateQuoteOnly} className="space-y-8 relative pb-20">
             
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -666,7 +666,7 @@ export default function AdminPreventivo() {
               </button>
             </div>
 
-            {/* Angolo Piegato (Dog-Ear) in basso a destra del form, spostato più in basso e con badge a goccia */}
+            {/* Angolo Piegato (Dog-Ear) in basso a destra del form */}
             <div 
               onClick={() => setShowFullClauses(!showFullClauses)}
               className="absolute -bottom-6 right-0 w-36 h-36 cursor-pointer group z-30"
