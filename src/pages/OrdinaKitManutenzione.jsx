@@ -196,8 +196,8 @@ export default function OrdinaKitManutenzione() {
         </div>
       </div>
 
-      {/* SEZIONE VIDEO TUTORIAL (Inserita all'inizio della pagina) */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
+      {/* SEZIONE VIDEO TUTORIAL */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="text-center mb-8">
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
             Guida alla sostituzione dei filtri
@@ -221,12 +221,11 @@ export default function OrdinaKitManutenzione() {
         </div>
       </section>
 
-      {/* Sezione inferiore con le due foto quadrate sovrapposte parzialmente alla banda blu */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+      {/* Sezione inferiore con le due foto quadrate (distanziate correttamente dal video) */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
           
-          {/* Foto 1 con margine negativo -mt-20 per salire sul blu */}
-          <div className="mx-auto w-full max-w-md relative md:-mt-20 z-20">
+          <div className="mx-auto w-full max-w-md relative z-20">
             <div className="aspect-square rounded-[24px] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione.jpg" 
@@ -236,8 +235,7 @@ export default function OrdinaKitManutenzione() {
             </div>
           </div>
 
-          {/* Foto 2 con margine negativo -mt-20 per salire sul blu */}
-          <div className="mx-auto w-full max-w-md relative md:-mt-20 z-20">
+          <div className="mx-auto w-full max-w-md relative z-20">
             <div className="aspect-square rounded-[24px] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione autonomia.jpg" 
