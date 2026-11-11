@@ -10,7 +10,8 @@ export default function OrdinaKitManutenzione() {
     email: "",
     telefono: "",
     contratto: "",
-    impianto: ""
+    impianto: "",
+    modalitaInstallazione: "senza-tecnico" // Default impostato su autonomia
   });
 
   const handleChange = (e) => {
@@ -47,7 +48,7 @@ export default function OrdinaKitManutenzione() {
                 Manutenzione <br />in autonomia.
               </h1>
               <p className="mt-4 text-sm text-slate-300 leading-relaxed max-w-md">
-                Compila il modulo per richiedere i filtri e i consumabili originali per il tuo impianto. Ti ricontatteremo rapidamente per confermare la spedizione.
+                Compila il modulo per richiedere i filtri e i consumabili originali per il tuo impianto. Scegli se procedere in autonomia o con l'intervento di un tecnico autorizzato.
               </p>
 
               <div className="mt-8 pt-8 border-t border-slate-700/60">
@@ -72,12 +73,12 @@ export default function OrdinaKitManutenzione() {
                     <CheckCircle className="h-12 w-12 text-emerald-600 mx-auto mb-3" />
                     <h3 className="font-display text-lg font-bold text-emerald-900">Richiesta inviata con successo!</h3>
                     <p className="mt-1 text-xs text-emerald-700 max-w-md mx-auto">
-                      Abbiamo ricevuto la tua richiesta di ricambi. È stata presa in carico e ti contatteremo al più presto per confermare l'ordine.
+                      Abbiamo ricevuto la tua richiesta. È stata presa in carico e ti contatteremo al più presto per confermare i dettagli.
                     </p>
                     <button
                       onClick={() => {
                         setSubmitted(false);
-                        setFormData({ nome: "", cognome: "", email: "", telefono: "", contratto: "", impianto: "" });
+                        setFormData({ nome: "", cognome: "", email: "", telefono: "", contratto: "", impianto: "", modalitaInstallazione: "senza-tecnico" });
                       }}
                       className="mt-6 rounded-full bg-[#06142B] px-6 py-2.5 text-xs font-semibold text-white hover:bg-sky-600 transition-colors shadow-sm"
                     >
@@ -177,12 +178,50 @@ export default function OrdinaKitManutenzione() {
                       </div>
                     </div>
 
-                    <div className="pt-4">
+                    {/* NUOVA VOCE: Scelta con o senza tecnico autorizzato */}
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                        Modalità di Manutenzione / Installazione *
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${formData.modalitaInstallazione === 'senza-tecnico' ? 'border-sky-500 bg-sky-50/50 text-slate-900 font-bold' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>
+                          <input 
+                            type="radio" 
+                            name="modalitaInstallazione" 
+                            value="senza-tecnico"
+                            checked={formData.modalitaInstallazione === 'senza-tecnico'}
+                            onChange={handleChange}
+                            className="text-sky-600 focus:ring-sky-500"
+                          />
+                          <div className="text-xs">
+                            <p className="font-bold">Senza tecnico</p>
+                            <p className="text-[10px] text-slate-500 font-normal">Fai da te in autonomia</p>
+                          </div>
+                        </label>
+
+                        <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${formData.modalitaInstallazione === 'con-tecnico' ? 'border-sky-500 bg-sky-50/50 text-slate-900 font-bold' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>
+                          <input 
+                            type="radio" 
+                            name="modalitaInstallazione" 
+                            value="con-tecnico"
+                            checked={formData.modalitaInstallazione === 'con-tecnico'}
+                            onChange={handleChange}
+                            className="text-sky-600 focus:ring-sky-500"
+                          />
+                          <div className="text-xs">
+                            <p className="font-bold">Con tecnico autorizzato</p>
+                            <p className="text-[10px] text-slate-500 font-normal">Intervento a domicilio</p>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
                       <button 
                         type="submit"
                         className="w-full rounded-full bg-[#06142B] py-3.5 text-xs font-bold text-white hover:bg-sky-600 transition-colors shadow-md text-center cursor-pointer"
                       >
-                        Invia Ordine Kit Manutenzione
+                        Invia Ordine / Richiesta
                       </button>
                     </div>
 
@@ -221,7 +260,7 @@ export default function OrdinaKitManutenzione() {
         </div>
       </section>
 
-      {/* Sezione inferiore con le due foto quadrate (distanziate correttamente dal video) */}
+      {/* Sezione inferiore con le due foto quadrate */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
           
