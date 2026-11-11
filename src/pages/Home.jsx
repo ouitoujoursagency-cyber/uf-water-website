@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { PiggyBank, Leaf, HeartPulse, Sparkles, ArrowRight, Star, Quote, Wrench, ClipboardCheck, ShieldCheck, Timer } from "lucide-react";
-import { HomeHero } from "@/components/HomeHero";
+import HomeHero from "@/components/HomeHero"; // <-- NOTA: SENZA PARENTESI GRAFFE
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/motion";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -10,7 +10,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { ProductDialog } from "@/components/ProductDialog";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS } from "@/data/catalog";
-import PromoWidget from "@/components/PromoWidget"; // Importiamo il widget promozioni
+import PromoWidget from "@/components/PromoWidget";
 
 // ---------- Vantaggi (bento con sfondi azzurri pieni e coordinati) ----------
 const Benefits = () => (
