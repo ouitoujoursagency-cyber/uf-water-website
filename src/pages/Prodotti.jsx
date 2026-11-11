@@ -38,7 +38,7 @@ export default function Prodotti() {
           </p>
         </div>
 
-        {/* Griglia pulita senza etichette duplicate */}
+        {/* Griglia prodotti */}
         <motion.div layout className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {PRODUCTS.map((p, i) => (
@@ -66,7 +66,7 @@ export default function Prodotti() {
                 <tr key={k} className="border-b border-slate-100 last:border-0">
                   <td className="p-5 text-sm font-medium text-slate-700">{k}</td>
                   <td className="p-5"><Cell v={a} /></td>
-                  <td className="p-5"><Cell v={~b ? b : b} /></td>
+                  <td className="p-5"><Cell v={b} /></td>
                 </tr>
               ))}
             </tbody>
