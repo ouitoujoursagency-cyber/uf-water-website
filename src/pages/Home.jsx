@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { PiggyBank, Leaf, HeartPulse, Sparkles, ArrowRight, Star, Quote, Wrench, ClipboardCheck, ShieldCheck, Timer } from "lucide-react";
-import HomeHero from "@/components/HomeHero"; // <-- NOTA: SENZA PARENTESI GRAFFE
+import HomeHero from "@/components/HomeHero";
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/motion";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -137,6 +137,7 @@ export default function Home() {
       <Showcase />
       <Installation />
       <CtaBand />
+      <PromoWidget />
     </div>
   );
 }
