@@ -75,40 +75,6 @@ export const PRODUCTS = [
     ]
   },
   {
-    id: "osmo-top",
-    name: "Osmo Top",
-    category: "casa",
-    sub: "Osmosi inversa",
-    badge: "Top di gamma",
-    
-    img: img("osmo top.jpg"),
-    
-    // Le 2 foto interne per il carosello del popup
-    popupImages: [
-      img("osmo top real.jpg"),    
-      img("osmo top render.jpg")   
-    ],
-
-    tagline: "Impianto ad osmosi inversa evoluto con banco di ghiaccio e raffreddamento ad alta capacità.",
-    description: "Osmo Top unisce la purificazione a osmosi inversa con la refrigerazione avanzata a banco di ghiaccio. Eroga acqua naturale fredda, liscia e frizzante di qualità eccellente direttamente a casa tua.",
-    specs: [
-      ["Pressione Ingresso Acqua", "min 1 bar - max 4 bar"],
-      ["Temperatura Esercizio", "2° C - 40° C"],
-      ["Filtrazione", "Esterna"],
-      ["Alimentazione Elettrica", "220V 50Hz"],
-      ["Dimensioni (LXPA-CM)", "29x39x43 (sottolavello)"],
-      ["Pompa Acqua", "200 lt/h a paletta"],
-      ["Motore Per Pompa Acqua", "150 Watt"],
-      ["Dimensione Saturatore", "9x20 cm -- 1,02 litri"],
-      ["Vasca Refrigerante", "10 litri"],
-      ["Controllo Banco Di Ghiaccio", "termoregolatore digitale da -1,5°C a 32°C"],
-      ["Modello Compressore", "1/8hp - 3,80 cm3"],
-      ["Produzione Osmosi", "110 lt/h"],
-      ["Numero Membrane", "2 da 180 GPD"],
-      ["Riciclo Acqua - Acqua Fredda Per Erogatore Esterno", "NO"]
-    ]
-  },
-  {
     id: "gel-30-black-edition", 
     name: "Gel 30 Sottolavello – Black Edition", 
     category: "casa", 
