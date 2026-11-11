@@ -32,14 +32,14 @@ export function ProductDialog({ item, onClose }) {
   const getImageLabel = (index) => {
     if (popupImages.length === 4) {
       switch (index) {
-        case 0: return "📸 Foto Reale (Top 30)";
+        case 0: return "📸 Ambiente reale (Illustrazione generata con IA)";
         case 1: return "🎨 Render (Top 30)";
-        case 2: return "📸 Foto Reale (Top 30 Osmosi)";
+        case 2: return "📸 Ambiente reale (Illustrazione generata con IA)";
         case 3: return "🎨 Render (Top 30 Osmosi)";
         default: return "🔍 Dettaglio";
       }
     }
-    return index === 0 ? "📸 Foto Reale" : "📐 Schema e Misure";
+    return index === 0 ? "📸 Ambiente reale (Illustrazione generata con IA)" : "📐 Schema e Misure";
   };
 
   return (
@@ -105,7 +105,7 @@ export function ProductDialog({ item, onClose }) {
             </>
           )}
 
-          <span className="absolute top-3 left-3 z-30 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
+          <span className="absolute top-3 left-3 z-30 rounded-full bg-black/60 px-3 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
             {getImageLabel(currentImgIndex)}
           </span>
         </div>
