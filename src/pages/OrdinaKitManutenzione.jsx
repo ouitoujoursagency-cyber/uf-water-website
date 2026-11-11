@@ -196,12 +196,37 @@ export default function OrdinaKitManutenzione() {
         </div>
       </div>
 
+      {/* SEZIONE VIDEO TUTORIAL (Inserita all'inizio della pagina) */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
+        <div className="text-center mb-8">
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
+            Guida alla sostituzione dei filtri
+          </h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Segui il nostro video tutorial per effettuare la manutenzione e il cambio dei consumabili in modo semplice e veloce.
+          </p>
+        </div>
+        <div className="overflow-hidden rounded-[28px] shadow-2xl border border-slate-200 bg-black aspect-video">
+          <video 
+            className="w-full h-full object-cover"
+            controls 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/img/video-manutenzione.mp4" type="video/mp4" />
+            Il tuo browser non supporta il tag video.
+          </video>
+        </div>
+      </section>
+
       {/* Sezione inferiore con le due foto quadrate sovrapposte parzialmente alla banda blu */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
           
           {/* Foto 1 con margine negativo -mt-20 per salire sul blu */}
-          <div className="mx-auto w-full max-w-md relative -mt-20 z-20">
+          <div className="mx-auto w-full max-w-md relative md:-mt-20 z-20">
             <div className="aspect-square rounded-[24px] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione.jpg" 
@@ -212,7 +237,7 @@ export default function OrdinaKitManutenzione() {
           </div>
 
           {/* Foto 2 con margine negativo -mt-20 per salire sul blu */}
-          <div className="mx-auto w-full max-w-md relative -mt-20 z-20">
+          <div className="mx-auto w-full max-w-md relative md:-mt-20 z-20">
             <div className="aspect-square rounded-[24px] overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img 
                 src="/img/kit manutenzione autonomia.jpg" 

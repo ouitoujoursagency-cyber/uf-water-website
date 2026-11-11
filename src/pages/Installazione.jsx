@@ -33,25 +33,6 @@ export default function Installazione() {
         lines={["Installazione", <span className="text-water">chiavi in mano.</span>]}
         intro="Tecnici specializzati per case e uffici: dal sopralluogo al collaudo, fino all'assistenza post-vendita e alla manutenzione programmata. Servizio solo su richiesta senza obblighi" />
 
-      {/* Sezione Video Centrale (Inserita nello spazio bianco prima di "Come lavoriamo") */}
-      <section className="bg-slate-50 py-12 px-5" data-testid="installation-video-section">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="overflow-hidden rounded-[28px] shadow-2xl border border-slate-200 bg-black aspect-video">
-            <video 
-              className="w-full h-full object-cover"
-              controls 
-              autoPlay 
-              muted 
-              loop 
-              playsInline
-            >
-              <source src="/img/video-manutenzione.mp4" type="video/mp4" />
-              Il tuo browser non supporta il tag video.
-            </video>
-          </div>
-        </div>
-      </section>
-
       {/* Processo in 4 fasi */}
       <section className="mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-28" data-testid="install-process">
         <SectionTitle eyebrow="Come lavoriamo" lines={["Quattro fasi,", "zero sorprese."]} />
