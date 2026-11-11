@@ -122,9 +122,22 @@ const Installation = () => {
 };
 
 export default function Home() {
+  const handleHeroClick = () => {
+    // Simula il click sul pulsante delle promozioni attive del widget fluttuante
+    const promoButton = document.querySelector('[data-testid="promo-trigger"]');
+    if (promoButton) {
+      promoButton.click();
+    } else {
+      // Fallback: cerca un elemento che contenga "PROMOZIONI ATTIVE"
+      const buttons = Array.from(document.querySelectorAll("div, button"));
+      const target = buttons.find(el => el.textContent && el.textContent.includes("PROMOZIONI ATTIVE"));
+      if (target) target.click();
+    }
+  };
+
   return (
     <div data-testid="home-page">
-      <HomeHero />
+      <HomeHero onOpenPromo={handleHeroClick} />
       <Benefits />
       <Marquee />
       <Showcase />
