@@ -363,7 +363,7 @@ const EXTRA_ITEMS = [
     badge: "Servizio a chiamata (non vincolante)",
     img: img("installazione e assistenza su richiesta.jpg"),
     popupImages: [
-      img("installazione e assistenza su richiesta real.jpg")
+      img("manutenzione interna.jpg")
     ],
     tagline: "Servizio professionale di installazione e supporto tecnico, senza obblighi o vincoli.",
     description: "Supporto tecnico specializzato per il montaggio, la manutenzione e il controllo periodico del tuo impianto di depurazione o erogazione. Disponibile interamente su richiesta, senza contratti vincolanti o abbonamenti obbligatori.",
