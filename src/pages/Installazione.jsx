@@ -33,37 +33,37 @@ export default function Installazione() {
         lines={["Installazione", <span className="text-water">chiavi in mano.</span>]}
         intro="Tecnici specializzati per case e uffici: dal sopralluogo al collaudo, fino all'assistenza post-vendita e alla manutenzione programmata. Servizio solo su richiesta senza obblighi" />
 
-      {/* Processo in 4 fasi - Riquadri Blu e centratura */}
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-14 md:py-20" data-testid="install-process">
+      {/* Processo in 4 fasi - Spazi ridotti */}
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-10 md:py-14" data-testid="install-process">
         <div className="text-center mx-auto">
           <SectionTitle centered eyebrow="Come lavoriamo" lines={["Quattro fasi,", "zero sorprese."]} />
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map(([t, d], i) => (
-            <Reveal key={t} delay={i * 0.08} className="relative rounded-[28px] border border-white/10 bg-[#06142B] p-7 text-white shadow-xl flex flex-col justify-between" data-testid={`process-step-${i + 1}`}>
+            <Reveal key={t} delay={i * 0.08} className="relative rounded-[28px] border border-white/10 bg-[#06142B] p-6 text-white shadow-xl flex flex-col justify-between" data-testid={`process-step-${i + 1}`}>
               <div>
-                <span className="font-display text-6xl font-black text-sky-400">0{i + 1}</span>
-                <h3 className="mt-4 font-display text-xl font-extrabold text-white">{t}</h3>
-                <p className="mt-2 text-sm text-slate-300 leading-relaxed">{d}</p>
+                <span className="font-display text-5xl font-black text-sky-400">0{i + 1}</span>
+                <h3 className="mt-3 font-display text-lg font-extrabold text-white">{t}</h3>
+                <p className="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">{d}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Vantaggi del servizio */}
-      <section className="relative overflow-hidden bg-[#06142B] text-white grain py-16 md:py-24">
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12 items-center">
+      {/* Vantaggi del servizio - Spazi ridotti */}
+      <section className="relative overflow-hidden bg-[#06142B] text-white grain py-12 md:py-16">
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-12 items-center">
           <SectionTitle dark className="lg:col-span-5" eyebrow="I vantaggi" lines={["Un lavoro fatto", "come si deve."]}>
             Personale formato, materiali certificati per il contatto con acqua potabile e documentazione completa a fine lavoro.
           </SectionTitle>
-          <div className="lg:col-span-7 grid gap-4">
+          <div className="lg:col-span-7 grid gap-3">
             {BENEFITS.map((b, i) => (
-              <Reveal key={b.t} delay={i * 0.08} className="flex gap-5 rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sky-400 text-[#06142B]"><b.icon className="h-6 w-6" /></span>
+              <Reveal key={b.t} delay={i * 0.08} className="flex gap-4 rounded-[22px] border border-white/10 bg-white/5 p-5 backdrop-blur">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-400 text-[#06142B]"><b.icon className="h-5 w-5" /></span>
                 <div>
-                  <h3 className="font-display text-xl font-extrabold">{b.t}</h3>
-                  <p className="mt-1 text-slate-300">{b.d}</p>
+                  <h3 className="font-display text-lg font-extrabold">{b.t}</h3>
+                  <p className="mt-0.5 text-xs sm:text-sm text-slate-300">{b.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -71,8 +71,8 @@ export default function Installazione() {
         </div>
       </section>
 
-      {/* Assistenza post-vendita */}
-      <section className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 py-16 md:py-24 lg:grid-cols-2 lg:items-center" data-testid="after-sales">
+      {/* Assistenza post-vendita - Spazi ridotti */}
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 py-12 md:py-16 lg:grid-cols-2 lg:items-center" data-testid="after-sales">
         <Reveal className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
           <img src="/img/cartridges.jpg" alt="Cartucce filtranti di ricambio" className="h-full w-full object-cover" loading="lazy" />
         </Reveal>
@@ -80,24 +80,24 @@ export default function Installazione() {
           <SectionTitle eyebrow="Assistenza post-vendita" lines={["Sempre al tuo fianco,", "anche dopo."]}>
             Un servizio clienti dedicato, interventi rapidi su chiamata e ricambi originali sempre disponibili, senza contratti vincolanti.
           </SectionTitle>
-          <ul className="mt-8 space-y-4">
+          <ul className="mt-6 space-y-3">
             {[[Headphones, "Supporto telefonico e WhatsApp"], [Wrench, "Interventi tecnici a domicilio e in sede a chiamata"], [CalendarCheck, "Disponibilità per ricambi e sanificazioni su richiesta"]].map(([I, t]) => (
-              <li key={t} className="flex items-center gap-4 text-[var(--ink)]"><I className="h-5 w-5 text-teal-700" /> {t}</li>
+              <li key={t} className="flex items-center gap-3 text-sm text-[var(--ink)]"><I className="h-4 w-4 text-teal-700 shrink-0" /> {t}</li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Domande frequenti */}
-      <section className="mx-auto max-w-4xl px-5 sm:px-8 pb-16 md:pb-24" data-testid="install-faq">
+      {/* Domande frequenti - Spazi ridotti */}
+      <section className="mx-auto max-w-4xl px-5 sm:px-8 pb-12 md:pb-16" data-testid="install-faq">
         <div className="text-center mx-auto">
           <SectionTitle centered eyebrow="Domande frequenti" lines={["Hai dei dubbi?"]} />
         </div>
-        <Accordion type="single" collapsible className="mt-10">
+        <Accordion type="single" collapsible className="mt-6">
           {FAQ.map(([q, a], i) => (
             <AccordionItem key={q} value={`f${i}`} className="border-slate-200">
-              <AccordionTrigger data-testid={`faq-trigger-${i + 1}`} className="py-6 text-left font-display text-lg font-bold text-[var(--ink)] hover:no-underline">{q}</AccordionTrigger>
-              <AccordionContent className="text-base text-slate-600 leading-relaxed">{a}</AccordionContent>
+              <AccordionTrigger data-testid={`faq-trigger-${i + 1}`} className="py-4 text-left font-display text-base font-bold text-[var(--ink)] hover:no-underline">{q}</AccordionTrigger>
+              <AccordionContent className="text-sm text-slate-600 leading-relaxed">{a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
