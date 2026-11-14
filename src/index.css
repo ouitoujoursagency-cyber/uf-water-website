@@ -93,12 +93,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .wave-a, .wave-b, .marquee-track, .ripple { animation: none; }
 }
-/* Rimozione definitiva badge fluttuanti di terze parti / Netlify */
+/* Rimozione definitiva di qualsiasi badge o widget fluttuante di terze parti */
 iframe[src*="netlify"], 
 div[style*="z-index: 99999"], 
 #netlify-badge, 
 .netlify-badge,
-[id*="netlify-badge"] {
+[id*="netlify"],
+div[class*="toolbar"],
+div[class*="badge"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
