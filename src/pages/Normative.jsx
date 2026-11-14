@@ -32,50 +32,55 @@ export default function Normative() {
         lines={["Trasparenza totale,", <span className="text-water">sicurezza certificata.</span>]}
         intro="I nostri depuratori e le nostre installazioni rispettano le normative italiane ed europee sull'acqua potabile. Ecco cosa significa, in parole semplici." />
 
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-28" data-testid="laws-section">
-        <SectionTitle eyebrow="Il quadro normativo" lines={["Le regole che", "rispettiamo ogni giorno."]} />
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+      {/* Sezione Normative con Riquadri Blu */}
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-10 md:py-14" data-testid="laws-section">
+        <div className="text-center mx-auto">
+          <SectionTitle centered eyebrow="Il quadro normativo" lines={["Le regole che", "rispettiamo ogni giorno."]} />
+        </div>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
           {LAWS.map((l, i) => (
-            <Reveal key={l.code} delay={(i % 2) * 0.08} className="group rounded-[28px] border border-slate-200 bg-white p-8 sm:p-10 transition-shadow duration-500 hover:shadow-[0_30px_60px_-30px_rgba(11,37,69,.35)]" data-testid={`law-card-${i + 1}`}>
-              <span className="inline-block rounded-full bg-sky-50 px-4 py-1.5 font-mono text-sm font-medium text-sky-800">{l.code}</span>
-              <h3 className="mt-6 font-display text-2xl font-extrabold tracking-tight text-[var(--ink)]">{l.title}</h3>
-              <p className="mt-3 text-slate-600 leading-relaxed">{l.text}</p>
+            <Reveal key={l.code} delay={(i % 2) * 0.08} className="group rounded-[28px] border border-white/10 bg-[#06142B] p-7 text-white shadow-xl transition-all duration-300 hover:border-sky-400/40" data-testid={`law-card-${i + 1}`}>
+              <span className="inline-block rounded-full bg-sky-400/10 px-3.5 py-1 font-mono text-xs font-bold text-sky-400 border border-sky-400/20">{l.code}</span>
+              <h3 className="mt-4 font-display text-xl font-extrabold tracking-tight text-white">{l.title}</h3>
+              <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">{l.text}</p>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#06142B] text-white grain" data-testid="certs-section">
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-28">
+      {/* Sezione Certificazioni */}
+      <section className="relative overflow-hidden bg-[#06142B] text-white grain py-12 md:py-16" data-testid="certs-section">
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionTitle dark eyebrow="Certificazioni" lines={["Materiali e sistemi", "sotto controllo."]} />
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {CERTS.map((c, i) => (
-              <Reveal key={c.t} delay={i * 0.06} className="rounded-[24px] border border-white/10 bg-white/5 p-7 backdrop-blur">
-                <c.icon className="h-8 w-8 text-sky-300" />
-                <h3 className="mt-6 font-display text-xl font-extrabold">{c.t}</h3>
-                <p className="mt-2 text-sm text-slate-300 leading-relaxed">{c.d}</p>
+              <Reveal key={c.t} delay={i * 0.06} className="rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <c.icon className="h-7 w-7 text-sky-400" />
+                <h3 className="mt-4 font-display text-lg font-extrabold">{c.t}</h3>
+                <p className="mt-1.5 text-xs text-slate-300 leading-relaxed">{c.d}</p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 py-20 md:py-28 lg:grid-cols-12" data-testid="why-safe-section">
+      {/* Sezione Perché sicura */}
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 py-12 md:py-16 lg:grid-cols-12 items-center" data-testid="why-safe-section">
         <div className="lg:col-span-5">
           <SectionTitle eyebrow="In parole semplici" lines={["Perché la tua acqua", "è sicura al 100%."]}>
             Le certificazioni non sono burocrazia: sono la garanzia che ogni goccia che bevi passa attraverso materiali idonei, filtri verificati e un impianto mantenuto correttamente.
           </SectionTitle>
-          <Reveal className="mt-10 aspect-[4/3] overflow-hidden rounded-[28px]">
+          <Reveal className="mt-6 aspect-[4/3] overflow-hidden rounded-[28px]">
             <img src="/img/lab.jpg" alt="Analisi di laboratorio dell'acqua" className="h-full w-full object-cover" loading="lazy" />
           </Reveal>
         </div>
-        <ol className="lg:col-span-7 lg:pl-8 space-y-5">
+        <ol className="lg:col-span-7 lg:pl-8 space-y-4">
           {WHY.map((w, i) => (
-            <Reveal as="li" key={w.t} delay={i * 0.08} className="flex gap-6 rounded-[28px] border border-slate-200 bg-white p-8">
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-400 to-teal-500 text-white"><w.icon className="h-7 w-7" /></span>
+            <Reveal as="li" key={w.t} delay={i * 0.08} className="flex gap-5 rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-400 to-teal-500 text-white"><w.icon className="h-6 w-6" /></span>
               <div>
-                <h3 className="font-display text-2xl font-extrabold text-[var(--ink)]">{w.t}</h3>
-                <p className="mt-2 text-slate-600 leading-relaxed">{w.d}</p>
+                <h3 className="font-display text-lg font-extrabold text-[var(--ink)]">{w.t}</h3>
+                <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed">{w.d}</p>
               </div>
             </Reveal>
           ))}
