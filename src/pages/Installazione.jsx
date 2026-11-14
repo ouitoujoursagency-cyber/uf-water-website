@@ -33,23 +33,27 @@ export default function Installazione() {
         lines={["Installazione", <span className="text-water">chiavi in mano.</span>]}
         intro="Tecnici specializzati per case e uffici: dal sopralluogo al collaudo, fino all'assistenza post-vendita e alla manutenzione programmata. Servizio solo su richiesta senza obblighi" />
 
-      {/* Processo in 4 fasi */}
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-20 md:py-28" data-testid="install-process">
-        <SectionTitle eyebrow="Come lavoriamo" lines={["Quattro fasi,", "zero sorprese."]} />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Processo in 4 fasi - Riquadri Blu e centratura */}
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-14 md:py-20" data-testid="install-process">
+        <div className="text-center mx-auto">
+          <SectionTitle centered eyebrow="Come lavoriamo" lines={["Quattro fasi,", "zero sorprese."]} />
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map(([t, d], i) => (
-            <Reveal key={t} delay={i * 0.08} className="relative rounded-[28px] border border-slate-200 bg-white p-7" data-testid={`process-step-${i + 1}`}>
-              <span className="font-display text-6xl font-black text-transparent [-webkit-text-stroke:1.2px_#0EA5E9]">0{i + 1}</span>
-              <h3 className="mt-6 font-display text-xl font-extrabold text-[var(--ink)]">{t}</h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{d}</p>
+            <Reveal key={t} delay={i * 0.08} className="relative rounded-[28px] border border-white/10 bg-[#06142B] p-7 text-white shadow-xl flex flex-col justify-between" data-testid={`process-step-${i + 1}`}>
+              <div>
+                <span className="font-display text-6xl font-black text-sky-400">0{i + 1}</span>
+                <h3 className="mt-4 font-display text-xl font-extrabold text-white">{t}</h3>
+                <p className="mt-2 text-sm text-slate-300 leading-relaxed">{d}</p>
+              </div>
             </Reveal>
           ))}
         </div>
       </section>
 
       {/* Vantaggi del servizio */}
-      <section className="relative overflow-hidden bg-[#06142B] text-white grain">
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 py-20 md:py-28 lg:grid-cols-12">
+      <section className="relative overflow-hidden bg-[#06142B] text-white grain py-16 md:py-24">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12 items-center">
           <SectionTitle dark className="lg:col-span-5" eyebrow="I vantaggi" lines={["Un lavoro fatto", "come si deve."]}>
             Personale formato, materiali certificati per il contatto con acqua potabile e documentazione completa a fine lavoro.
           </SectionTitle>
@@ -68,7 +72,7 @@ export default function Installazione() {
       </section>
 
       {/* Assistenza post-vendita */}
-      <section className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 py-20 md:py-28 lg:grid-cols-2 lg:items-center" data-testid="after-sales">
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 py-16 md:py-24 lg:grid-cols-2 lg:items-center" data-testid="after-sales">
         <Reveal className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
           <img src="/img/cartridges.jpg" alt="Cartucce filtranti di ricambio" className="h-full w-full object-cover" loading="lazy" />
         </Reveal>
@@ -85,8 +89,10 @@ export default function Installazione() {
       </section>
 
       {/* Domande frequenti */}
-      <section className="mx-auto max-w-4xl px-5 sm:px-8 pb-20 md:pb-28" data-testid="install-faq">
-        <SectionTitle eyebrow="Domande frequenti" lines={["Hai dei dubbi?"]} />
+      <section className="mx-auto max-w-4xl px-5 sm:px-8 pb-16 md:pb-24" data-testid="install-faq">
+        <div className="text-center mx-auto">
+          <SectionTitle centered eyebrow="Domande frequenti" lines={["Hai dei dubbi?"]} />
+        </div>
         <Accordion type="single" collapsible className="mt-10">
           {FAQ.map(([q, a], i) => (
             <AccordionItem key={q} value={`f${i}`} className="border-slate-200">
