@@ -36,7 +36,7 @@ export default function PromoWidget() {
         
         {/* Pulsante WhatsApp (In alto) */}
         <a 
-          href="https://wa.me/393330000000" 
+          href="https://wa.me/393279088909" 
           target="_blank" 
           rel="noopener noreferrer"
           className="w-12 h-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-110"
