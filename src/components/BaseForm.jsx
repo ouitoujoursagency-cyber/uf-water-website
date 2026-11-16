@@ -92,6 +92,15 @@ export default function BaseForm({ formName = "contatti" }) {
           </button>
         </div>
       )}
+
+      {/* Form HTML statico nascosto di fallback per la scansione di Netlify */}
+      <form name={formName} netlify="true" hidden>
+        <input type="hidden" name="form-name" value={formName} />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <textarea name="message"></textarea>
+      </form>
     </div>
   );
 }
