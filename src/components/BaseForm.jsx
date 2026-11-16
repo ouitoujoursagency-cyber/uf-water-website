@@ -4,6 +4,21 @@ import { Send, CheckCircle2 } from "lucide-react";
 export default function BaseForm({ formName = "contatti" }) {
   const [submitted, setSubmitted] = useState(false);
 
+  // Funzione per inviare i dati a Netlify in background
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    })
+      .then(() => setSubmitted(true))
+      .catch((error) => alert("Errore di invio: " + error));
+  };
+
   return (
     <div className="bg-white text-slate-900 rounded-[32px] p-6 sm:p-10 shadow-2xl border border-slate-200">
       {!submitted ? (
@@ -11,7 +26,7 @@ export default function BaseForm({ formName = "contatti" }) {
           name={formName} 
           method="POST" 
           data-netlify="true" 
-          onSubmit={() => setSubmitted(true)}
+          onSubmit={handleSubmit}
           className="space-y-4"
         >
           {/* Campo nascosto obbligatorio per Netlify */}
