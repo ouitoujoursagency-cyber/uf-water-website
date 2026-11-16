@@ -11,6 +11,7 @@ import { ProductDialog } from "@/components/ProductDialog";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS } from "@/data/catalog";
 import PromoWidget from "@/components/PromoWidget";
+import BaseForm from "@/components/BaseForm"; // <-- 1. Importiamo il form centralizzato
 
 // ---------- Vantaggi ----------
 const Benefits = () => (
@@ -123,12 +124,10 @@ const Installation = () => {
 
 export default function Home() {
   const handleHeroClick = () => {
-    // Simula il click sul pulsante delle promozioni attive del widget fluttuante
     const promoButton = document.querySelector('[data-testid="promo-trigger"]');
     if (promoButton) {
       promoButton.click();
     } else {
-      // Fallback: cerca un elemento che contenga "PROMOZIONI ATTIVE"
       const buttons = Array.from(document.querySelectorAll("div, button"));
       const target = buttons.find(el => el.textContent && el.textContent.includes("PROMOZIONI ATTIVE"));
       if (target) target.click();
@@ -142,6 +141,21 @@ export default function Home() {
       <Marquee />
       <Showcase />
       <Installation />
+      
+      {/* 2. Sezione dedicata al form di contatto rapido nella Home */}
+      <section className="py-16 bg-slate-50 px-5 sm:px-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-8">
+            <span className="text-xs font-mono uppercase tracking-widest text-sky-600 font-bold">Scrivici subito</span>
+            <h2 className="font-display text-3xl font-black text-slate-900 mt-1">Richiedi informazioni o un preventivo</h2>
+            <p className="text-sm text-slate-600 mt-2">Compila il modulo, ti risponderemo direttamente su ufwater@hotmail.com</p>
+          </div>
+          
+          {/* Richiamiamo il form centralizzato con un nome specifico per la home */}
+          <BaseForm formName="form-home" />
+        </div>
+      </section>
+
       <CtaBand />
       <PromoWidget />
     </div>
