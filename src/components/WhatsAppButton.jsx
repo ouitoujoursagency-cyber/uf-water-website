@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
-import { COMPANY } from "@/data/site"; // Importiamo i dati aziendali centralizzati
+import { COMPANY } from "@/data/site"; // Importiamo i dati ufficiali centralizzati
 
 // Pulsante WhatsApp fluttuante (sempre visibile)
 export const WhatsAppButton = () => {
-  // Puliamo il numero di telefono per formattare correttamente il link di WhatsApp
-  const cleanPhone = COMPANY.phone.replace(/[^0-9]/g, '');
-  const whatsappUrl = `https://wa.me/${cleanPhone}?text=Salve,%20vorrei%20informazioni%20sui%20vostri%20servizi`;
+  // Estrae solo le cifre dal numero di telefono ufficiale di COMPANY
+  const phoneNumber = COMPANY.phone.replace(/[^0-9]/g, "");
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Salve,%20vorrei%20informazioni%20sui%20vostri%20servizi`;
 
   return (
     <motion.a
