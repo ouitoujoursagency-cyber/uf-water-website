@@ -48,7 +48,7 @@ export default function Contatti() {
             </div>
             <div>
               <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">Telefono</p>
-              <a href="tel:+3933279088909" className="text-sm font-semibold text-slate-800 hover:text-sky-600 transition-colors">+39 33279088909</a>
+              <a href="tel:+393279088909" className="text-sm font-semibold text-slate-800 hover:text-sky-600 transition-colors">+39 33279088909</a>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export default function Contatti() {
         {/* Pulsante rapido WhatsApp in basso */}
         <div className="text-center pt-1 pb-2">
           <a 
-            href="https://wa.me/3933279088909" 
+            href="https://wa.me/393279088909" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-600/20"
