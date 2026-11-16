@@ -48,7 +48,7 @@ export default function Contatti() {
             </div>
             <div>
               <p className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold mb-1">Telefono</p>
-              <a href="tel:+393279088909" className="text-sm font-semibold text-slate-800 hover:text-sky-600 transition-colors">+39 33279088909</a>
+              <a href="tel:+393279088909" className="text-sm font-semibold text-slate-800 hover:text-sky-600 transition-colors">+39 3279088909</a>
             </div>
           </div>
 
