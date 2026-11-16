@@ -67,7 +67,7 @@ export default function InvitaUnAmico() {
             <div className="pt-2">
               <p className="text-xs text-slate-400 mb-2">Hai bisogno di supporto immediato?</p>
               <a 
-                href="https://wa.me/393331234567" 
+                href="https://wa.me/393279088909" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-600/20"
