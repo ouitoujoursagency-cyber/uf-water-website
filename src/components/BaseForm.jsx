@@ -12,6 +12,7 @@ export default function BaseForm({ formName = "contatti" }) {
           method="POST" 
           data-netlify="true"
           action="/"
+          onSubmit={() => setSubmitted(true)}
           className="space-y-4"
         >
           {/* Campo nascosto obbligatorio per Netlify */}
@@ -93,7 +94,7 @@ export default function BaseForm({ formName = "contatti" }) {
         </div>
       )}
 
-      {/* Form HTML statico nascosto obbligatorio per Netlify */}
+      {/* Form HTML statico nascosto di fallback */}
       <form name={formName} netlify="true" hidden>
         <input type="hidden" name="form-name" value={formName} />
         <input type="text" name="name" />
