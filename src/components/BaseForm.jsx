@@ -4,23 +4,6 @@ import { Send, CheckCircle2 } from "lucide-react";
 export default function BaseForm({ formName = "contatti" }) {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => setSubmitted(true))
-      .catch((error) => {
-        console.error("Errore di invio:", error);
-        setSubmitted(true); // Mostra comunque il successo all'utente per continuità
-      });
-  };
-
   return (
     <div className="bg-white text-slate-900 rounded-[32px] p-6 sm:p-10 shadow-2xl border border-slate-200">
       {!submitted ? (
@@ -28,11 +11,16 @@ export default function BaseForm({ formName = "contatti" }) {
           name={formName} 
           method="POST" 
           data-netlify="true"
-          onSubmit={handleSubmit}
+          netlify-honeypot="bot-field"
+          action="/?success=true"
+          onSubmit={() => setSubmitted(true)}
           className="space-y-4"
         >
-          {/* Campo nascosto obbligatorio per Netlify */}
+          {/* Campi nascosti obbligatori per Netlify */}
           <input type="hidden" name="form-name" value={formName} />
+          <p className="hidden">
+            <label>Non riempire se sei umano: <input name="bot-field" /></label>
+          </p>
 
           <div className="mb-2 text-center">
             <h3 className="font-display text-2xl font-black text-slate-900">Invia un messaggio</h3>
@@ -110,7 +98,7 @@ export default function BaseForm({ formName = "contatti" }) {
         </div>
       )}
 
-      {/* Form HTML statico nascosto di fallback obbligatorio per React */}
+      {/* Form HTML statico nascosto di fallback */}
       <form name={formName} netlify="true" hidden>
         <input type="hidden" name="form-name" value={formName} />
         <input type="text" name="name" />
