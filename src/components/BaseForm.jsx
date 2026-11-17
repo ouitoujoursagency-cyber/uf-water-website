@@ -14,9 +14,12 @@ export default function BaseForm({ formName = "contatti" }) {
     formData.append("subject", "Nuovo messaggio dal sito UF Water Technology");
 
     try {
+      const jsonPayload = JSON.stringify(Object.fromEntries(formData));
+      console.log("Invio in corso...", jsonPayload);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: JSON.stringify(Object.fromEntries(formData)),
+        body: jsonPayload,
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -24,13 +27,16 @@ export default function BaseForm({ formName = "contatti" }) {
       });
 
       const result = await response.json();
+      console.log("Risposta dal server:", result);
+
       if (result.success) {
         setSubmitted(true);
       } else {
-        alert("Errore durante l'invio: " + result.message);
+        alert("Errore restituito da Web3Forms: " + result.message);
       }
     } catch (error) {
-      alert("Errore di connessione. Riprova più tardi.");
+      console.error("Errore di rete:", error);
+      alert("Errore di connessione: " + error.message);
     } finally {
       setLoading(false);
     }
