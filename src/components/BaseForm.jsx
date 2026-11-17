@@ -11,12 +11,26 @@ export default function BaseForm({ formName = "contatti" }) {
           name={formName} 
           method="POST" 
           data-netlify="true"
-          action="#success"
-          onSubmit={() => setSubmitted(true)}
+          netlify-honeypot="bot-field"
+          action="/"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString(),
+            })
+              .then(() => setSubmitted(true))
+              .catch(() => setSubmitted(true));
+          }}
           className="space-y-4"
         >
-          {/* Campo nascosto obbligatorio per Netlify */}
+          {/* Campi nascosti obbligatori per Netlify */}
           <input type="hidden" name="form-name" value={formName} />
+          <input type="hidden" name="bot-field" />
 
           <div className="mb-2 text-center">
             <h3 className="font-display text-2xl font-black text-slate-900">Invia un messaggio</h3>
