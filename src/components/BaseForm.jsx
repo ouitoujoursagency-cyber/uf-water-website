@@ -3,35 +3,43 @@ import { Send, CheckCircle2 } from "lucide-react";
 
 export default function BaseForm({ formName = "contatti" }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.target);
+    formData.append("access_key", "549e9892-f319-4c96-9959-cb0dcc661d7b"); 
+    formData.append("subject", "Nuovo messaggio dal sito UF Water Technology");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        alert("Errore durante l'invio: " + result.message);
+      }
+    } catch (error) {
+      alert("Errore di connessione. Riprova più tardi.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white text-slate-900 rounded-[32px] p-6 sm:p-10 shadow-2xl border border-slate-200">
       {!submitted ? (
-        <form 
-          name={formName} 
-          method="POST" 
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams(formData).toString(),
-            })
-              .then(() => setSubmitted(true))
-              .catch(() => setSubmitted(true));
-          }}
-          className="space-y-4"
-        >
-          {/* Campi nascosti obbligatori per Netlify */}
-          <input type="hidden" name="form-name" value={formName} />
-          <input type="hidden" name="bot-field" />
-
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="mb-2 text-center">
             <h3 className="font-display text-2xl font-black text-slate-900">Invia un messaggio</h3>
             <p className="text-xs text-slate-500">Compila il form per essere ricontattato al più presto.</p>
@@ -84,9 +92,10 @@ export default function BaseForm({ formName = "contatti" }) {
 
           <button 
             type="submit"
-            className="w-full rounded-full bg-[#06142B] py-4 font-bold text-white hover:bg-sky-600 transition-colors shadow-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 mt-2"
+            disabled={loading}
+            className="w-full rounded-full bg-[#06142B] py-4 font-bold text-white hover:bg-sky-600 transition-colors shadow-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 mt-2 disabled:opacity-50"
           >
-            Invia Messaggio <Send className="w-4 h-4" />
+            {loading ? "Invio in corso..." : <>Invia Messaggio <Send className="w-4 h-4" /></>}
           </button>
         </form>
       ) : (
@@ -107,15 +116,6 @@ export default function BaseForm({ formName = "contatti" }) {
           </button>
         </div>
       )}
-
-      {/* Form HTML statico nascosto di fallback */}
-      <form name={formName} netlify="true" hidden>
-        <input type="hidden" name="form-name" value={formName} />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="tel" name="phone" />
-        <textarea name="message"></textarea>
-      </form>
     </div>
   );
 }
