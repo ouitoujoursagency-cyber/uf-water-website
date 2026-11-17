@@ -4,39 +4,14 @@ import { Send, CheckCircle2 } from "lucide-react";
 export default function BaseForm({ formName = "contatti" }) {
   const [submitted, setSubmitted] = useState(false);
 
-  // Funzione per inviare i dati a Netlify in background senza ricaricare la pagina
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setSubmitted(true);
-        } else {
-          console.error("Errore di risposta Netlify:", response);
-          setSubmitted(true); // Mostriamo comunque il successo all'utente per continuità
-        }
-      })
-      .catch((error) => {
-        console.error("Errore di connessione:", error);
-        setSubmitted(true);
-      });
-  };
-
   return (
     <div className="bg-white text-slate-900 rounded-[32px] p-6 sm:p-10 shadow-2xl border border-slate-200">
       {!submitted ? (
         <form 
           name={formName} 
           method="POST" 
-          data-netlify="true" 
-          onSubmit={handleSubmit}
+          data-netlify="true"
+          action="/?success=true"
           className="space-y-4"
         >
           {/* Campo nascosto obbligatorio per Netlify */}
@@ -118,7 +93,7 @@ export default function BaseForm({ formName = "contatti" }) {
         </div>
       )}
 
-      {/* Form HTML statico nascosto di fallback per la scansione di Netlify */}
+      {/* Form HTML statico nascosto di fallback obbligatorio per React */}
       <form name={formName} netlify="true" hidden>
         <input type="hidden" name="form-name" value={formName} />
         <input type="text" name="name" />
