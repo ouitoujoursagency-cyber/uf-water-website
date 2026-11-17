@@ -33,5 +33,21 @@
     <body>
         <noscript>Abilita JavaScript per visualizzare il sito.</noscript>
         <div id="root"></div>
+
+        <!-- ================= FORM NASCOSTI PER NETLIFY (Fallback React SPA) ================= -->
+        <!-- Questi form permettono a Netlify di rilevare i campi durante la compilazione del sito React -->
+        <form name="contatti" netlify data-netlify="true" hidden>
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="tel" name="phone" />
+            <textarea name="message"></textarea>
+        </form>
+
+        <form name="form-home" netlify data-netlify="true" hidden>
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="tel" name="phone" />
+            <textarea name="message"></textarea>
+        </form>
     </body>
 </html>
