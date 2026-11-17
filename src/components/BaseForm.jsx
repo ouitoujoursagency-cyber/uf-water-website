@@ -4,13 +4,13 @@ import { Send, CheckCircle2 } from "lucide-react";
 export default function BaseForm({ formName = "contatti" }) {
   const [submitted, setSubmitted] = useState(false);
 
-  // Funzione per inviare i dati a Netlify in modo sicuro tramite AJAX
+  // Funzione per inviare i dati a Netlify in modo sicuro tramite AJAX puntando alla root "/"
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
 
-    fetch(window.location.pathname, {
+    fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
@@ -32,15 +32,11 @@ export default function BaseForm({ formName = "contatti" }) {
           name={formName} 
           method="POST" 
           data-netlify="true" 
-          netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="space-y-4"
         >
-          {/* Campi nascosti obbligatori per Netlify e protezione anti-spam */}
+          {/* Campo nascosto obbligatorio per Netlify */}
           <input type="hidden" name="form-name" value={formName} />
-          <p className="hidden">
-            <label>Non riempire questo campo se sei umano: <input name="bot-field" /></label>
-          </p>
 
           <div className="mb-2 text-center">
             <h3 className="font-display text-2xl font-black text-slate-900">Invia un messaggio</h3>
