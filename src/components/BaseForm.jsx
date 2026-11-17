@@ -4,19 +4,25 @@ import { Send, CheckCircle2 } from "lucide-react";
 export default function BaseForm({ formName = "contatti" }) {
   const [submitted, setSubmitted] = useState(false);
 
-  // Funzione per inviare i dati a Netlify in background
+  // Funzione per inviare i dati a Netlify in modo sicuro tramite AJAX
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
 
-    fetch("/", {
+    fetch(window.location.pathname, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
-      .then(() => setSubmitted(true))
-      .catch((error) => alert("Errore di invio: " + error));
+      .then((response) => {
+        if (response.ok) {
+          setSubmitted(true);
+        } else {
+          alert("Errore del server durante l'invio del messaggio.");
+        }
+      })
+      .catch((error) => alert("Errore di connessione: " + error));
   };
 
   return (
@@ -26,11 +32,15 @@ export default function BaseForm({ formName = "contatti" }) {
           name={formName} 
           method="POST" 
           data-netlify="true" 
+          netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="space-y-4"
         >
-          {/* Campo nascosto obbligatorio per Netlify */}
+          {/* Campi nascosti obbligatori per Netlify e protezione anti-spam */}
           <input type="hidden" name="form-name" value={formName} />
+          <p className="hidden">
+            <label>Non riempire questo campo se sei umano: <input name="bot-field" /></label>
+          </p>
 
           <div className="mb-2 text-center">
             <h3 className="font-display text-2xl font-black text-slate-900">Invia un messaggio</h3>
