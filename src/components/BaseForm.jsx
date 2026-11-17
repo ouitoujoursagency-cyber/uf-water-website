@@ -11,8 +11,6 @@ export default function BaseForm({ formName = "contatti" }) {
           name={formName} 
           method="POST" 
           data-netlify="true"
-          action="/"
-          onSubmit={() => setSubmitted(true)}
           className="space-y-4"
         >
           {/* Campo nascosto obbligatorio per Netlify */}
